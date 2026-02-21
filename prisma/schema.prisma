@@ -27,6 +27,7 @@ model Tenant {
   metrics   Metric[]
   alerts    Alert[]
   savedSearches SavedSearch[]
+  reports   Report[]
 }
 
 model Client {
@@ -171,4 +172,28 @@ model SavedSearch {
 
   @@index([tenantId])
   @@index([tenantId, userId])
+}
+
+// ——— Reports (Phase 4 reporting engine) ———
+model Report {
+  id          String    @id @default(cuid())
+  tenantId    String
+  clientId    String?
+  name        String
+  description String?
+  metricTypes String[]  // e.g. ["leads","spend","roas"]
+  dateRange   String    @default("30d") // "7d","30d","90d","12m","custom"
+  dateFrom    DateTime?
+  dateTo      DateTime?
+  breakdown   String    @default("daily") // "daily","weekly","monthly"
+  source      String?
+  shareToken  String?   @unique
+  shareExpiry DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([shareToken])
 }

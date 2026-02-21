@@ -12,7 +12,7 @@ const COOKIE_NAME = "m_control_session";
 const JWT_ISSUER = "m-control";
 const JWT_AUDIENCE = "m-control-app";
 
-const PUBLIC_PREFIXES = ["/auth", "/api/auth"];
+const PUBLIC_PREFIXES = ["/auth", "/api/auth", "/r/"];
 const STATIC_PREFIXES = ["/_next", "/favicon", "/robots.txt", "/sitemap"];
 
 function isPublic(pathname: string): boolean {
