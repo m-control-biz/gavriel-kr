@@ -6,17 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { Trash2 } from "lucide-react";
 
 interface Props {
@@ -170,31 +159,19 @@ export function EditAccountForm({ account, canEdit, isOwner }: Props) {
             <CardDescription>Permanently delete this account and all its data.</CardDescription>
           </CardHeader>
           <CardContent>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="destructive" size="sm" className="gap-1.5">
-                  <Trash2 className="h-4 w-4" /> Delete account
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Delete {account.name}?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This will permanently delete the account, all its users, integrations, metrics, leads, and reports. This action cannot be undone.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={handleDelete}
-                    disabled={deleting}
-                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                  >
-                    {deleting ? "Deleting…" : "Delete permanently"}
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <Button
+              variant="destructive"
+              size="sm"
+              className="gap-1.5"
+              disabled={deleting}
+              onClick={() => {
+                if (window.confirm(`Delete "${account.name}"? This will permanently remove the account, all its users, integrations, metrics, leads, and reports. This cannot be undone.`)) {
+                  handleDelete();
+                }
+              }}
+            >
+              <Trash2 className="h-4 w-4" /> {deleting ? "Deleting…" : "Delete account"}
+            </Button>
           </CardContent>
         </Card>
       )}

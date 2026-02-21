@@ -5,15 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Trash2, UserPlus } from "lucide-react";
 
 type Role = "Owner" | "Admin" | "Editor" | "Viewer";
@@ -33,18 +25,19 @@ interface Props {
   currentUserId: string;
 }
 
-const ROLE_COLORS: Record<string, string> = {
-  Owner: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-  Admin: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
-  Editor: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
-  Viewer: "bg-muted text-muted-foreground",
-};
 
 export function ManageUsers({ accountId, accountName, initialUsers, canManage, currentUserId }: Props) {
   const router = useRouter();
   const [users, setUsers] = useState<UserRow[]>(initialUsers);
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<Role>("Editor");
+
+  const ROLE_COLORS: Record<string, string> = {
+    Owner: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
+    Admin: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+    Editor: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+    Viewer: "bg-muted text-muted-foreground",
+  };
   const [adding, setAdding] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -130,18 +123,18 @@ export function ManageUsers({ accountId, accountName, initialUsers, canManage, c
                 />
               </div>
               <div className="space-y-1.5 w-36">
-                <Label>Role</Label>
-                <Select value={role} onValueChange={(v) => setRole(v as Role)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Owner">Owner</SelectItem>
-                    <SelectItem value="Admin">Admin</SelectItem>
-                    <SelectItem value="Editor">Editor</SelectItem>
-                    <SelectItem value="Viewer">Viewer</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="add-role">Role</Label>
+                <select
+                  id="add-role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value as Role)}
+                  className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
+                >
+                  <option value="Owner">Owner</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Editor">Editor</option>
+                  <option value="Viewer">Viewer</option>
+                </select>
               </div>
               <Button type="submit" disabled={adding}>
                 {adding ? "Adding…" : "Add"}
@@ -171,25 +164,26 @@ export function ManageUsers({ accountId, accountName, initialUsers, canManage, c
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     {canManage ? (
-                      <Select
+                      <select
                         value={u.role}
-                        onValueChange={(v) => handleRoleChange(u.userId, v as Role)}
+                        onChange={(e) => handleRoleChange(u.userId, e.target.value as Role)}
                         disabled={updatingId === u.userId}
+                        className="h-7 w-28 rounded-md border border-input bg-background px-2 text-xs shadow-sm focus:outline-none focus:ring-1 focus:ring-ring disabled:opacity-50"
                       >
-                        <SelectTrigger className="h-7 w-28 text-xs">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Owner">Owner</SelectItem>
-                          <SelectItem value="Admin">Admin</SelectItem>
-                          <SelectItem value="Editor">Editor</SelectItem>
-                          <SelectItem value="Viewer">Viewer</SelectItem>
-                        </SelectContent>
-                      </Select>
+                        <option value="Owner">Owner</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Editor">Editor</option>
+                        <option value="Viewer">Viewer</option>
+                      </select>
                     ) : (
-                      <Badge className={`text-xs font-normal ${ROLE_COLORS[u.role] ?? ""}`}>
+                      <span className={`text-xs rounded-full px-2 py-0.5 font-medium ${
+                        u.role === "Owner" ? "bg-amber-100 text-amber-800" :
+                        u.role === "Admin" ? "bg-blue-100 text-blue-800" :
+                        u.role === "Editor" ? "bg-green-100 text-green-800" :
+                        "bg-muted text-muted-foreground"
+                      }`}>
                         {u.role}
-                      </Badge>
+                      </span>
                     )}
                     {canManage && (
                       <Button
