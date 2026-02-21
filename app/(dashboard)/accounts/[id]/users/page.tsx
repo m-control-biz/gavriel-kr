@@ -1,26 +1,32 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
-import { getAccessibleAccountIds } from "@/lib/account";
+import { getAccessibleAccountIds, canManageUsers } from "@/lib/account";
 import { prisma } from "@/lib/db";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronLeft, Users } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
+import { ManageUsers } from "@/components/accounts/manage-users";
 
 export default async function AccountUsersPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getSession();
   if (!session) redirect("/auth/login");
 
-  const accountIds = await getAccessibleAccountIds(session.sub, session.tenantId, session.isSuperAdmin ?? false);
   const { id } = await params;
+  const accountIds = await getAccessibleAccountIds(session.sub, session.tenantId, session.isSuperAdmin ?? false);
   if (!accountIds.includes(id)) notFound();
 
   const account = await prisma.account.findFirst({ where: { id }, select: { name: true } });
   if (!account) notFound();
 
+  const uar = await prisma.userAccountRole.findUnique({
+    where: { userId_accountId: { userId: session.sub, accountId: id } },
+  });
+  const myRole = (uar?.role ?? "Viewer") as "Owner" | "Admin" | "Editor" | "Viewer";
+
   const userRoles = await prisma.userAccountRole.findMany({
     where: { accountId: id },
     include: { user: { select: { id: true, email: true, name: true } } },
+    orderBy: { createdAt: "asc" },
   });
 
   return (
@@ -31,31 +37,24 @@ export default async function AccountUsersPage({ params }: { params: Promise<{ i
             <ChevronLeft className="h-4 w-4" /> Accounts
           </Button>
         </Link>
+        <span className="text-muted-foreground">/</span>
+        <span className="font-medium text-sm">{account.name}</span>
+        <span className="text-muted-foreground">/</span>
+        <span className="text-sm">Users</span>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5" /> Users — {account.name}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {userRoles.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No users assigned yet.</p>
-          ) : (
-            <ul className="space-y-2">
-              {userRoles.map((ur) => (
-                <li key={ur.id} className="flex items-center justify-between rounded-md border px-3 py-2">
-                  <span className="font-medium">{ur.user.name ?? ur.user.email}</span>
-                  <span className="text-xs rounded-full bg-muted px-2 py-0.5">{ur.role}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-          <p className="text-xs text-muted-foreground mt-4">
-            Add user / assign role: extend with invite-by-email and role dropdown (Owner, Admin, Editor, Viewer).
-          </p>
-        </CardContent>
-      </Card>
+
+      <ManageUsers
+        accountId={id}
+        accountName={account.name}
+        initialUsers={userRoles.map((ur) => ({
+          id: ur.id,
+          userId: ur.userId,
+          role: ur.role,
+          user: ur.user,
+        }))}
+        canManage={canManageUsers(myRole)}
+        currentUserId={session.sub}
+      />
     </div>
   );
 }

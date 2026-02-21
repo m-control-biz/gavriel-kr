@@ -1,23 +1,30 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { getAccountScope } from "@/lib/tenant";
-import { getAccessibleAccountIds } from "@/lib/account";
 import { getSession } from "@/lib/auth";
+import { getAccessibleAccountIds, canManageUsers, isOwner } from "@/lib/account";
 import { prisma } from "@/lib/db";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronLeft } from "lucide-react";
+import { EditAccountForm } from "@/components/accounts/edit-account-form";
 
 export default async function AccountSettingsPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getSession();
   if (!session) redirect("/auth/login");
 
-  const accountIds = await getAccessibleAccountIds(session.sub, session.tenantId, session.isSuperAdmin ?? false);
   const { id } = await params;
+  const accountIds = await getAccessibleAccountIds(session.sub, session.tenantId, session.isSuperAdmin ?? false);
   if (!accountIds.includes(id)) notFound();
 
-  const account = await prisma.account.findFirst({ where: { id } });
+  const account = await prisma.account.findFirst({
+    where: { id },
+    select: { id: true, name: true, industry: true, timezone: true, logo: true, primaryColor: true },
+  });
   if (!account) notFound();
+
+  const uar = await prisma.userAccountRole.findUnique({
+    where: { userId_accountId: { userId: session.sub, accountId: id } },
+  });
+  const role = (uar?.role ?? "Viewer") as "Owner" | "Admin" | "Editor" | "Viewer";
 
   return (
     <div className="space-y-6 py-6 px-4 max-w-2xl mx-auto">
@@ -27,30 +34,15 @@ export default async function AccountSettingsPage({ params }: { params: Promise<
             <ChevronLeft className="h-4 w-4" /> Accounts
           </Button>
         </Link>
+        <span className="text-muted-foreground">/</span>
+        <span className="font-medium text-sm">{account.name}</span>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Account settings</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-sm text-muted-foreground">
-            <strong>Name:</strong> {account.name}
-          </p>
-          {account.industry && (
-            <p className="text-sm text-muted-foreground">
-              <strong>Industry:</strong> {account.industry}
-            </p>
-          )}
-          {account.timezone && (
-            <p className="text-sm text-muted-foreground">
-              <strong>Timezone:</strong> {account.timezone}
-            </p>
-          )}
-          <p className="text-xs text-muted-foreground">
-            Branding (logo, primary color) and company info can be extended here.
-          </p>
-        </CardContent>
-      </Card>
+
+      <EditAccountForm
+        account={account}
+        canEdit={canManageUsers(role)}
+        isOwner={isOwner(role)}
+      />
     </div>
   );
 }
