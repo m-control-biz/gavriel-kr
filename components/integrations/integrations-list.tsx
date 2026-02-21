@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Trash2 } from "lucide-react";
+import { getProvider } from "@/lib/integration-providers";
 
 type Item = { id: string; provider: string; name: string | null; externalPropertyId: string | null; isActive: boolean; createdAt: Date };
 
@@ -45,8 +46,8 @@ export function IntegrationsList({ initialList }: { initialList: Item[] }) {
           className="flex items-center justify-between rounded-md border px-4 py-3"
         >
           <div>
-            <p className="font-medium">{item.name ?? item.provider}</p>
-            <p className="text-xs text-muted-foreground">{item.provider}</p>
+            <p className="font-medium">{item.name ?? getProvider(item.provider).label}</p>
+            <p className="text-xs text-muted-foreground">{getProvider(item.provider).label}</p>
           </div>
           <div className="flex gap-2">
             {item.provider === "google_ads" && (

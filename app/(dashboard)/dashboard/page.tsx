@@ -101,7 +101,7 @@ export default async function DashboardPage({
               Connect an integration to start seeing real metrics — Google Ads, Analytics, and more.
             </p>
           </div>
-          <Link href="/integrations">
+          <Link href="/integrations?provider=google_ads">
             <Button className="gap-2">
               <Plug className="h-4 w-4" /> Connect integration
             </Button>

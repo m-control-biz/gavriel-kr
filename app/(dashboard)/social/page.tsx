@@ -1,7 +1,9 @@
 import { redirect } from "next/navigation";
 import { getAccountScope } from "@/lib/tenant";
+import { listIntegrations } from "@/lib/integrations";
 import { queryKpiSummaries, queryMetrics, toChartSeries } from "@/lib/metrics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ConnectIntegrationBanner } from "@/components/connect-integration-banner";
 import { Share2 } from "lucide-react";
 import { dateRangeFromParam, formatCompact } from "@/lib/date-utils";
 import { KpiCard } from "@/components/dashboard/kpi-card";
@@ -27,7 +29,8 @@ export default async function SocialPage({
   const clientId = params.client ?? null;
   const { from, to } = dateRangeFromParam(range);
 
-  const [kpis, rawRows] = await Promise.all([
+  const [integrations, kpis, rawRows] = await Promise.all([
+    listIntegrations(scope.accountId),
     queryKpiSummaries({
       accountId: scope.accountId,
       clientId,
@@ -46,6 +49,7 @@ export default async function SocialPage({
     }),
   ]);
 
+  const hasSocial = integrations.some((i) => ["meta_social", "linkedin_social"].includes(i.provider));
   const chartData = toChartSeries(rawRows, [...SOCIAL_METRIC_TYPES]);
 
   return (
@@ -53,9 +57,18 @@ export default async function SocialPage({
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Organic Social</h1>
         <p className="text-sm text-muted-foreground">
-          Followers, engagement, and reach. Connect Facebook, Instagram, or LinkedIn (coming soon).
+          Followers, engagement, and reach from Facebook, Instagram, or LinkedIn.
         </p>
       </div>
+
+      <ConnectIntegrationBanner
+        title="Facebook, Instagram & LinkedIn"
+        description="Connect Meta or LinkedIn to sync followers, engagement, and reach."
+        connectLabel="Connect social"
+        href="/integrations?provider=social"
+        connected={hasSocial}
+        comingSoon
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {kpis.map((kpi) => (

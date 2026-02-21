@@ -1,10 +1,12 @@
 import { redirect } from "next/navigation";
 import { getAccountScope } from "@/lib/tenant";
+import { listIntegrations } from "@/lib/integrations";
 import { queryKpiSummaries } from "@/lib/metrics";
 import { listSeoKeywords } from "@/lib/seo";
 import { dateRangeFromParam, formatCompact } from "@/lib/date-utils";
 import { KpiCard } from "@/components/dashboard/kpi-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ConnectIntegrationBanner } from "@/components/connect-integration-banner";
 import { Search } from "lucide-react";
 
 const SEO_METRIC_TYPES = ["seo_clicks", "seo_impressions"] as const;
@@ -23,7 +25,8 @@ export default async function SeoPage({
   const clientId = params.client ?? null;
   const { from, to } = dateRangeFromParam(range);
 
-  const [kpis, keywords] = await Promise.all([
+  const [integrations, kpis, keywords] = await Promise.all([
+    listIntegrations(scope.accountId),
     queryKpiSummaries({
       accountId: scope.accountId,
       clientId,
@@ -34,14 +37,24 @@ export default async function SeoPage({
     listSeoKeywords({ accountId: scope.accountId, clientId, from, to, limit: 50 }),
   ]);
 
+  const hasSearchConsole = integrations.some((i) => i.provider === "gsc");
+
   return (
     <div className="space-y-6 py-6 px-4 max-w-6xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold tracking-tight">SEO</h1>
         <p className="text-sm text-muted-foreground">
-          Search performance and keyword data. Connect Search Console to sync (coming soon).
+          Search performance and keyword data from Google Search Console.
         </p>
       </div>
+
+      <ConnectIntegrationBanner
+        title="Google Search Console"
+        description="Connect a property to sync search queries, clicks, impressions, and keyword positions."
+        connectLabel="Connect Search Console"
+        href="/integrations?provider=gsc"
+        connected={hasSearchConsole}
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {kpis.map((kpi) => (
@@ -63,7 +76,7 @@ export default async function SeoPage({
         <CardContent>
           {keywords.length === 0 ? (
             <p className="text-sm text-muted-foreground py-4">
-              No keyword data yet. Add keywords via sync or manual import (coming soon).
+              {hasSearchConsole ? "No keyword data for this period yet. Sync will populate after connection." : "Connect Search Console above to sync keyword data."}
             </p>
           ) : (
             <div className="rounded-md border">

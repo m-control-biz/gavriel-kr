@@ -29,7 +29,7 @@ export default async function AccountsPage() {
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Accounts</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Each account is fully isolated — its own data, users, and integrations.
+            Each account is fully isolated — its own data, users, and integrations. Switch account in the top bar, then open <Link href="/integrations" className="text-primary underline">Integrations</Link> to connect Google Analytics, Search Console, or Google Ads for that account.
           </p>
         </div>
         <CreateAccountForm />
