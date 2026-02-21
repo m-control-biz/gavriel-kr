@@ -1,0 +1,174 @@
+// M-Control — AI Growth OS — Prisma Schema
+// Multi-tenant: every business table includes tenant_id.
+// Extension-ready: Metric is central KPI table for Phase 2+.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ——— Tenancy ———
+model Tenant {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  clients    Client[]
+  users      User[]
+  roles      Role[]
+  auditLogs  AuditLog[]
+  integrations Integration[]
+  metrics   Metric[]
+  alerts    Alert[]
+  savedSearches SavedSearch[]
+}
+
+model Client {
+  id        String   @id @default(cuid())
+  tenantId  String
+  name      String
+  slug      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  metrics Metric[]
+  // Phase 2+: leads, campaigns, etc. will reference clientId
+
+  @@unique([tenantId, slug])
+  @@index([tenantId])
+}
+
+// ——— Auth & RBAC ———
+model User {
+  id        String   @id @default(cuid())
+  tenantId  String
+  email     String
+  passwordHash String
+  name      String?
+  roleId    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  role   Role?  @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  savedSearches SavedSearch[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId])
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  tenantId    String
+  name        String   // e.g. admin, member, viewer
+  permissions String[] // e.g. ["metrics:read", "reports:write"]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  users  User[]
+
+  @@unique([tenantId, name])
+  @@index([tenantId])
+}
+
+// ——— Audit & Security ———
+model AuditLog {
+  id        String   @id @default(cuid())
+  tenantId  String
+  userId    String?
+  action    String
+  resource  String?
+  resourceId String?
+  details   Json?
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, createdAt])
+}
+
+// ——— Integrations (tokens encrypted at app layer) ———
+model Integration {
+  id        String   @id @default(cuid())
+  tenantId  String
+  clientId  String?  // optional: integration can be tenant-wide or per-client
+  type      String   // e.g. google_ads, search_console, zapier
+  name      String
+  encryptedCredentials String? // encrypted JSON; decrypt with ENCRYPTION_KEY
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, type])
+}
+
+// ——— Central KPI table (Phase 2 dashboard) ———
+model Metric {
+  id               String   @id @default(cuid())
+  tenantId         String
+  clientId         String?
+  metricType       String   // leads, cpl, spend, conversions, roas, seo_clicks, etc.
+  value            Decimal  @db.Decimal(18, 4)
+  date             DateTime @db.Date
+  source           String?  // campaign, organic, etc.
+  relatedEntityId  String?
+  createdAt        DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  client Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, clientId])
+  @@index([tenantId, metricType, date])
+  @@index([tenantId, date])
+}
+
+// ——— Alerts ———
+model Alert {
+  id        String   @id @default(cuid())
+  tenantId  String
+  clientId  String?
+  type      String
+  title     String
+  message   String?
+  severity  String   // info, warning, critical
+  read      Boolean  @default(false)
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, createdAt])
+}
+
+// ——— Saved searches (Phase 3 global search) ———
+model SavedSearch {
+  id        String   @id @default(cuid())
+  tenantId  String
+  userId    String
+  name      String
+  query     String
+  filters   Json?
+  createdAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, userId])
+}
