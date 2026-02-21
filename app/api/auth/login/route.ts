@@ -52,9 +52,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
     const err = e as Error & { code?: string; meta?: unknown };
-    console.error("[auth/login] 500", err?.message ?? String(e), "code:", err?.code, "meta:", err?.meta);
+    const msg = err?.message ?? String(e);
+    console.error("[auth/login] 500", msg, "code:", err?.code, "meta:", JSON.stringify(err?.meta));
     return NextResponse.json(
-      { error: "Sign in failed" },
+      { error: "Sign in failed", debug: msg, code: err?.code },
       { status: 500 }
     );
   }
