@@ -25,17 +25,28 @@ export default async function SeoPage({
   const clientId = params.client ?? null;
   const { from, to } = dateRangeFromParam(range);
 
-  const [integrations, kpis, keywords] = await Promise.all([
-    listIntegrations(scope.accountId),
-    queryKpiSummaries({
-      accountId: scope.accountId,
-      clientId,
-      metricTypes: [...SEO_METRIC_TYPES],
-      from,
-      to,
-    }),
-    listSeoKeywords({ accountId: scope.accountId, clientId, from, to, limit: 50 }),
-  ]);
+  // #region agent log
+  let integrations: Awaited<ReturnType<typeof listIntegrations>> = [];
+  let kpis: Awaited<ReturnType<typeof queryKpiSummaries>> = [];
+  let keywords: Awaited<ReturnType<typeof listSeoKeywords>> = [];
+  try {
+    [integrations, kpis, keywords] = await Promise.all([
+      listIntegrations(scope.accountId),
+      queryKpiSummaries({
+        accountId: scope.accountId,
+        clientId,
+        metricTypes: [...SEO_METRIC_TYPES],
+        from,
+        to,
+      }),
+      listSeoKeywords({ accountId: scope.accountId, clientId, from, to, limit: 50 }),
+    ]);
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page.tsx:Promise.all',message:'OK',data:{integrations:integrations.length,kpis:kpis.length,keywords:keywords.length},hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+  } catch(err) {
+    console.error('[seo/page] Promise.all FAILED:', String(err));
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page.tsx:Promise.all',message:'FAILED',data:{error:String(err)},hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+  }
+  // #endregion
 
   const hasSearchConsole = integrations.some((i) => i.provider === "gsc");
 

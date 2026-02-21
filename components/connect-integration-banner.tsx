@@ -33,25 +33,29 @@ export function ConnectIntegrationBanner({
 
   return (
     <Card className="border-dashed">
-      <CardContent className="flex flex-col sm:flex-row sm:items-center gap-4 py-6">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-muted">
-          <Plug className="h-6 w-6 text-muted-foreground" />
+      <CardContent className="py-5 px-5">
+        <div className="flex items-start gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted mt-0.5">
+            <Plug className="h-5 w-5 text-muted-foreground" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-semibold text-sm">{title}</h3>
+            <p className="text-sm text-muted-foreground mt-0.5">{description}</p>
+            <div className="mt-3">
+              {comingSoon ? (
+                <span className="inline-flex rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
+                  Coming soon
+                </span>
+              ) : (
+                <Link href={href}>
+                  <Button size="sm" className="gap-1.5">
+                    <Plug className="h-3.5 w-3.5" /> {connectLabel}
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="min-w-0 flex-1">
-          <h3 className="font-semibold">{title}</h3>
-          <p className="text-sm text-muted-foreground mt-0.5">{description}</p>
-        </div>
-        {comingSoon ? (
-          <span className="shrink-0 rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-            Coming soon
-          </span>
-        ) : (
-          <Link href={href} className="shrink-0">
-            <Button className="gap-1.5">
-              <Plug className="h-4 w-4" /> {connectLabel}
-            </Button>
-          </Link>
-        )}
       </CardContent>
     </Card>
   );
