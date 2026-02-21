@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { getAccountScope } from "@/lib/tenant";
 import { queryKpiSummaries, queryMetrics, queryAvailableSources, toChartSeries } from "@/lib/metrics";
 import { dateRangeFromParam, formatCompact, formatCurrency, formatMultiplier } from "@/lib/date-utils";
@@ -9,6 +10,8 @@ import { MetricLineChart } from "@/components/dashboard/metric-line-chart";
 import { MetricBarChart } from "@/components/dashboard/metric-bar-chart";
 import { AlertsList } from "@/components/dashboard/alerts-list";
 import { DashboardFilters } from "@/components/dashboard/dashboard-filters";
+import { Button } from "@/components/ui/button";
+import { Plug } from "lucide-react";
 
 const KPI_META: Record<string, { label: string; format: (n: number) => string; description: string }> = {
   leads:           { label: "Leads",           format: formatCompact,    description: "Total leads in period" },
@@ -67,6 +70,8 @@ export default async function DashboardPage({
     ["spend", "cpl"]
   );
 
+  const hasData = kpis.some((k) => k.current > 0);
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -77,57 +82,83 @@ export default async function DashboardPage({
             {from.toLocaleDateString()} – {to.toLocaleDateString()}
           </p>
         </div>
-        <Suspense>
-          <DashboardFilters sources={sources} />
-        </Suspense>
+        {hasData && (
+          <Suspense>
+            <DashboardFilters sources={sources} />
+          </Suspense>
+        )}
       </div>
 
-      {/* KPI cards */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {METRIC_TYPES.map((type) => {
-          const kpi = kpis.find((k) => k.metricType === type);
-          const meta = KPI_META[type];
-          const value = kpi?.current ?? 0;
-          return (
-            <KpiCard
-              key={type}
-              title={meta.label}
-              value={meta.format(value)}
-              change={kpi?.change ?? 0}
-              description={meta.description}
-            />
-          );
-        })}
-      </div>
-
-      {/* Charts row */}
-      <div className="grid gap-4 lg:grid-cols-2">
-        <MetricLineChart
-          data={trendData}
-          series={["leads", "conversions", "seo_clicks"]}
-          title="Leads · Conversions · SEO Clicks (Trend)"
-        />
-        <MetricBarChart
-          data={spendData}
-          series={["spend", "cpl"]}
-          title="Spend · CPL (Comparison)"
-        />
-      </div>
-
-      {/* Alerts */}
-      <div className="grid gap-4 lg:grid-cols-3">
-        <div className="lg:col-span-1">
-          <AlertsList
-            alerts={alerts.map((a) => ({
-              id: a.id,
-              title: a.title,
-              message: a.message,
-              severity: a.severity,
-              createdAt: a.createdAt.toISOString(),
-            }))}
-          />
+      {!hasData ? (
+        /* ——— Empty state ——— */
+        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed bg-muted/30 py-20 px-8 text-center gap-4">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted">
+            <Plug className="h-6 w-6 text-muted-foreground" />
+          </div>
+          <div className="space-y-1 max-w-sm">
+            <h2 className="text-lg font-semibold">No data yet</h2>
+            <p className="text-sm text-muted-foreground">
+              Connect an integration to start seeing real metrics — Google Ads, Analytics, and more.
+            </p>
+          </div>
+          <Link href="/integrations">
+            <Button className="gap-2">
+              <Plug className="h-4 w-4" /> Connect integration
+            </Button>
+          </Link>
         </div>
-      </div>
+      ) : (
+        <>
+          {/* KPI cards */}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {METRIC_TYPES.map((type) => {
+              const kpi = kpis.find((k) => k.metricType === type);
+              const meta = KPI_META[type];
+              const value = kpi?.current ?? 0;
+              return (
+                <KpiCard
+                  key={type}
+                  title={meta.label}
+                  value={meta.format(value)}
+                  change={kpi?.change ?? 0}
+                  description={meta.description}
+                />
+              );
+            })}
+          </div>
+
+          {/* Charts row */}
+          <div className="grid gap-4 lg:grid-cols-2">
+            <MetricLineChart
+              data={trendData}
+              series={["leads", "conversions", "seo_clicks"]}
+              title="Leads · Conversions · SEO Clicks (Trend)"
+            />
+            <MetricBarChart
+              data={spendData}
+              series={["spend", "cpl"]}
+              title="Spend · CPL (Comparison)"
+            />
+          </div>
+
+          {/* Alerts */}
+          {alerts.length > 0 && (
+            <div className="grid gap-4 lg:grid-cols-3">
+              <div className="lg:col-span-1">
+                <AlertsList
+                  alerts={alerts.map((a) => ({
+                    id: a.id,
+                    title: a.title,
+                    message: a.message,
+                    severity: a.severity,
+                    createdAt: a.createdAt.toISOString(),
+                  }))}
+                />
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
