@@ -14,6 +14,53 @@ export async function listIntegrations(accountId: string) {
   });
 }
 
+/** Create or update an integration for a given account+provider (one record per account+provider). */
+export async function upsertIntegration(data: {
+  accountId: string;
+  provider: string;
+  name?: string | null;
+  externalPropertyId?: string | null;
+  accessToken: string;
+  refreshToken?: string | null;
+  tokenExpiry?: Date | null;
+}) {
+  const encryptedAccess = encryptToken(data.accessToken);
+  const encryptedRefresh = data.refreshToken ? encryptToken(data.refreshToken) : null;
+
+  const existing = await prisma.integration.findFirst({
+    where: { accountId: data.accountId, provider: data.provider },
+  });
+
+  if (existing) {
+    return prisma.integration.update({
+      where: { id: existing.id },
+      data: {
+        name: data.name ?? existing.name,
+        externalPropertyId: data.externalPropertyId ?? existing.externalPropertyId,
+        encryptedAccessToken: encryptedAccess,
+        encryptedRefreshToken: encryptedRefresh ?? existing.encryptedRefreshToken,
+        tokenExpiry: data.tokenExpiry ?? existing.tokenExpiry,
+        isActive: true,
+        metadataJson: { connectionStatus: "ok", lastCheckedAt: new Date().toISOString() },
+      },
+    });
+  }
+
+  return prisma.integration.create({
+    data: {
+      accountId: data.accountId,
+      provider: data.provider,
+      name: data.name ?? null,
+      externalPropertyId: data.externalPropertyId ?? null,
+      encryptedAccessToken: encryptedAccess,
+      encryptedRefreshToken: encryptedRefresh,
+      tokenExpiry: data.tokenExpiry ?? null,
+      isActive: true,
+      metadataJson: { connectionStatus: "ok", lastCheckedAt: new Date().toISOString() },
+    },
+  });
+}
+
 export async function updateIntegrationMetadata(
   accountId: string,
   id: string,
