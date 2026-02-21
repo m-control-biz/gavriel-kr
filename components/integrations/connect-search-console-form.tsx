@@ -3,7 +3,7 @@
 import { OAuthConnectButton } from "@/components/integrations/oauth-connect-button";
 import { Search } from "lucide-react";
 
-export function ConnectSearchConsoleForm({ configured }: { configured?: boolean }) {
+export function ConnectSearchConsoleForm() {
   return (
     <div className="space-y-2">
       <p className="text-sm text-muted-foreground">
@@ -14,7 +14,6 @@ export function ConnectSearchConsoleForm({ configured }: { configured?: boolean 
         feature="gsc"
         label="Connect with Google"
         icon={<Search className="h-4 w-4" />}
-        configured={configured}
       />
     </div>
   );

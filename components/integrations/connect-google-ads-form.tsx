@@ -3,7 +3,7 @@
 import { OAuthConnectButton } from "@/components/integrations/oauth-connect-button";
 import { Megaphone } from "lucide-react";
 
-export function ConnectGoogleAdsForm({ configured }: { configured?: boolean }) {
+export function ConnectGoogleAdsForm() {
   return (
     <div className="space-y-2">
       <p className="text-sm text-muted-foreground">
@@ -14,7 +14,6 @@ export function ConnectGoogleAdsForm({ configured }: { configured?: boolean }) {
         feature="google_ads"
         label="Connect with Google"
         icon={<Megaphone className="h-4 w-4" />}
-        configured={configured}
       />
     </div>
   );

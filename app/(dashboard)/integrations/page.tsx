@@ -10,10 +10,6 @@ import { OAuthConnectButton } from "@/components/integrations/oauth-connect-butt
 import { Megaphone, Search, BarChart3, Share2, Linkedin } from "lucide-react";
 import { IntegrationSection } from "@/components/integrations/integration-section";
 
-const googleConfigured = !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
-const metaConfigured = !!(process.env.META_APP_ID && process.env.META_APP_SECRET);
-const linkedinConfigured = !!(process.env.LINKEDIN_CLIENT_ID && process.env.LINKEDIN_CLIENT_SECRET);
-
 export default async function IntegrationsPage({
   searchParams,
 }: {
@@ -57,7 +53,7 @@ export default async function IntegrationsPage({
         icon={<Megaphone className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "google_ads"}
       >
-        <ConnectGoogleAdsForm configured={googleConfigured} />
+        <ConnectGoogleAdsForm />
       </IntegrationSection>
 
       <IntegrationSection
@@ -67,7 +63,7 @@ export default async function IntegrationsPage({
         icon={<BarChart3 className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "google_analytics"}
       >
-        <ConnectAnalyticsForm configured={googleConfigured} />
+        <ConnectAnalyticsForm />
       </IntegrationSection>
 
       <IntegrationSection
@@ -77,7 +73,7 @@ export default async function IntegrationsPage({
         icon={<Search className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "gsc"}
       >
-        <ConnectSearchConsoleForm configured={googleConfigured} />
+        <ConnectSearchConsoleForm />
       </IntegrationSection>
 
       <IntegrationSection
@@ -96,7 +92,6 @@ export default async function IntegrationsPage({
             feature="meta_social"
             label="Connect with Meta"
             icon={<Share2 className="h-4 w-4" />}
-            configured={metaConfigured}
           />
         </div>
       </IntegrationSection>
@@ -117,7 +112,6 @@ export default async function IntegrationsPage({
             feature="linkedin_social"
             label="Connect with LinkedIn"
             icon={<Linkedin className="h-4 w-4" />}
-            configured={linkedinConfigured}
           />
         </div>
       </IntegrationSection>

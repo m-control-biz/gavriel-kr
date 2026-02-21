@@ -15,11 +15,9 @@ import { buildLinkedInAuthUrl } from "@/lib/oauth/linkedin";
 
 const APP_URL = (process.env.NEXTAUTH_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
-function missingEnv(name: string) {
-  return NextResponse.json(
-    { error: `${name} not configured. Add it to your environment variables.` },
-    { status: 503 }
-  );
+function missingEnv(provider: string, vars: string) {
+  const msg = `${provider} OAuth not configured yet. Add ${vars} to Vercel environment variables and redeploy. See DEPLOYMENT.md for setup steps.`;
+  return NextResponse.redirect(`${APP_URL}/integrations?error=${encodeURIComponent(msg)}`);
 }
 
 export async function GET(request: Request, { params }: { params: Promise<{ provider: string }> }) {
@@ -34,17 +32,20 @@ export async function GET(request: Request, { params }: { params: Promise<{ prov
 
   switch (provider) {
     case "google": {
-      if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) return missingEnv("GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET");
+      if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET)
+        return missingEnv("Google", "GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET");
       const redirectUri = `${APP_URL}/api/auth/callback/google`;
       return NextResponse.redirect(buildGoogleAuthUrl(state, feature, redirectUri));
     }
     case "meta": {
-      if (!process.env.META_APP_ID || !process.env.META_APP_SECRET) return missingEnv("META_APP_ID / META_APP_SECRET");
+      if (!process.env.META_APP_ID || !process.env.META_APP_SECRET)
+        return missingEnv("Meta", "META_APP_ID and META_APP_SECRET");
       const redirectUri = `${APP_URL}/api/auth/callback/meta`;
       return NextResponse.redirect(buildMetaAuthUrl(state, redirectUri));
     }
     case "linkedin": {
-      if (!process.env.LINKEDIN_CLIENT_ID || !process.env.LINKEDIN_CLIENT_SECRET) return missingEnv("LINKEDIN_CLIENT_ID / LINKEDIN_CLIENT_SECRET");
+      if (!process.env.LINKEDIN_CLIENT_ID || !process.env.LINKEDIN_CLIENT_SECRET)
+        return missingEnv("LinkedIn", "LINKEDIN_CLIENT_ID and LINKEDIN_CLIENT_SECRET");
       const redirectUri = `${APP_URL}/api/auth/callback/linkedin`;
       return NextResponse.redirect(buildLinkedInAuthUrl(state, redirectUri));
     }
