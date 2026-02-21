@@ -24,7 +24,7 @@ export type SessionPayload = {
 export async function getJwtSecret(): Promise<Uint8Array> {
   const secret = process.env.JWT_SECRET;
   if (!secret || secret.length < 32) {
-    throw new Error(`JWT_SECRET must be set and at least 32 characters (current length: ${secret?.length ?? 0})`);
+    throw new Error("JWT_SECRET must be set and at least 32 characters");
   }
   return new TextEncoder().encode(secret);
 }

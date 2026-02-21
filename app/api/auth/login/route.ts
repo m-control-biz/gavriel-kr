@@ -51,11 +51,8 @@ export async function POST(request: Request) {
     if (e instanceof z.ZodError) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
-    const err = e as Error & { code?: string; meta?: unknown };
-    const msg = err?.message ?? String(e);
-    console.error("[auth/login] 500", msg, "code:", err?.code, "meta:", JSON.stringify(err?.meta));
     return NextResponse.json(
-      { error: "Sign in failed", debug: msg, code: err?.code },
+      { error: "Sign in failed" },
       { status: 500 }
     );
   }
