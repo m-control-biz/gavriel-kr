@@ -28,6 +28,10 @@ model Tenant {
   alerts    Alert[]
   savedSearches SavedSearch[]
   reports   Report[]
+  seoKeywords SeoKeyword[]
+  leads    Lead[]
+  articles Article[]
+  automations Automation[]
 }
 
 model Client {
@@ -196,4 +200,78 @@ model Report {
 
   @@index([tenantId])
   @@index([shareToken])
+}
+
+// ——— SEO (Phase 5) ———
+model SeoKeyword {
+  id          String   @id @default(cuid())
+  tenantId    String
+  clientId    String?
+  keyword     String
+  impressions Int      @default(0)
+  clicks      Int      @default(0)
+  position    Decimal  @db.Decimal(5, 2)
+  date        DateTime @db.Date
+  createdAt   DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, clientId, date])
+}
+
+// ——— Leads (Phase 6) ———
+model Lead {
+  id        String   @id @default(cuid())
+  tenantId  String
+  clientId  String?
+  email     String
+  name      String?
+  source    String?  // e.g. website, google_ads, manual
+  status    String   @default("new") // new, contacted, qualified, won, lost
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, clientId])
+  @@index([tenantId, status])
+}
+
+// ——— AI Article / Content (Phase 9) ———
+model Article {
+  id        String   @id @default(cuid())
+  tenantId  String
+  clientId  String?
+  title     String
+  body      String?  @db.Text
+  status    String   @default("draft") // draft, published
+  aiPrompt  String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@index([tenantId, clientId])
+}
+
+// ——— Automations (Phase 10) ———
+model Automation {
+  id            String   @id @default(cuid())
+  tenantId      String
+  name          String
+  trigger       String   // e.g. lead_created, metric_threshold
+  triggerConfig Json?    // e.g. { "metricType": "leads", "operator": ">", "value": 100 }
+  action        String   // e.g. create_alert, send_email
+  actionConfig  Json?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BarChart3, FileText, Settings, Search } from "lucide-react";
+import { LayoutDashboard, BarChart3, FileText, Settings, Search, SearchCode, Users, Megaphone, Share2, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -10,6 +10,12 @@ const navItems = [
   { href: "/search", label: "Search", icon: Search },
   { href: "/reports", label: "Reports", icon: BarChart3 },
   { href: "/reports/templates", label: "Templates", icon: FileText },
+  { href: "/seo", label: "SEO", icon: SearchCode },
+  { href: "/leads", label: "Leads", icon: Users },
+  { href: "/integrations", label: "Integrations", icon: Megaphone },
+  { href: "/social", label: "Social", icon: Share2 },
+  { href: "/content", label: "Content", icon: FileText },
+  { href: "/automations", label: "Automations", icon: Zap },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 

@@ -14,7 +14,10 @@ export type MetricType =
   | "conversions"
   | "roas"
   | "seo_clicks"
-  | "seo_impressions";
+  | "seo_impressions"
+  | "social_followers"
+  | "social_engagement"
+  | "social_reach";
 
 export type MetricFilter = {
   tenantId: string;

@@ -88,11 +88,44 @@ async function main() {
         { tenantId: tenant.id, clientId: client.id, metricType: "roas",            value: rand(1.5, 5.5, 2),             date, source: "google_ads" },
         { tenantId: tenant.id, clientId: client.id, metricType: "seo_clicks",      value: rand(80, 400) * factor,        date, source: "organic" },
         { tenantId: tenant.id, clientId: client.id, metricType: "seo_impressions", value: rand(1000, 6000) * factor,     date, source: "organic" },
+        { tenantId: tenant.id, clientId: client.id, metricType: "social_followers", value: rand(500, 3000) * factor,      date, source: "social" },
+        { tenantId: tenant.id, clientId: client.id, metricType: "social_engagement", value: rand(50, 400) * factor,       date, source: "social" },
+        { tenantId: tenant.id, clientId: client.id, metricType: "social_reach",     value: rand(1000, 8000) * factor,     date, source: "social" },
       );
     }
   }
 
   await prisma.metric.createMany({ data: metricRows });
+
+  // ——— SEO keywords (Phase 5) ———
+  await prisma.seoKeyword.deleteMany({ where: { tenantId: tenant.id } });
+  const keywords = ["m-control", "growth marketing", "lead generation", "cpl optimization", "roas tracking"];
+  for (let i = 0; i < 14; i++) {
+    const date = subDays(today, i);
+    for (const kw of keywords) {
+      await prisma.seoKeyword.create({
+        data: {
+          tenantId: tenant.id,
+          clientId: acme.id,
+          keyword: kw,
+          impressions: rand(100, 2000),
+          clicks: rand(5, 120),
+          position: rand(3, 25, 2),
+          date,
+        },
+      });
+    }
+  }
+
+  // ——— Leads (Phase 6) ———
+  await prisma.lead.deleteMany({ where: { tenantId: tenant.id } });
+  await prisma.lead.createMany({
+    data: [
+      { tenantId: tenant.id, clientId: acme.id, email: "jane@example.com", name: "Jane Doe", source: "website", status: "new" },
+      { tenantId: tenant.id, clientId: acme.id, email: "bob@acme.com", name: "Bob Smith", source: "google_ads", status: "contacted" },
+      { tenantId: tenant.id, clientId: nova.id, email: "alice@nova.io", name: "Alice Lee", source: "manual", status: "qualified" },
+    ],
+  });
 
   // ——— Sample alerts ———
   await prisma.alert.deleteMany({ where: { tenantId: tenant.id } });
