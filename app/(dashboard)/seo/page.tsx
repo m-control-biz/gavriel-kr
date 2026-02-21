@@ -17,19 +17,34 @@ export default async function SeoPage({
 }: {
   searchParams: Promise<{ range?: string; client?: string }>;
 }) {
+  // #region agent log A — function entry
+  console.error("[seo/page] A: function entered");
+  fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page:A',message:'function entered',hypothesisId:'K',timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
+
   const scope = await getAccountScope();
   if (!scope) redirect("/auth/login");
+
+  // #region agent log B — scope resolved
+  console.error("[seo/page] B: scope resolved, accountId=" + scope.accountId);
+  fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page:B',message:'scope OK',data:{accountId:scope.accountId},hypothesisId:'K',timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   const params = await searchParams;
   const range = params.range ?? "30d";
   const clientId = params.client ?? null;
   const { from, to } = dateRangeFromParam(range);
 
-  // #region agent log
   let integrations: Awaited<ReturnType<typeof listIntegrations>> = [];
   let kpis: Awaited<ReturnType<typeof queryKpiSummaries>> = [];
   let keywords: Awaited<ReturnType<typeof listSeoKeywords>> = [];
+
   try {
+    // #region agent log C — before data fetch
+    console.error("[seo/page] C: starting Promise.all");
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page:C',message:'before Promise.all',hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+
     [integrations, kpis, keywords] = await Promise.all([
       listIntegrations(scope.accountId),
       queryKpiSummaries({
@@ -41,14 +56,24 @@ export default async function SeoPage({
       }),
       listSeoKeywords({ accountId: scope.accountId, clientId, from, to, limit: 50 }),
     ]);
-    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page.tsx:Promise.all',message:'OK',data:{integrations:integrations.length,kpis:kpis.length,keywords:keywords.length},hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+
+    // #region agent log D — after data fetch
+    console.error("[seo/page] D: Promise.all OK");
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page:D',message:'Promise.all succeeded',data:{i:integrations.length,k:kpis.length,kw:keywords.length},hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
   } catch(err) {
-    console.error('[seo/page] Promise.all FAILED:', String(err));
-    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page.tsx:Promise.all',message:'FAILED',data:{error:String(err)},hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+    // #region agent log E — data fetch failed
+    console.error("[seo/page] E: Promise.all FAILED:", String(err));
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page:E',message:'Promise.all FAILED',data:{error:String(err)},hypothesisId:'A-C',timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
   }
-  // #endregion
 
   const hasSearchConsole = integrations.some((i) => i.provider === "gsc");
+
+  // #region agent log F — before render
+  console.error("[seo/page] F: before render, hasGsc=" + hasSearchConsole + " kpis=" + kpis.length);
+  fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'seo/page:F',message:'before render',data:{hasGsc:hasSearchConsole,kpis:kpis.length},hypothesisId:'B',timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   return (
     <div className="space-y-6 py-6 px-4 max-w-6xl mx-auto">
