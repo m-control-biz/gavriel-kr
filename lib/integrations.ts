@@ -10,7 +10,18 @@ export async function listIntegrations(accountId: string) {
   return prisma.integration.findMany({
     where: { accountId },
     orderBy: { createdAt: "desc" },
-    select: { id: true, provider: true, name: true, externalPropertyId: true, isActive: true, createdAt: true },
+    select: { id: true, provider: true, name: true, externalPropertyId: true, isActive: true, metadataJson: true, createdAt: true },
+  });
+}
+
+export async function updateIntegrationMetadata(
+  accountId: string,
+  id: string,
+  meta: { connectionStatus: "ok" | "error" | "unknown"; lastCheckedAt: string; lastError?: string | null },
+) {
+  return prisma.integration.update({
+    where: { id },
+    data: { metadataJson: meta as object, isActive: meta.connectionStatus === "ok" },
   });
 }
 
