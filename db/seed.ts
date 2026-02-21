@@ -137,6 +137,25 @@ async function main() {
     ],
   });
 
+  // ——— Articles (Phase 9) ———
+  await prisma.article.deleteMany({ where: { tenantId: tenant.id } });
+  await prisma.article.createMany({
+    data: [
+      { tenantId: tenant.id, clientId: acme.id, title: "Getting started with growth marketing", body: "Sample body. Use AI to generate.", status: "draft", aiPrompt: "Intro to growth marketing" },
+      { tenantId: tenant.id, clientId: acme.id, title: "ROAS best practices", body: null, status: "draft", aiPrompt: "How to improve ROAS" },
+      { tenantId: tenant.id, clientId: nova.id, title: "Lead gen tips", status: "published", body: "Short published article." },
+    ],
+  });
+
+  // ——— Automations (Phase 10) ———
+  await prisma.automation.deleteMany({ where: { tenantId: tenant.id } });
+  await prisma.automation.createMany({
+    data: [
+      { tenantId: tenant.id, name: "New lead alert", trigger: "lead_created", triggerConfig: {}, action: "create_alert", actionConfig: { title: "New lead", message: "A new lead was added." }, isActive: true },
+      { tenantId: tenant.id, name: "Low ROAS warning", trigger: "metric_threshold", triggerConfig: { metricType: "roas", operator: "<", value: 2 }, action: "create_alert", actionConfig: { title: "ROAS below 2x", message: "ROAS dropped below threshold." }, isActive: true },
+    ],
+  });
+
   // ——— Audit ———
   await prisma.auditLog.create({
     data: { tenantId: tenant.id, userId: user.id, action: "seed.completed", resource: "system" },

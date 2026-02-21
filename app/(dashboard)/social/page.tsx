@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { queryKpiSummaries, queryMetrics, toChartSeries } from "@/lib/metrics";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Share2 } from "lucide-react";
 import { dateRangeFromParam, formatCompact } from "@/lib/date-utils";
 import { KpiCard } from "@/components/dashboard/kpi-card";
 import { MetricLineChart } from "@/components/dashboard/metric-line-chart";
