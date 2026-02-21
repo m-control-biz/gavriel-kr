@@ -2,13 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { LucideIcon } from "lucide-react";
 
 interface IntegrationSectionProps {
   id: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: React.ReactNode;
   highlight?: boolean;
   comingSoon?: boolean;
   children: React.ReactNode;
@@ -18,7 +17,7 @@ export function IntegrationSection({
   id,
   title,
   description,
-  icon: Icon,
+  icon,
   highlight = false,
   comingSoon = false,
   children,
@@ -38,7 +37,7 @@ export function IntegrationSection({
       className={highlight ? "ring-2 ring-primary/50" : undefined}
     >
       <CardHeader className="flex flex-row items-center gap-2">
-        <Icon className="h-5 w-5 text-muted-foreground" />
+        {icon}
         <CardTitle className="text-base">{title}</CardTitle>
         {comingSoon && (
           <span className="ml-auto rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">

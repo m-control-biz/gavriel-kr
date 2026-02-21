@@ -36,7 +36,7 @@ export default async function IntegrationsPage({
         id="google_ads"
         title="Dashboard & paid campaigns"
         description="Spend, conversions, ROAS. Powers the main dashboard KPIs."
-        icon={Megaphone}
+        icon={<Megaphone className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "google_ads"}
       >
         <ConnectGoogleAdsForm />
@@ -46,7 +46,7 @@ export default async function IntegrationsPage({
         id="google_analytics"
         title="Account analytics"
         description="Web traffic and behavior. Connect one Google Analytics (GA4) property per account."
-        icon={BarChart3}
+        icon={<BarChart3 className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "google_analytics"}
       >
         <ConnectAnalyticsForm />
@@ -56,7 +56,7 @@ export default async function IntegrationsPage({
         id="gsc"
         title="SEO — Search Console"
         description="Search queries and keyword data for the SEO section."
-        icon={Search}
+        icon={<Search className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "gsc"}
       >
         <ConnectSearchConsoleForm />
@@ -66,7 +66,7 @@ export default async function IntegrationsPage({
         id="social"
         title="Organic social"
         description="Facebook, Instagram, LinkedIn followers and engagement."
-        icon={Share2}
+        icon={<Share2 className="h-5 w-5 text-muted-foreground" />}
         highlight={highlightProvider === "social"}
         comingSoon
       >
