@@ -1,24 +1,42 @@
 "use client";
 
+import * as React from "react";
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { CommandPalette } from "@/components/search/command-palette";
 
-/**
- * Global search input (UI only in Phase 1).
- * Phase 3: wire to full-text search + command palette.
- */
 export function GlobalSearchInput({ className }: { className?: string }) {
+  const [open, setOpen] = React.useState(false);
+
+  // Cmd+K / Ctrl+K shortcut
+  React.useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
   return (
-    <div className={cn("relative", className)}>
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-      <Input
-        type="search"
-        placeholder="Search… (Phase 3)"
-        className="pl-9 w-full max-w-sm bg-muted/50"
-        readOnly
-        aria-label="Global search"
-      />
-    </div>
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className={cn(
+          "flex items-center gap-2 rounded-md border bg-muted/50 px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted w-full max-w-sm",
+          className
+        )}
+        aria-label="Open search"
+      >
+        <Search className="h-4 w-4 shrink-0" />
+        <span className="flex-1 text-left">Search…</span>
+        <kbd className="hidden rounded border bg-background px-1.5 py-0.5 text-[10px] sm:inline-block">
+          ⌘K
+        </kbd>
+      </button>
+      <CommandPalette open={open} onOpenChange={setOpen} />
+    </>
   );
 }
