@@ -2,6 +2,7 @@
  * Seed: one tenant, admin role, one user, one client.
  * Run: npm run db:seed (after db:push or migrate).
  */
+import "dotenv/config";
 
 import { PrismaClient } from "@prisma/client";
 import * as bcrypt from "bcryptjs";

@@ -11,7 +11,9 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx db/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "vercel:link": "npx vercel link",
+    "vercel:env-pull": "npx vercel env pull .env.development.local"
   },
   "dependencies": {
     "@prisma/client": "^6.0.0",
@@ -37,6 +39,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",

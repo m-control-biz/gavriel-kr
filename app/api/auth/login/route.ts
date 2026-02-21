@@ -51,6 +51,7 @@ export async function POST(request: Request) {
     if (e instanceof z.ZodError) {
       return NextResponse.json({ error: "Invalid input" }, { status: 400 });
     }
+    console.error("[auth/login] 500", e);
     return NextResponse.json(
       { error: "Sign in failed" },
       { status: 500 }
