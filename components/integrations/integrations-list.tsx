@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, Trash2 } from "lucide-react";
 
-type Item = { id: string; type: string; name: string; clientId: string | null; isActive: boolean; createdAt: Date };
+type Item = { id: string; provider: string; name: string | null; externalPropertyId: string | null; isActive: boolean; createdAt: Date };
 
 export function IntegrationsList({ initialList }: { initialList: Item[] }) {
   const router = useRouter();
@@ -45,11 +45,11 @@ export function IntegrationsList({ initialList }: { initialList: Item[] }) {
           className="flex items-center justify-between rounded-md border px-4 py-3"
         >
           <div>
-            <p className="font-medium">{item.name}</p>
-            <p className="text-xs text-muted-foreground">{item.type}</p>
+            <p className="font-medium">{item.name ?? item.provider}</p>
+            <p className="text-xs text-muted-foreground">{item.provider}</p>
           </div>
           <div className="flex gap-2">
-            {item.type === "google_ads" && (
+            {item.provider === "google_ads" && (
               <Button
                 variant="outline"
                 size="sm"

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { listIntegrations } from "@/lib/integrations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { IntegrationsList } from "@/components/integrations/integrations-list";
@@ -7,10 +7,10 @@ import { ConnectGoogleAdsForm } from "@/components/integrations/connect-google-a
 import { Megaphone } from "lucide-react";
 
 export default async function IntegrationsPage() {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
-  const integrations = await listIntegrations(session.tenantId);
+  const integrations = await listIntegrations(scope.accountId);
 
   return (
     <div className="space-y-6 py-6 px-4 max-w-4xl mx-auto">

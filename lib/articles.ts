@@ -6,13 +6,13 @@ import { prisma } from "@/lib/db";
 import { generateArticleBody } from "@/lib/ai";
 
 export async function listArticles(filter: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   status?: string | null;
   limit?: number;
 }) {
   const where = {
-    tenantId: filter.tenantId,
+    accountId: filter.accountId,
     ...(filter.clientId ? { clientId: filter.clientId } : {}),
     ...(filter.status ? { status: filter.status } : {}),
   };
@@ -23,12 +23,12 @@ export async function listArticles(filter: {
   });
 }
 
-export async function getArticle(tenantId: string, id: string) {
-  return prisma.article.findFirst({ where: { id, tenantId } });
+export async function getArticle(accountId: string, id: string) {
+  return prisma.article.findFirst({ where: { id, accountId } });
 }
 
 export async function createArticle(data: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   title: string;
   body?: string | null;
@@ -36,7 +36,7 @@ export async function createArticle(data: {
 }) {
   return prisma.article.create({
     data: {
-      tenantId: data.tenantId,
+      accountId: data.accountId,
       clientId: data.clientId,
       title: data.title,
       body: data.body,
@@ -47,7 +47,7 @@ export async function createArticle(data: {
 }
 
 export async function updateArticle(
-  tenantId: string,
+  accountId: string,
   id: string,
   data: { title?: string; body?: string; status?: string }
 ) {
@@ -57,15 +57,15 @@ export async function updateArticle(
   });
 }
 
-export async function deleteArticle(tenantId: string, id: string) {
+export async function deleteArticle(accountId: string, id: string) {
   return prisma.article.delete({ where: { id } });
 }
 
-export async function generateAndSaveArticle(tenantId: string, id: string): Promise<string> {
-  const article = await getArticle(tenantId, id);
+export async function generateAndSaveArticle(accountId: string, id: string): Promise<string> {
+  const article = await getArticle(accountId, id);
   if (!article) throw new Error("Article not found");
   const brief = article.aiPrompt || article.title;
   const body = await generateArticleBody(article.title, brief);
-  await updateArticle(tenantId, id, { body });
+  await updateArticle(accountId, id, { body });
   return body;
 }

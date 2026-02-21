@@ -1,17 +1,17 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { getArticle } from "@/lib/articles";
 import { Button } from "@/components/ui/button";
 import { ArticleEditor } from "@/components/content/article-editor";
 import { ChevronLeft } from "lucide-react";
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const { id } = await params;
-  const article = await getArticle(session.tenantId, id);
+  const article = await getArticle(scope.accountId, id);
   if (!article) notFound();
 
   return (

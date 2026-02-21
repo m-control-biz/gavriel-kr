@@ -1,6 +1,5 @@
-// M-Control — AI Growth OS — Prisma Schema
-// Multi-tenant: every business table includes tenant_id.
-// Extension-ready: Metric is central KPI table for Phase 2+.
+// M-Control — AI Growth OS — Account-Based SaaS
+// Tenant = platform scope. Account = isolation unit (per-company). All business data has account_id.
 
 generator client {
   provider = "prisma-client-js"
@@ -11,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ——— Tenancy ———
+// ——— Platform & Account ———
 model Tenant {
   id        String   @id @default(cuid())
   name      String
@@ -19,50 +18,91 @@ model Tenant {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  clients    Client[]
-  users      User[]
-  roles      Role[]
-  auditLogs  AuditLog[]
+  accounts       Account[]
+  users          User[]
+  roles          Role[]
+  clients        Client[]
+  auditLogs      AuditLog[]
+}
+
+model Account {
+  id           String    @id @default(cuid())
+  tenantId     String
+  name         String
+  industry     String?
+  timezone     String?    @default("UTC")
+  logo         String?
+  primaryColor String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  tenant       Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  userRoles    UserAccountRole[]
+  clients      Client[]
   integrations Integration[]
-  metrics   Metric[]
-  alerts    Alert[]
+  metrics      Metric[]
+  alerts       Alert[]
   savedSearches SavedSearch[]
-  reports   Report[]
-  seoKeywords SeoKeyword[]
-  leads    Lead[]
-  articles Article[]
-  automations Automation[]
+  reports      Report[]
+  seoKeywords  SeoKeyword[]
+  leads        Lead[]
+  articles     Article[]
+  automations  Automation[]
+  auditLogs    AuditLog[]
+
+  @@unique([tenantId, name])
+  @@index([tenantId])
+}
+
+// User ↔ Account pivot with per-account role
+model UserAccountRole {
+  id        String   @id @default(cuid())
+  userId    String
+  accountId String
+  role      String   // Owner, Admin, Editor, Viewer
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, accountId])
+  @@index([userId])
+  @@index([accountId])
 }
 
 model Client {
   id        String   @id @default(cuid())
   tenantId  String
+  accountId String
   name      String
   slug      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  tenant Tenant  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
   metrics Metric[]
-  // Phase 2+: leads, campaigns, etc. will reference clientId
 
   @@unique([tenantId, slug])
   @@index([tenantId])
+  @@index([accountId])
 }
 
-// ——— Auth & RBAC ———
+// ——— Auth (user is platform-level; access to accounts via UserAccountRole) ———
 model User {
-  id        String   @id @default(cuid())
-  tenantId  String
-  email     String
+  id           String   @id @default(cuid())
+  tenantId     String
+  email        String
   passwordHash String
-  name      String?
-  roleId    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  name         String?
+  roleId       String?  // legacy / tenant-level; per-account role is UserAccountRole.role
+  isSuperAdmin Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  role   Role?  @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  tenant    Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  role      Role?             @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  accountRoles UserAccountRole[]
   savedSearches SavedSearch[]
 
   @@unique([tenantId, email])
@@ -72,8 +112,8 @@ model User {
 model Role {
   id          String   @id @default(cuid())
   tenantId    String
-  name        String   // e.g. admin, member, viewer
-  permissions String[] // e.g. ["metrics:read", "reports:write"]
+  name        String
+  permissions String[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -84,128 +124,130 @@ model Role {
   @@index([tenantId])
 }
 
-// ——— Audit & Security ———
+// ——— Audit (account-scoped) ———
 model AuditLog {
-  id        String   @id @default(cuid())
-  tenantId  String
-  userId    String?
-  action    String
-  resource  String?
+  id         String   @id @default(cuid())
+  tenantId   String
+  accountId  String?
+  userId     String?
+  action     String
+  resource   String?
   resourceId String?
-  details   Json?
-  ip        String?
-  userAgent String?
-  createdAt DateTime @default(now())
+  details    Json?
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  tenant  Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account? @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
   @@index([tenantId])
+  @@index([accountId])
   @@index([tenantId, createdAt])
 }
 
-// ——— Integrations (tokens encrypted at app layer) ———
+// ——— Integrations (per-account; external property mapping) ———
 model Integration {
-  id        String   @id @default(cuid())
-  tenantId  String
-  clientId  String?  // optional: integration can be tenant-wide or per-client
-  type      String   // e.g. google_ads, search_console, zapier
-  name      String
-  encryptedCredentials String? // encrypted JSON; decrypt with ENCRYPTION_KEY
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                    String    @id @default(cuid())
+  accountId             String
+  provider               String    // google_analytics, gsc, google_ads, meta_ads, linkedin_ads
+  externalPropertyId    String?
+  name                  String?
+  encryptedAccessToken  String?
+  encryptedRefreshToken String?
+  tokenExpiry           DateTime?
+  metadataJson          Json?
+  isActive              Boolean   @default(true)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, type])
+  @@index([accountId])
+  @@index([accountId, provider])
 }
 
-// ——— Central KPI table (Phase 2 dashboard) ———
+// ——— Business data (all account-scoped) ———
 model Metric {
-  id               String   @id @default(cuid())
-  tenantId         String
-  clientId         String?
-  metricType       String   // leads, cpl, spend, conversions, roas, seo_clicks, etc.
-  value            Decimal  @db.Decimal(18, 4)
-  date             DateTime @db.Date
-  source           String?  // campaign, organic, etc.
-  relatedEntityId  String?
-  createdAt        DateTime @default(now())
+  id              String   @id @default(cuid())
+  accountId       String
+  clientId        String?
+  metricType      String
+  value           Decimal  @db.Decimal(18, 4)
+  date            DateTime @db.Date
+  source          String?
+  relatedEntityId String?
+  createdAt       DateTime @default(now())
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  client Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  client  Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, clientId])
-  @@index([tenantId, metricType, date])
-  @@index([tenantId, date])
+  @@index([accountId])
+  @@index([accountId, clientId])
+  @@index([accountId, metricType, date])
+  @@index([accountId, date])
 }
 
-// ——— Alerts ———
 model Alert {
   id        String   @id @default(cuid())
-  tenantId  String
+  accountId String
   clientId  String?
   type      String
   title     String
   message   String?
-  severity  String   // info, warning, critical
+  severity  String
   read      Boolean  @default(false)
   metadata  Json?
   createdAt DateTime @default(now())
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, createdAt])
+  @@index([accountId])
+  @@index([accountId, createdAt])
 }
 
-// ——— Saved searches (Phase 3 global search) ———
 model SavedSearch {
   id        String   @id @default(cuid())
-  tenantId  String
+  accountId String
   userId    String
   name      String
   query     String
   filters   Json?
   createdAt DateTime @default(now())
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, userId])
+  @@index([accountId])
+  @@index([accountId, userId])
 }
 
-// ——— Reports (Phase 4 reporting engine) ———
 model Report {
   id          String    @id @default(cuid())
-  tenantId    String
+  accountId   String
   clientId    String?
   name        String
   description String?
-  metricTypes String[]  // e.g. ["leads","spend","roas"]
-  dateRange   String    @default("30d") // "7d","30d","90d","12m","custom"
+  metricTypes String[]
+  dateRange   String    @default("30d")
   dateFrom    DateTime?
   dateTo      DateTime?
-  breakdown   String    @default("daily") // "daily","weekly","monthly"
+  breakdown   String    @default("daily")
   source      String?
   shareToken  String?   @unique
   shareExpiry DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
+  @@index([accountId])
   @@index([shareToken])
 }
 
-// ——— SEO (Phase 5) ———
 model SeoKeyword {
   id          String   @id @default(cuid())
-  tenantId    String
+  accountId   String
   clientId    String?
   keyword     String
   impressions Int      @default(0)
@@ -214,64 +256,61 @@ model SeoKeyword {
   date        DateTime @db.Date
   createdAt   DateTime @default(now())
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, clientId, date])
+  @@index([accountId])
+  @@index([accountId, clientId, date])
 }
 
-// ——— Leads (Phase 6) ———
 model Lead {
   id        String   @id @default(cuid())
-  tenantId  String
+  accountId String
   clientId  String?
   email     String
   name      String?
-  source    String?  // e.g. website, google_ads, manual
-  status    String   @default("new") // new, contacted, qualified, won, lost
+  source    String?
+  status    String   @default("new")
   notes     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, clientId])
-  @@index([tenantId, status])
+  @@index([accountId])
+  @@index([accountId, clientId])
+  @@index([accountId, status])
 }
 
-// ——— AI Article / Content (Phase 9) ———
 model Article {
   id        String   @id @default(cuid())
-  tenantId  String
+  accountId String
   clientId  String?
   title     String
   body      String?  @db.Text
-  status    String   @default("draft") // draft, published
+  status    String   @default("draft")
   aiPrompt  String?  @db.Text
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
-  @@index([tenantId, clientId])
+  @@index([accountId])
+  @@index([accountId, clientId])
 }
 
-// ——— Automations (Phase 10) ———
 model Automation {
   id            String   @id @default(cuid())
-  tenantId      String
+  accountId     String
   name          String
-  trigger       String   // e.g. lead_created, metric_threshold
-  triggerConfig Json?    // e.g. { "metricType": "leads", "operator": ">", "value": 100 }
-  action        String   // e.g. create_alert, send_email
+  trigger       String
+  triggerConfig Json?
+  action        String
   actionConfig  Json?
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-  @@index([tenantId])
+  @@index([accountId])
 }

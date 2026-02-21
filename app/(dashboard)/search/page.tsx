@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { search, getSavedSearches } from "@/lib/search";
 import { Search } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -28,8 +28,8 @@ export default async function SearchPage({
 }: {
   searchParams: Promise<{ q?: string; source?: string }>;
 }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const params = await searchParams;
   const query = params.q ?? "";
@@ -37,9 +37,9 @@ export default async function SearchPage({
 
   const [results, savedSearches] = await Promise.all([
     query
-      ? search({ tenantId: session.tenantId, query, source })
+      ? search({ accountId: scope.accountId, query, source })
       : Promise.resolve({ items: [], total: 0 }),
-    getSavedSearches(session.tenantId, session.sub),
+    getSavedSearches(scope.accountId, scope.userId),
   ]);
 
   return (

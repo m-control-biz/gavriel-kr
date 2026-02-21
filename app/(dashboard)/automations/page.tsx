@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { listAutomations } from "@/lib/automations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AutomationsList } from "@/components/automations/automations-list";
@@ -7,10 +7,10 @@ import { AddAutomationForm } from "@/components/automations/add-automation-form"
 import { Zap } from "lucide-react";
 
 export default async function AutomationsPage() {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
-  const automations = await listAutomations(session.tenantId);
+  const automations = await listAutomations(scope.accountId);
 
   return (
     <div className="space-y-6 py-6 px-4 max-w-4xl mx-auto">

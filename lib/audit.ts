@@ -8,6 +8,7 @@ import { prisma } from "@/lib/db";
 
 export type AuditInput = {
   tenantId: string;
+  accountId?: string | null;
   userId?: string | null;
   action: string;
   resource?: string | null;
@@ -21,6 +22,7 @@ export async function auditLog(input: AuditInput): Promise<void> {
   await prisma.auditLog.create({
     data: {
       tenantId: input.tenantId,
+      accountId: input.accountId ?? null,
       userId: input.userId ?? null,
       action: input.action,
       resource: input.resource ?? null,

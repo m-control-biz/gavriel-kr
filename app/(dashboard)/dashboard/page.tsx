@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { queryKpiSummaries, queryMetrics, queryAvailableSources, toChartSeries } from "@/lib/metrics";
 import { dateRangeFromParam, formatCompact, formatCurrency, formatMultiplier } from "@/lib/date-utils";
 import { prisma } from "@/lib/db";
@@ -27,8 +27,8 @@ export default async function DashboardPage({
 }: {
   searchParams: Promise<{ range?: string; client?: string; source?: string }>;
 }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const params = await searchParams;
   const range = params.range ?? "30d";
@@ -38,7 +38,7 @@ export default async function DashboardPage({
   const { from, to } = dateRangeFromParam(range);
 
   const filter = {
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     clientId,
     metricTypes: [...METRIC_TYPES],
     from,
@@ -49,9 +49,9 @@ export default async function DashboardPage({
   const [kpis, rawRows, sources, alerts] = await Promise.all([
     queryKpiSummaries(filter),
     queryMetrics(filter),
-    queryAvailableSources(session.tenantId),
+    queryAvailableSources(scope.accountId),
     prisma.alert.findMany({
-      where: { tenantId: session.tenantId, read: false },
+      where: { accountId: scope.accountId, read: false },
       orderBy: { createdAt: "desc" },
       take: 5,
     }),

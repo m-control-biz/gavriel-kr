@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { queryKpiSummaries, queryMetrics, toChartSeries } from "@/lib/metrics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Share2 } from "lucide-react";
@@ -19,8 +19,8 @@ export default async function SocialPage({
 }: {
   searchParams: Promise<{ range?: string; client?: string }>;
 }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const params = await searchParams;
   const range = params.range ?? "30d";
@@ -29,7 +29,7 @@ export default async function SocialPage({
 
   const [kpis, rawRows] = await Promise.all([
     queryKpiSummaries({
-      tenantId: session.tenantId,
+      accountId: scope.accountId,
       clientId,
       metricTypes: [...SOCIAL_METRIC_TYPES],
       from,
@@ -37,7 +37,7 @@ export default async function SocialPage({
       source: "social",
     }),
     queryMetrics({
-      tenantId: session.tenantId,
+      accountId: scope.accountId,
       clientId,
       metricTypes: [...SOCIAL_METRIC_TYPES],
       from,

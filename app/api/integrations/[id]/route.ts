@@ -1,26 +1,26 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { getIntegration, deleteIntegration } from "@/lib/integrations";
 
-export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const integration = await getIntegration(session.tenantId, id);
+  const integration = await getIntegration(scope.accountId, id);
   if (!integration) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  const { encryptedCredentials, ...safe } = integration;
+  const { encryptedAccessToken, encryptedRefreshToken, ...safe } = integration;
   return NextResponse.json(safe);
 }
 
-export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const existing = await getIntegration(session.tenantId, id);
+  const existing = await getIntegration(scope.accountId, id);
   if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  await deleteIntegration(session.tenantId, id);
+  await deleteIntegration(scope.accountId, id);
   return NextResponse.json({ ok: true });
 }

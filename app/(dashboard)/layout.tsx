@@ -1,6 +1,9 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
+import { getAccessibleAccountIds } from "@/lib/account";
 import { prisma } from "@/lib/db";
 import { Sidebar } from "@/components/sidebar";
 import { DashboardShell } from "@/components/dashboard-shell";
@@ -13,18 +16,47 @@ export default async function DashboardLayout({
   const session = await getSession();
   if (!session) redirect("/auth/login");
 
-  const clients = await prisma.client
-    .findMany({
-      where: { tenantId: session.tenantId },
+  const scope = await getAccountScope();
+  if (!scope) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-8">
+        <p className="text-lg font-medium">No accounts assigned</p>
+        <p className="text-sm text-muted-foreground">Contact your administrator to get access to an account.</p>
+        <form action="/api/auth/logout" method="POST">
+          <button type="submit" className="text-sm text-primary underline">Sign out</button>
+        </form>
+      </div>
+    );
+  }
+
+  const [clients, accountIds, accounts] = await Promise.all([
+    prisma.client.findMany({
+      where: { accountId: scope.accountId },
       select: { id: true, name: true, slug: true },
       orderBy: { name: "asc" },
-    })
-    .then((rows) => rows.map((r) => ({ id: r.id, name: r.name, slug: r.slug })));
+    }),
+    getAccessibleAccountIds(session.sub, session.tenantId, session.isSuperAdmin ?? false),
+    prisma.account.findMany({
+      where: { tenantId: session.tenantId },
+      select: { id: true, name: true },
+      orderBy: { name: "asc" },
+    }),
+  ]);
+  const accessibleAccounts = accounts.filter((a) => accountIds.includes(a.id));
+
+  const cookieStore = await cookies();
+  if (cookieStore.get("m_control_account")?.value !== scope.accountId) {
+    cookieStore.set("m_control_account", scope.accountId, { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
+  }
 
   return (
     <div className="flex h-screen flex-col">
       <Suspense fallback={<header className="h-14 border-b bg-background" />}>
-        <DashboardShell clients={clients} />
+        <DashboardShell
+          clients={clients.map((r) => ({ id: r.id, name: r.name, slug: r.slug }))}
+          currentAccountId={scope.accountId}
+          accounts={accessibleAccounts}
+        />
       </Suspense>
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />

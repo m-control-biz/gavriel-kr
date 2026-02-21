@@ -1,6 +1,6 @@
 import { redirect, notFound } from "next/navigation";
 import Link from "next/link";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { getReport, hydrateReportData } from "@/lib/reports";
 import { KpiCard } from "@/components/dashboard/kpi-card";
 import { MetricLineChart } from "@/components/dashboard/metric-line-chart";
@@ -32,11 +32,11 @@ function metricLabel(type: string) {
 }
 
 export default async function ReportViewPage({ params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const { id } = await params;
-  const report = await getReport(session.tenantId, id);
+  const report = await getReport(scope.accountId, id);
   if (!report) notFound();
 
   const data = await hydrateReportData(report);

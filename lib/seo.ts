@@ -16,7 +16,7 @@ export type SeoKeywordRow = {
 };
 
 export async function listSeoKeywords(filter: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   from?: Date;
   to?: Date;
@@ -24,7 +24,7 @@ export async function listSeoKeywords(filter: {
 }): Promise<SeoKeywordRow[]> {
   const rows = await prisma.seoKeyword.findMany({
     where: {
-      tenantId: filter.tenantId,
+      accountId: filter.accountId,
       ...(filter.clientId ? { clientId: filter.clientId } : {}),
       ...(filter.from || filter.to
         ? {
@@ -50,7 +50,7 @@ export async function listSeoKeywords(filter: {
 }
 
 export async function createSeoKeyword(data: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   keyword: string;
   impressions: number;
@@ -61,7 +61,7 @@ export async function createSeoKeyword(data: {
   const dateOnly = new Date(data.date.getFullYear(), data.date.getMonth(), data.date.getDate());
   return prisma.seoKeyword.create({
     data: {
-      tenantId: data.tenantId,
+      accountId: data.accountId,
       clientId: data.clientId,
       keyword: data.keyword,
       impressions: data.impressions,

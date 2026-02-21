@@ -14,6 +14,7 @@
     "db:seed": "tsx db/seed.ts",
     "db:studio": "prisma studio",
     "db:prod:apply": "prisma db push && tsx db/seed.ts",
+    "db:reset-accounts": "prisma db push --force-reset && tsx db/seed.ts",
     "vercel:link": "npx vercel link",
     "vercel:env-pull": "npx vercel env pull .env.development.local"
   },

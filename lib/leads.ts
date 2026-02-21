@@ -7,14 +7,14 @@ import { prisma } from "@/lib/db";
 export type LeadStatus = "new" | "contacted" | "qualified" | "won" | "lost";
 
 export async function listLeads(filter: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   status?: string | null;
   limit?: number;
   offset?: number;
 }) {
   const where = {
-    tenantId: filter.tenantId,
+    accountId: filter.accountId,
     ...(filter.clientId ? { clientId: filter.clientId } : {}),
     ...(filter.status ? { status: filter.status } : {}),
   };
@@ -30,12 +30,12 @@ export async function listLeads(filter: {
   return { items, total };
 }
 
-export async function getLead(tenantId: string, id: string) {
-  return prisma.lead.findFirst({ where: { id, tenantId } });
+export async function getLead(accountId: string, id: string) {
+  return prisma.lead.findFirst({ where: { id, accountId } });
 }
 
 export async function createLead(data: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   email: string;
   name?: string | null;
@@ -45,7 +45,7 @@ export async function createLead(data: {
 }) {
   return prisma.lead.create({
     data: {
-      tenantId: data.tenantId,
+      accountId: data.accountId,
       clientId: data.clientId,
       email: data.email,
       name: data.name,
@@ -57,7 +57,7 @@ export async function createLead(data: {
 }
 
 export async function updateLead(
-  tenantId: string,
+  accountId: string,
   id: string,
   data: { name?: string; source?: string; status?: string; notes?: string }
 ) {
@@ -67,6 +67,6 @@ export async function updateLead(
   });
 }
 
-export async function deleteLead(tenantId: string, id: string) {
+export async function deleteLead(accountId: string, id: string) {
   return prisma.lead.delete({ where: { id } });
 }

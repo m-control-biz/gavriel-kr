@@ -19,7 +19,7 @@ export type SearchModule =
   | "campaigns";
 
 export type SearchFilter = {
-  tenantId: string;
+  accountId: string;
   query: string;
   modules?: SearchModule[];
   dateFrom?: Date | null;
@@ -99,7 +99,7 @@ async function searchModule(
 async function searchAlerts(term: string, filter: SearchFilter): Promise<SearchResultItem[]> {
   const rows = await prisma.alert.findMany({
     where: {
-      tenantId: filter.tenantId,
+      accountId: filter.accountId,
       OR: [
         { title: { contains: term, mode: "insensitive" } },
         { message: { contains: term, mode: "insensitive" } },
@@ -126,7 +126,7 @@ async function searchAlerts(term: string, filter: SearchFilter): Promise<SearchR
 async function searchClients(term: string, filter: SearchFilter): Promise<SearchResultItem[]> {
   const rows = await prisma.client.findMany({
     where: {
-      tenantId: filter.tenantId,
+      accountId: filter.accountId,
       OR: [
         { name: { contains: term, mode: "insensitive" } },
         { slug: { contains: term, mode: "insensitive" } },
@@ -150,7 +150,7 @@ async function searchClients(term: string, filter: SearchFilter): Promise<Search
 async function searchMetrics(term: string, filter: SearchFilter): Promise<SearchResultItem[]> {
   const rows = await prisma.metric.findMany({
     where: {
-      tenantId: filter.tenantId,
+      accountId: filter.accountId,
       OR: [
         { metricType: { contains: term, mode: "insensitive" } },
         { source: { contains: term, mode: "insensitive" } },
@@ -178,25 +178,25 @@ async function searchMetrics(term: string, filter: SearchFilter): Promise<Search
 // ——— Saved searches ———
 
 export async function saveSearch(
-  tenantId: string,
+  accountId: string,
   userId: string,
   name: string,
   query: string,
   filters?: Record<string, unknown>
 ) {
   return prisma.savedSearch.create({
-    data: { tenantId, userId, name, query, filters: filters == null ? undefined : (filters as Prisma.InputJsonValue) },
+    data: { accountId, userId, name, query, filters: filters == null ? undefined : (filters as Prisma.InputJsonValue) },
   });
 }
 
-export async function getSavedSearches(tenantId: string, userId: string) {
+export async function getSavedSearches(accountId: string, userId: string) {
   return prisma.savedSearch.findMany({
-    where: { tenantId, userId },
+    where: { accountId, userId },
     orderBy: { createdAt: "desc" },
     take: 20,
   });
 }
 
-export async function deleteSavedSearch(id: string, tenantId: string) {
-  return prisma.savedSearch.deleteMany({ where: { id, tenantId } });
+export async function deleteSavedSearch(id: string, accountId: string) {
+  return prisma.savedSearch.deleteMany({ where: { id, accountId } });
 }

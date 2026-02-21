@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { listLeads } from "@/lib/leads";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,12 +21,12 @@ export default async function LeadsPage({
 }: {
   searchParams: Promise<{ status?: string; client?: string }>;
 }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const params = await searchParams;
   const { items: leads, total } = await listLeads({
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     clientId: params.client ?? null,
     status: params.status ?? null,
     limit: 100,

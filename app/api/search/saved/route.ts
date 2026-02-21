@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { saveSearch, getSavedSearches, deleteSavedSearch } from "@/lib/search";
 import { z } from "zod";
 
-export async function GET() {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const saved = await getSavedSearches(session.tenantId, session.sub);
+export async function GET(request: Request) {
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const saved = await getSavedSearches(scope.accountId, scope.userId);
   return NextResponse.json({ items: saved });
 }
 
@@ -17,21 +17,21 @@ const saveSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const body = await request.json();
   const parsed = saveSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: "Invalid input" }, { status: 400 });
-  const saved = await saveSearch(session.tenantId, session.sub, parsed.data.name, parsed.data.query, parsed.data.filters);
+  const saved = await saveSearch(scope.accountId, scope.userId, parsed.data.name, parsed.data.query, parsed.data.filters);
   return NextResponse.json({ ok: true, saved });
 }
 
 export async function DELETE(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
-  await deleteSavedSearch(id, session.tenantId);
+  await deleteSavedSearch(id, scope.accountId);
   return NextResponse.json({ ok: true });
 }

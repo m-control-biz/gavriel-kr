@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { listLeads, createLead } from "@/lib/leads";
 import { z } from "zod";
 
@@ -13,8 +13,8 @@ const createSchema = z.object({
 });
 
 export async function GET(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
   const clientId = searchParams.get("client") ?? undefined;
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
   const offset = searchParams.get("offset") ? parseInt(searchParams.get("offset")!, 10) : 0;
 
   const result = await listLeads({
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     clientId: clientId || null,
     status: status || null,
     limit,
@@ -33,15 +33,15 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await request.json();
   const parsed = createSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
   const lead = await createLead({
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     clientId: parsed.data.clientId,
     email: parsed.data.email,
     name: parsed.data.name,

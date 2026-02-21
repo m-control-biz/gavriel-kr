@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { queryKpiSummaries } from "@/lib/metrics";
 import { listSeoKeywords } from "@/lib/seo";
 import { dateRangeFromParam, formatCompact } from "@/lib/date-utils";
@@ -15,8 +15,8 @@ export default async function SeoPage({
 }: {
   searchParams: Promise<{ range?: string; client?: string }>;
 }) {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
   const params = await searchParams;
   const range = params.range ?? "30d";
@@ -25,13 +25,13 @@ export default async function SeoPage({
 
   const [kpis, keywords] = await Promise.all([
     queryKpiSummaries({
-      tenantId: session.tenantId,
+      accountId: scope.accountId,
       clientId,
       metricTypes: [...SEO_METRIC_TYPES],
       from,
       to,
     }),
-    listSeoKeywords({ tenantId: session.tenantId, clientId, from, to, limit: 50 }),
+    listSeoKeywords({ accountId: scope.accountId, clientId, from, to, limit: 50 }),
   ]);
 
   return (

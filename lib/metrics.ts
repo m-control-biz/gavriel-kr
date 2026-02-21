@@ -20,7 +20,7 @@ export type MetricType =
   | "social_reach";
 
 export type MetricFilter = {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   metricTypes?: MetricType[];
   from: Date;
@@ -51,7 +51,7 @@ export type ChartPoint = {
 export async function queryMetrics(filter: MetricFilter): Promise<MetricRow[]> {
   const rows = await prisma.metric.findMany({
     where: {
-      tenantId: filter.tenantId,
+      accountId: filter.accountId,
       ...(filter.clientId ? { clientId: filter.clientId } : {}),
       ...(filter.metricTypes?.length ? { metricType: { in: filter.metricTypes } } : {}),
       date: { gte: filter.from, lte: filter.to },
@@ -124,10 +124,10 @@ function toDateKey(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
-/** Available sources for a tenant (for the source filter dropdown). */
-export async function queryAvailableSources(tenantId: string): Promise<string[]> {
+/** Available sources for an account (for the source filter dropdown). */
+export async function queryAvailableSources(accountId: string): Promise<string[]> {
   const rows = await prisma.metric.findMany({
-    where: { tenantId, source: { not: null } },
+    where: { accountId, source: { not: null } },
     select: { source: true },
     distinct: ["source"],
   });

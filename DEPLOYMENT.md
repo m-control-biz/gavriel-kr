@@ -31,9 +31,15 @@
    - Add env vars in Project Settings → Environment Variables
    - Deploy; Vercel will run `next build` and `next start`
 
-5. **Post-deploy**
-   - For schema changes: run `npx prisma migrate deploy` in a build step or manually against production DB
-   - Ensure production DB URL is used in Vercel env
+5. **Post-deploy (schema + seed)**
+   After each deploy that adds or changes Prisma models or seed data, run against the production DB (e.g. locally with production `DATABASE_URL` in `.env`, or from a one-off job):
+   ```bash
+   npx prisma db push
+   npm run db:seed
+   ```
+   Or use the combined script: `npm run db:prod:apply` (uses `DATABASE_URL` from `.env`).
+   - For schema-only changes: `npx prisma db push` is enough.
+   - Ensure production DB URL is set in Vercel env for the app.
 
 ## Build command
 

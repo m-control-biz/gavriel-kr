@@ -17,6 +17,7 @@ export type SessionPayload = {
   email: string;
   role?: string;
   permissions?: string[];
+  isSuperAdmin?: boolean;
   iat?: number;
   exp?: number;
 };

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { search } from "@/lib/search";
 import { z } from "zod";
 
@@ -12,8 +12,8 @@ const querySchema = z.object({
 });
 
 export async function GET(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
   const parsed = querySchema.safeParse({
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
   const { q, modules, dateFrom, dateTo, source } = parsed.data;
 
   const results = await search({
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     query: q,
     modules: modules ? (modules.split(",") as never) : undefined,
     dateFrom: dateFrom ? new Date(dateFrom) : null,

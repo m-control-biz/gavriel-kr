@@ -23,7 +23,7 @@ export function ConnectGoogleAdsForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: "google_ads",
+          provider: "google_ads",
           name: name.trim(),
           credentials: { apiKey: apiKey.trim() || "placeholder" },
         }),

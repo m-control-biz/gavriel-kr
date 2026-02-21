@@ -34,10 +34,10 @@ export type ReportData = {
 
 // ——— CRUD ———
 
-export async function createReport(tenantId: string, input: ReportInput) {
+export async function createReport(accountId: string, input: ReportInput) {
   return prisma.report.create({
     data: {
-      tenantId,
+      accountId,
       name: input.name,
       description: input.description,
       clientId: input.clientId ?? null,
@@ -51,9 +51,9 @@ export async function createReport(tenantId: string, input: ReportInput) {
   });
 }
 
-export async function listReports(tenantId: string) {
+export async function listReports(accountId: string) {
   return prisma.report.findMany({
-    where: { tenantId },
+    where: { accountId },
     orderBy: { updatedAt: "desc" },
     select: {
       id: true,
@@ -70,11 +70,11 @@ export async function listReports(tenantId: string) {
   });
 }
 
-export async function getReport(tenantId: string, id: string) {
-  return prisma.report.findFirst({ where: { id, tenantId } });
+export async function getReport(accountId: string, id: string) {
+  return prisma.report.findFirst({ where: { id, accountId } });
 }
 
-export async function updateReport(tenantId: string, id: string, input: Partial<ReportInput>) {
+export async function updateReport(accountId: string, id: string, input: Partial<ReportInput>) {
   return prisma.report.update({
     where: { id },
     data: {
@@ -91,13 +91,13 @@ export async function updateReport(tenantId: string, id: string, input: Partial<
   });
 }
 
-export async function deleteReport(tenantId: string, id: string) {
+export async function deleteReport(accountId: string, id: string) {
   return prisma.report.delete({ where: { id } });
 }
 
 // ——— Share token ———
 
-export async function generateShareToken(tenantId: string, id: string, expiryDays = 30) {
+export async function generateShareToken(accountId: string, id: string, expiryDays = 30) {
   const token = crypto.randomBytes(32).toString("hex");
   const shareExpiry = new Date(Date.now() + expiryDays * 24 * 60 * 60 * 1000);
   return prisma.report.update({
@@ -106,7 +106,7 @@ export async function generateShareToken(tenantId: string, id: string, expiryDay
   });
 }
 
-export async function revokeShareToken(tenantId: string, id: string) {
+export async function revokeShareToken(accountId: string, id: string) {
   return prisma.report.update({
     where: { id },
     data: { shareToken: null, shareExpiry: null },
@@ -125,7 +125,7 @@ export async function getReportByShareToken(token: string) {
 // ——— Data hydration ———
 
 export async function hydrateReportData(report: {
-  tenantId: string;
+  accountId: string;
   clientId?: string | null;
   metricTypes: string[];
   dateRange: string;
@@ -148,7 +148,7 @@ export async function hydrateReportData(report: {
 
   const types = report.metricTypes as MetricType[];
   const filter = {
-    tenantId: report.tenantId,
+    accountId: report.accountId,
     clientId: report.clientId,
     metricTypes: types,
     from,

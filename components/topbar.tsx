@@ -1,5 +1,6 @@
 "use client";
 
+import { AccountSwitcher, type AccountOption } from "@/components/account-switcher";
 import { ClientSwitcher, type ClientOption } from "@/components/client-switcher";
 import { GlobalSearchInput } from "@/components/global-search-input";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -10,9 +11,13 @@ import { LogOut } from "lucide-react";
 export function Topbar({
   clients,
   currentClientId,
+  currentAccountId,
+  accounts,
 }: {
   clients: ClientOption[];
   currentClientId: string | null;
+  currentAccountId: string;
+  accounts: AccountOption[];
 }) {
   const router = useRouter();
 
@@ -28,6 +33,7 @@ export function Topbar({
     <header className="flex h-14 items-center gap-4 border-b bg-background px-4">
       <GlobalSearchInput />
       <div className="flex-1" />
+      <AccountSwitcher accounts={accounts} currentAccountId={currentAccountId} />
       <ClientSwitcher
         clients={clients}
         currentClientId={currentClientId}

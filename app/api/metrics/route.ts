@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { queryKpiSummaries, queryMetrics, toChartSeries } from "@/lib/metrics";
 import { dateRangeFromParam } from "@/lib/date-utils";
 
 export async function GET(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
   const range = searchParams.get("range") ?? "30d";
@@ -17,7 +17,7 @@ export async function GET(request: Request) {
   const metricTypes = ["leads", "cpl", "spend", "conversions", "roas", "seo_clicks", "seo_impressions"] as const;
 
   const filter = {
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     clientId,
     metricTypes: [...metricTypes],
     from,

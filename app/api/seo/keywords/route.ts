@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { listSeoKeywords } from "@/lib/seo";
 
 export async function GET(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
   const clientId = searchParams.get("client") ?? undefined;
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   const limit = searchParams.get("limit") ? parseInt(searchParams.get("limit")!, 10) : 50;
 
   const keywords = await listSeoKeywords({
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     clientId: clientId || null,
     from,
     to,

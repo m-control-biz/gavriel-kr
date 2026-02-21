@@ -66,6 +66,8 @@ export async function middleware(request: NextRequest) {
     if (tenantId) {
       res.headers.set("x-tenant-id", tenantId);
       res.headers.set("x-user-id", (payload as { sub?: string }).sub ?? "");
+      const accountCookie = request.cookies.get("m_control_account")?.value;
+      if (accountCookie) res.headers.set("x-account-id", accountCookie);
     }
     return res;
   } catch {

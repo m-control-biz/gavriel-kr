@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { listReports } from "@/lib/reports";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,10 +15,10 @@ const DATE_RANGE_LABEL: Record<string, string> = {
 };
 
 export default async function ReportsPage() {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
-  const reports = await listReports(session.tenantId);
+  const reports = await listReports(scope.accountId);
 
   return (
     <div className="space-y-6 py-6 px-4 max-w-6xl mx-auto">

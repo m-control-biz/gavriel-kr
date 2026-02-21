@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { getSession } from "@/lib/auth";
+import { getAccountScope } from "@/lib/tenant";
 import { listArticles } from "@/lib/articles";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,10 +8,10 @@ import { FileText, Plus } from "lucide-react";
 import { AddArticleForm } from "@/components/content/add-article-form";
 
 export default async function ContentPage() {
-  const session = await getSession();
-  if (!session) redirect("/auth/login");
+  const scope = await getAccountScope();
+  if (!scope) redirect("/auth/login");
 
-  const articles = await listArticles({ tenantId: session.tenantId, limit: 50 });
+  const articles = await listArticles({ accountId: scope.accountId, limit: 50 });
 
   return (
     <div className="space-y-6 py-6 px-4 max-w-6xl mx-auto">

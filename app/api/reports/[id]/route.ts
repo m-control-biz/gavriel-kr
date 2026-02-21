@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { getReport, updateReport, deleteReport, hydrateReportData } from "@/lib/reports";
 import { z } from "zod";
 
@@ -15,12 +15,12 @@ const updateSchema = z.object({
   source: z.string().optional(),
 });
 
-export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const report = await getReport(session.tenantId, id);
+  const report = await getReport(scope.accountId, id);
   if (!report) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
   const data = await hydrateReportData(report);
@@ -28,29 +28,29 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
 }
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
   const body = await request.json();
   const parsed = updateSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
-  const existing = await getReport(session.tenantId, id);
+  const existing = await getReport(scope.accountId, id);
   if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  const updated = await updateReport(session.tenantId, id, parsed.data as Parameters<typeof updateReport>[2]);
+  const updated = await updateReport(scope.accountId, id, parsed.data as Parameters<typeof updateReport>[2]);
   return NextResponse.json(updated);
 }
 
-export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const existing = await getReport(session.tenantId, id);
+  const existing = await getReport(scope.accountId, id);
   if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  await deleteReport(session.tenantId, id);
+  await deleteReport(scope.accountId, id);
   return NextResponse.json({ ok: true });
 }

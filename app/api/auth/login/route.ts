@@ -32,12 +32,14 @@ export async function POST(request: Request) {
       email: user.email,
       role: user.role?.name,
       permissions: user.role?.permissions ?? [],
+      isSuperAdmin: user.isSuperAdmin ?? false,
     });
 
     await setSessionCookie(token);
 
     await auditLog({
       tenantId: user.tenantId,
+      accountId: null,
       userId: user.id,
       action: "auth.login",
       resource: "user",

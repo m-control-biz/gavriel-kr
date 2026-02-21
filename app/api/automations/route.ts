@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getAccountScopeFromRequest } from "@/lib/tenant";
 import { listAutomations, createAutomation } from "@/lib/automations";
 import { z } from "zod";
 
@@ -11,23 +11,23 @@ const createSchema = z.object({
   actionConfig: z.record(z.unknown()).optional(),
 });
 
-export async function GET() {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const list = await listAutomations(session.tenantId);
+export async function GET(request: Request) {
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const list = await listAutomations(scope.accountId);
   return NextResponse.json(list);
 }
 
 export async function POST(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const scope = await getAccountScopeFromRequest(request);
+  if (!scope) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await request.json();
   const parsed = createSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
 
   const automation = await createAutomation({
-    tenantId: session.tenantId,
+    accountId: scope.accountId,
     name: parsed.data.name,
     trigger: parsed.data.trigger,
     triggerConfig: parsed.data.triggerConfig ?? null,

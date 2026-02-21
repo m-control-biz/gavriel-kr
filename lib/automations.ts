@@ -6,19 +6,19 @@
 import { prisma } from "@/lib/db";
 import { Prisma } from "@prisma/client";
 
-export async function listAutomations(tenantId: string) {
+export async function listAutomations(accountId: string) {
   return prisma.automation.findMany({
-    where: { tenantId },
+    where: { accountId },
     orderBy: { updatedAt: "desc" },
   });
 }
 
-export async function getAutomation(tenantId: string, id: string) {
-  return prisma.automation.findFirst({ where: { id, tenantId } });
+export async function getAutomation(accountId: string, id: string) {
+  return prisma.automation.findFirst({ where: { id, accountId } });
 }
 
 export async function createAutomation(data: {
-  tenantId: string;
+  accountId: string;
   name: string;
   trigger: string;
   triggerConfig?: Record<string, unknown> | null;
@@ -27,7 +27,7 @@ export async function createAutomation(data: {
 }) {
   return prisma.automation.create({
     data: {
-      tenantId: data.tenantId,
+      accountId: data.accountId,
       name: data.name,
       trigger: data.trigger,
       triggerConfig: data.triggerConfig as Prisma.InputJsonValue ?? undefined,
@@ -39,7 +39,7 @@ export async function createAutomation(data: {
 }
 
 export async function updateAutomation(
-  tenantId: string,
+  accountId: string,
   id: string,
   data: { name?: string; trigger?: string; triggerConfig?: Record<string, unknown>; action?: string; actionConfig?: Record<string, unknown>; isActive?: boolean }
 ) {
@@ -53,19 +53,19 @@ export async function updateAutomation(
   return prisma.automation.update({ where: { id }, data: payload });
 }
 
-export async function deleteAutomation(tenantId: string, id: string) {
+export async function deleteAutomation(accountId: string, id: string) {
   return prisma.automation.delete({ where: { id } });
 }
 
 /** Stub: run automation (e.g. create_alert). Real impl would evaluate trigger and run action. */
-export async function runAutomation(tenantId: string, id: string): Promise<{ ok: boolean; message: string }> {
-  const automation = await getAutomation(tenantId, id);
+export async function runAutomation(accountId: string, id: string): Promise<{ ok: boolean; message: string }> {
+  const automation = await getAutomation(accountId, id);
   if (!automation || !automation.isActive) return { ok: false, message: "Automation not found or inactive" };
   if (automation.action === "create_alert") {
     const config = (automation.actionConfig as { title?: string; message?: string }) ?? {};
     await prisma.alert.create({
       data: {
-        tenantId,
+        accountId: automation.accountId,
         type: "automation",
         title: config.title ?? automation.name,
         message: config.message ?? "Triggered manually",
