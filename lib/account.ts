@@ -22,18 +22,28 @@ export async function getAccessibleAccountIds(
   tenantId: string,
   isSuperAdmin: boolean
 ): Promise<string[]> {
-  if (isSuperAdmin) {
-    const accounts = await prisma.account.findMany({
-      where: { tenantId },
-      select: { id: true },
+  // #region agent log
+  try {
+    if (isSuperAdmin) {
+      const accounts = await prisma.account.findMany({
+        where: { tenantId },
+        select: { id: true },
+      });
+      fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'account.ts:getAccessibleAccountIds',message:'superAdmin accounts OK',data:{count:accounts.length},hypothesisId:'C',timestamp:Date.now()})}).catch(()=>{});
+      return accounts.map((a) => a.id);
+    }
+    const roles = await prisma.userAccountRole.findMany({
+      where: { userId },
+      select: { accountId: true },
     });
-    return accounts.map((a) => a.id);
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'account.ts:getAccessibleAccountIds',message:'user roles OK',data:{rolesCount:roles.length,userId},hypothesisId:'C',timestamp:Date.now()})}).catch(()=>{});
+    return roles.map((r) => r.accountId);
+  } catch (err) {
+    console.error("[getAccessibleAccountIds] DB query FAILED — hypothesis C:", err);
+    fetch('http://127.0.0.1:7244/ingest/b59fcf8e-45dc-4868-b7f9-c7f06467e86e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'account.ts:getAccessibleAccountIds',message:'DB FAILED — hyp C',data:{error:String(err)},hypothesisId:'C',timestamp:Date.now()})}).catch(()=>{});
+    return [];
   }
-  const roles = await prisma.userAccountRole.findMany({
-    where: { userId },
-    select: { accountId: true },
-  });
-  return roles.map((r) => r.accountId);
+  // #endregion
 }
 
 /** Resolve active account: from header/query or first accessible. Validate membership. */
