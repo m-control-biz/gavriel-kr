@@ -1,0 +1,947 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>׳”׳₪׳¢׳™׳׳•׳™׳•׳× ׳”׳׳§׳¦׳•׳¢׳™׳•׳× ׳”׳§׳¨׳•׳‘׳•׳× | ׳׳₪׳¨׳™׳-׳׳׳™ 2026</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #eaf0f5;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1f2937;
+    }
+
+    table {
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    img {
+      border: 0;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .wrapper {
+      width: 100%;
+      background-color: #eaf0f5;
+      padding: 16px 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-band {
+      background: linear-gradient(135deg, #0f3555 0%, #123f67 55%, #176089 100%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.14);
+      color: #eff6ff;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: 30px;
+      line-height: 38px;
+      font-weight: 700;
+    }
+
+    .hero-text {
+      margin: 0;
+      color: #dbeafe;
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .mini-chip {
+      display: inline-block;
+      border-radius: 999px;
+      background-color: #f4f8fb;
+      color: #0f3555;
+      border: 1px solid #d7e2eb;
+      padding: 7px 12px;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 0;
+      color: #0f3555;
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 700;
+    }
+
+    .section-text {
+      margin: 0;
+      color: #556273;
+      font-size: 15px;
+      line-height: 23px;
+    }
+
+    .section-band {
+      background-color: #f7fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-pill {
+      display: inline-block;
+      background-color: #0f3555;
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+    }
+
+    .card {
+      border: 1px solid #dbe3ea;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #e5f2fb;
+      color: #12506d;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 11px;
+      line-height: 15px;
+      font-weight: 700;
+    }
+
+    .card-title {
+      margin: 0;
+      color: #111827;
+      font-size: 22px;
+      line-height: 29px;
+      font-weight: 700;
+    }
+
+    .card-text {
+      margin: 0;
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 23px;
+    }
+
+    .meta-chip {
+      display: inline-block;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      color: #0f3555;
+      padding: 5px 10px;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      margin-left: 6px;
+      margin-bottom: 6px;
+    }
+
+    .button {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 700;
+    }
+
+    .button-primary {
+      background-color: #0f3555;
+      color: #ffffff;
+    }
+
+    .button-secondary {
+      background-color: #eef5fa;
+      color: #0f3555;
+    }
+
+    .note-box {
+      border: 1px solid #dbe3ea;
+      border-radius: 16px;
+      background-color: #f8fbfd;
+    }
+
+    .banner-frame {
+      border: 1px solid #dbe3ea;
+      border-radius: 14px;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    .footer-text {
+      margin: 0;
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    @media screen and (max-width: 640px) {
+      .wrapper {
+        padding: 0;
+      }
+
+      .container {
+        border-radius: 0;
+      }
+
+      .hero-title {
+        font-size: 26px;
+        line-height: 32px;
+      }
+
+      .card-title {
+        font-size: 19px;
+        line-height: 25px;
+      }
+
+      .mobile-block,
+      .mobile-block tbody,
+      .mobile-block tr,
+      .mobile-block td {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .mobile-spacer {
+        height: 8px !important;
+      }
+
+      .mobile-center {
+        text-align: center !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    ׳׳“׳¨׳™׳ ׳¢׳¨׳™׳›׳” ׳׳”׳™׳¨:
+    1. ׳˜׳§׳¡׳˜׳™׳: ׳¢׳•׳¨׳›׳™׳ ׳™׳©׳™׳¨׳•׳× ׳׳× ׳”׳›׳•׳×׳¨׳•׳×, ׳”׳×׳™׳׳•׳¨׳™׳ ׳•׳”׳×׳׳¨׳™׳›׳™׳.
+    2. ׳§׳™׳©׳•׳¨׳™׳: ׳׳—׳׳™׳₪׳™׳ ׳׳× ׳”׳›׳×׳•׳‘׳× ׳©׳‘׳×׳•׳ href="...".
+    3. ׳₪׳¢׳™׳׳•׳× ׳—׳“׳©׳”: ׳׳¢׳×׳™׳§׳™׳ ׳‘׳׳•׳§ ׳©׳׳ ׳©׳ card ׳•׳׳©׳ ׳™׳ ׳×׳•׳›׳.
+    4. ׳‘׳׳ ׳¨׳™׳ ׳׳¦׳•׳¨׳₪׳™׳: ׳›׳¨׳’׳¢ ׳”׳ ׳ ׳˜׳¢׳ ׳™׳ ׳׳§׳•׳׳™׳× ׳׳×׳•׳ ׳×׳™׳§׳™׳™׳× assets.
+    5. ׳׳₪׳ ׳™ ׳©׳׳™׳—׳” ׳‘׳׳¢׳¨׳›׳× ׳“׳™׳•׳•׳¨: ׳”׳¢׳׳• ׳׳× ׳§׳‘׳¦׳™ assets ׳׳›׳×׳•׳‘׳× ׳¦׳™׳‘׳•׳¨׳™׳× ׳•׳”׳—׳׳™׳₪׳• ׳׳× src ׳׳›׳×׳•׳‘׳•׳× ׳׳™׳ ׳˜׳¨׳ ׳˜.
+  -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+    ׳¡׳׳™׳ ׳¨׳™׳ ׳׳§׳¦׳•׳¢׳™׳™׳, ׳›׳ ׳¡׳™׳, ׳™׳׳™ ׳¢׳™׳•׳, ׳§׳•׳¨׳¡׳™׳, ׳”׳¡׳׳›׳•׳× ׳•׳”׳˜׳‘׳•׳× ׳׳—׳•׳“׳©׳™׳ ׳׳₪׳¨׳™׳-׳׳׳™ 2026.
+  </div>
+
+  <table role="presentation" width="100%" class="wrapper">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" class="container">
+          <tr>
+            <td style="background-color:#ffffff; padding:0;">
+              <img src="assets/header-aeai.png" alt="׳׳©׳›׳× ׳”׳׳”׳ ׳“׳¡׳™׳ ׳•׳”׳׳“׳¨׳™׳›׳׳™׳ ׳‘׳™׳©׳¨׳׳" width="760">
+            </td>
+          </tr>
+
+          <tr>
+            <td class="hero-band" style="padding: 22px 28px 20px;">
+              <span class="eyebrow">׳“׳™׳•׳•׳¨ ׳—׳•׳“׳©׳™ | ׳₪׳¢׳™׳׳•׳™׳•׳× ׳׳§׳¦׳•׳¢׳™׳•׳× ׳§׳¨׳•׳‘׳•׳×</span>
+              <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+              <h1 class="hero-title">׳׳₪׳¨׳™׳-׳׳׳™ 2026: ׳›׳ ׳׳” ׳©׳›׳“׳׳™ ׳׳¡׳׳ ׳‘׳™׳•׳׳</h1>
+              <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+              <p class="hero-text">
+                ׳¨׳™׳›׳–׳ ׳• ׳‘׳׳§׳•׳ ׳׳—׳“ ׳׳× ׳”׳¡׳׳™׳ ׳¨׳™׳, ׳”׳›׳ ׳¡׳™׳, ׳™׳׳™ ׳”׳¢׳™׳•׳, ׳”׳§׳•׳¨׳¡׳™׳ ׳•׳”׳”׳˜׳‘׳•׳× ׳”׳§׳¨׳•׳‘׳•׳×, ׳¢׳ ׳×׳™׳׳•׳¨׳™׳ ׳§׳¦׳¨׳™׳ ׳•׳§׳™׳©׳•׳¨׳™׳ ׳׳”׳™׳¨׳™׳ ׳׳”׳¨׳©׳׳”.
+              </p>
+              <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+              <table role="presentation" class="mobile-block">
+                <tr>
+                  <td class="mobile-center">
+                    <a href="https://www.aeai.org.il/activity_cat/technological-development/" class="button button-primary">׳׳׳™׳ ׳“׳§׳¡ ׳”׳₪׳¢׳™׳׳•׳™׳•׳×</a>
+                  </td>
+                  <td width="8" class="mobile-spacer">&nbsp;</td>
+                  <td class="mobile-center">
+                    <a href="https://www.aeai.org.il/" class="button button-secondary">׳׳׳×׳¨ ׳”׳׳©׳›׳”</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 16px 24px 8px;">
+              <span class="mini-chip">׳¡׳׳™׳ ׳¨׳™׳ ׳׳§׳¦׳•׳¢׳™׳™׳</span>
+              <span class="mini-chip">׳›׳ ׳¡׳™׳ ׳•׳™׳׳™ ׳¢׳™׳•׳</span>
+              <span class="mini-chip">׳§׳•׳¨׳¡׳™׳, ׳”׳¡׳׳›׳•׳× ׳•׳¡׳“׳ ׳׳•׳×</span>
+              <span class="mini-chip">׳”׳˜׳‘׳•׳× ׳•׳”׳¦׳˜׳¨׳₪׳•׳×</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 8px 24px 14px;">
+              <table role="presentation" width="100%" class="note-box">
+                <tr>
+                  <td style="padding: 16px 18px;">
+                    <p style="margin:0; color:#0f3555; font-size:17px; line-height:23px; font-weight:700;">׳˜׳™׳₪ ׳—׳©׳•׳‘ ׳׳¢׳¨׳™׳›׳”</p>
+                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
+                    <p class="section-text">
+                      ׳¢׳ ׳›׳ ׳‘׳׳ ׳¨ ׳׳¦׳•׳¨׳£ ׳™׳© ׳׳§׳•׳ ׳‘׳¨׳•׳¨ ׳׳§׳™׳©׳•׳¨. ׳—׳₪׳©׳• ׳׳× ׳”׳”׳¢׳¨׳•׳× ׳©׳׳×׳—׳™׳׳•׳× ׳‘ײ¾<span style="direction:ltr;">LINK:</span> ׳•׳”׳—׳׳™׳₪׳• ׳©׳ ׳׳× ׳”׳›׳×׳•׳‘׳× ׳”׳¨׳¦׳•׳™׳”.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="section-band" style="padding: 14px 24px;">
+              <span class="section-pill">1</span>
+              <h2 class="section-title" style="display:inline-block; margin-right:10px;">׳¡׳׳™׳ ׳¨׳™׳ ׳׳§׳¦׳•׳¢׳™׳™׳</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 14px 24px 6px;">
+              <p class="section-text">׳”׳§׳“׳׳ ׳• ׳׳× ׳”׳¡׳׳™׳ ׳¨׳™׳ ׳׳¨׳׳© ׳”׳ ׳™׳•׳–׳׳˜׳¨, ׳›׳•׳׳ ׳׳—׳“ ׳‘׳׳¨׳¥ ׳•׳׳—׳“ ׳׳—׳•"׳, ׳¢׳ ׳×׳׳•׳ ׳•׳× ׳”׳ ׳•׳©׳ ׳׳”׳׳×׳¨.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 4px 24px 12px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2020/12/banner-web-3.png" alt="׳¡׳׳™׳ ׳¨׳™׳ ׳׳§׳¦׳•׳¢׳™׳™׳ ׳‘׳׳¨׳¥" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳¡׳׳™׳ ׳¨ ׳‘׳׳¨׳¥</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳×׳©׳×׳™׳•׳× ׳—׳›׳׳•׳× - ׳”׳¢׳¨׳™׳, ׳”׳×׳—׳‘׳•׳¨׳” ׳•׳”׳׳ ׳¨׳’׳™׳” ׳©׳ 2040</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 03-06.05.2026</span>
+                    <span class="meta-chip">&#128205; ׳ ׳‘׳ ׳“׳•׳“ ׳›׳₪׳¨ ׳ ׳—׳•׳</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳¡׳׳™׳ ׳¨ ׳׳§׳¦׳•׳¢׳™ ׳׳¨׳•׳›׳– ׳”׳¢׳•׳¡׳§ ׳‘׳¢׳×׳™׳“ ׳”׳×׳©׳×׳™׳•׳×, ׳”׳×׳—׳‘׳•׳¨׳” ׳•׳”׳׳ ׳¨׳’׳™׳”, ׳¢׳ ׳©׳™׳׳•׳‘ ׳‘׳™׳ ׳×׳•׳›׳ ׳׳§׳¦׳•׳¢׳™, ׳—׳©׳™׳‘׳” ׳§׳“׳™׳׳” ׳•׳׳¡׳’׳¨׳× ׳”׳׳׳₪׳©׳¨׳× ׳’׳ ׳ ׳˜׳•׳•׳¨׳§׳™׳ ׳’ ׳׳™׳›׳•׳×׳™ ׳‘׳™׳ ׳׳ ׳©׳™ ׳”׳׳§׳¦׳•׳¢.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://seminar-03052026.form-wizard.co/" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/seminars-in-israel-2026/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 18px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2026/02/abroard-seminars-650X330.jpg" alt="׳¡׳™׳•׳¨׳™׳ ׳׳§׳¦׳•׳¢׳™׳™׳ ׳‘׳—׳•&quot;׳" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳¡׳׳™׳ ׳¨ ׳׳—׳•&quot;׳</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳¡׳׳™׳ ׳¨ ׳׳§׳¦׳•׳¢׳™ ׳׳₪׳¨׳׳’</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 02-06.09.2026</span>
+                    <span class="meta-chip">&#127757; ׳—׳•&quot;׳</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳׳¡׳׳•׳ ׳—׳•"׳ ׳׳§׳¦׳•׳¢׳™ ׳”׳׳©׳׳‘ ׳×׳•׳›׳ ׳”׳ ׳“׳¡׳™ ׳׳¢׳©׳™׳¨ ׳׳¦׳“ ׳—׳•׳•׳™׳” ׳‘׳™׳ ׳׳׳•׳׳™׳×. ׳׳×׳׳™׳ ׳׳׳™ ׳©׳׳‘׳§׳©׳™׳ ׳׳”׳¨׳—׳™׳‘ ׳׳•׳₪׳§׳™׳ ׳׳§׳¦׳•׳¢׳™׳™׳ ׳‘׳׳¡׳’׳¨׳× ׳׳¨׳•׳›׳–׳× ׳•׳׳™׳›׳•׳×׳™׳×.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://prague-cil02092026.form-wizard.co/" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/abroadaeai2026/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="section-band" style="padding: 14px 24px;">
+              <span class="section-pill">2</span>
+              <h2 class="section-title" style="display:inline-block; margin-right:10px;">׳›׳ ׳¡׳™׳ ׳•׳™׳׳™ ׳¢׳™׳•׳</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 12px 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/11/static-banner-2.jpg" alt="׳™׳•׳ ׳¢׳™׳•׳ ׳—׳©׳׳ ׳¡׳˜׳˜׳™" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳™׳•׳ ׳¢׳™׳•׳</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳—׳©׳׳ ׳¡׳˜׳˜׳™: ׳׳“׳¨׳™׳ ׳׳ ׳™׳”׳•׳ ׳¡׳™׳›׳•׳ ׳™׳, ׳×׳•׳‘׳ ׳•׳× ׳׳׳™׳¨׳•׳¢׳™׳ ׳•׳‘׳§׳¨׳•׳×</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 28.04.2026</span>
+                    <span class="meta-chip">&#128205; ׳₪׳׳¨׳§ ׳¢׳×׳™׳“׳™׳, ׳×׳ ׳׳‘׳™׳‘</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳™׳•׳ ׳¢׳™׳•׳ ׳׳¢׳©׳™ ׳׳׳ ׳”׳׳™ ׳‘׳˜׳™׳—׳•׳×, ׳׳”׳ ׳“׳¡׳™ ׳×׳”׳׳™׳ ׳•׳׳ ׳©׳™ ׳×׳₪׳¢׳•׳, ׳¢׳ ׳“׳’׳© ׳¢׳ ׳ ׳™׳”׳•׳ ׳¡׳™׳›׳•׳ ׳™ ׳—׳©׳׳ ׳¡׳˜׳˜׳™, ׳¨׳’׳•׳׳¦׳™׳”, ׳×׳•׳‘׳ ׳•׳× ׳׳׳™׳¨׳•׳¢׳™׳ ׳•׳₪׳×׳¨׳•׳ ׳•׳× ׳”׳ ׳“׳¡׳™׳™׳ ׳׳•׳›׳—׳™׳.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://static-electricity-guide2026.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/static-electricity-guide/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2022/02/Electric-Ground.jpg" alt="׳™׳•׳ ׳¢׳™׳•׳ ׳‘׳“׳™׳§׳•׳× ׳×׳§׳™׳ ׳•׳× ׳”׳׳¨׳§׳”" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳™׳•׳ ׳¢׳™׳•׳</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳™׳•׳ ׳¢׳™׳•׳ ׳‘׳ ׳•׳©׳ ׳‘׳“׳™׳§׳•׳× ׳×׳§׳™׳ ׳•׳× ׳”׳׳¨׳§׳”</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 30.04.2026</span>
+                    <span class="meta-chip">&#128205; ׳‘׳™׳× ׳”׳׳”׳ ׳“׳¡, ׳×׳ ׳׳‘׳™׳‘</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳™׳•׳ ׳¢׳™׳•׳ ׳™׳™׳©׳•׳׳™ ׳׳׳”׳ ׳“׳¡׳™ ׳—׳©׳׳, ׳‘׳•׳“׳§׳™׳, ׳—׳©׳׳׳׳™׳ ׳•׳¦׳•׳•׳×׳™ ׳׳—׳–׳§׳”, ׳¢׳ ׳“׳’׳© ׳¢׳ ׳‘׳“׳™׳§׳•׳× ׳”׳׳¨׳§׳”, ׳׳“׳™׳“׳•׳×, ׳¢׳׳™׳“׳” ׳‘׳×׳§׳, ׳ ׳™׳”׳•׳ ׳¡׳™׳›׳•׳ ׳™׳ ׳•׳×׳—׳–׳•׳§׳” ׳׳§׳¦׳•׳¢׳™׳×.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://seminar-grounding-test-26-03-26.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/seminar-grounding-test-tlv/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://storage.googleapis.com/fw-products-uploads/forms-wizard/8/forms/banners/1108/xlarge/b56bb625ec3df1400d5c77308b6ff4db7e162eff.jpg" alt="׳”׳›׳ ׳¡ ׳”׳™׳©׳¨׳׳׳™ ׳׳¨׳™׳×׳•׳ 2026" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳›׳ ׳¡ ׳©׳ ׳×׳™</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳”׳›׳ ׳¡ ׳”׳™׳©׳¨׳׳׳™ ׳׳¨׳™׳×׳•׳ 2026</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 11.05.2026</span>
+                    <span class="meta-chip">&#128205; ׳׳•׳׳׳™ ׳•׳•׳׳׳™, ׳›׳₪׳¨ ׳¡׳‘׳</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳›׳ ׳¡ ׳”׳“׳’׳ ׳”׳©׳ ׳×׳™ ׳©׳ ׳×׳—׳•׳ ׳”׳¨׳™׳×׳•׳ ׳‘׳™׳©׳¨׳׳, ׳”׳׳₪׳’׳™׳© ׳×׳¢׳©׳™׳™׳”, ׳׳§׳“׳׳™׳”, ׳׳₪׳§׳—׳™׳ ׳•׳׳ ׳©׳™ ׳׳§׳¦׳•׳¢ ׳¡׳‘׳™׳‘ ׳—׳“׳©׳ ׳•׳×, ׳˜׳›׳ ׳•׳׳•׳’׳™׳•׳× ׳׳×׳§׳“׳׳•׳× ׳•׳׳’׳׳•׳× ׳™׳™׳©׳•׳׳™׳•׳× ׳׳”׳©׳˜׳—.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://welding-conference-2026.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://welding-conference-2026.form-wizard.co/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 18px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://storage.googleapis.com/fw-products-uploads/forms-wizard/8/forms/banners/961/xlarge/10978478b83b3a990ffdaae63227b34a0073997f.jpg" alt="׳”׳›׳ ׳¡ ׳”׳™׳©׳¨׳׳׳™ ׳׳§׳•׳¨׳•׳–׳™׳” 2026" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳›׳ ׳¡ ׳׳§׳¦׳•׳¢׳™</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳”׳›׳ ׳¡ ׳”׳™׳©׳¨׳׳׳™ ׳׳§׳•׳¨׳•׳–׳™׳” 2026</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 11.05.2026</span>
+                    <span class="meta-chip">&#129514; AMPP Israel</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳›׳ ׳¡ ׳׳§׳¦׳•׳¢׳™ ׳׳¨׳›׳–׳™ ׳׳§׳”׳™׳׳× ׳”׳§׳•׳¨׳•׳–׳™׳” ׳•׳”׳’׳ ׳× ׳”׳—׳•׳׳¨׳™׳, ׳¢׳ ׳¢׳“׳›׳•׳ ׳™׳, ׳™׳“׳¢ ׳™׳™׳©׳•׳׳™, ׳׳₪׳’׳© ׳׳•׳׳—׳™׳ ׳•׳×׳•׳›׳ ׳׳§׳¦׳•׳¢׳™ ׳׳׳•׳§׳“ ׳׳׳ ׳©׳™ ׳”׳×׳—׳•׳.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://corrosion-conference-2026.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://corrosion-conference-2026.form-wizard.co/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="section-band" style="padding: 14px 24px;">
+              <span class="section-pill">3</span>
+              <h2 class="section-title" style="display:inline-block; margin-right:10px;">׳§׳•׳¨׳¡׳™׳, ׳”׳¡׳׳›׳•׳× ׳•׳¡׳“׳ ׳׳•׳×</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 12px 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/05/applied-metallurgy-production-course.jpg" alt="׳§׳•׳¨׳¡ ׳׳˜׳׳•׳¨׳’׳™׳” ׳™׳™׳©׳•׳׳™׳×" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳§׳•׳¨׳¡ ׳׳§׳¦׳•׳¢׳™</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳§׳•׳¨׳¡ ׳׳˜׳׳•׳¨׳’׳™׳” ׳™׳™׳©׳•׳׳™׳× ׳•׳×׳”׳׳™׳›׳™ ׳™׳™׳¦׳•׳¨ ׳׳×׳›׳•׳×</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 17.03.2026 - 26.05.2026</span>
+                    <span class="meta-chip">&#127891; ׳‘׳©׳™׳×׳•׳£ ׳”׳˜׳›׳ ׳™׳•׳</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳§׳•׳¨׳¡ ׳׳¢׳׳™׳§ ׳׳׳”׳ ׳“׳¡׳™׳ ׳׳ ׳•׳¡׳™׳, ׳”׳׳¨׳—׳™׳‘ ׳׳× ׳”׳™׳“׳¢ ׳‘׳×׳—׳•׳׳™ ׳×׳›׳ ׳”׳—׳•׳׳¨׳™׳, ׳׳‘׳ ׳” ׳•׳”׳¨׳›׳‘, ׳•׳׳¦׳™׳¢ ׳׳¡׳’׳¨׳× ׳׳™׳׳•׳“ ׳™׳¡׳•׳“׳™׳× ׳•׳¢׳“׳›׳ ׳™׳× ׳׳¢׳‘׳•׳“׳” ׳¢׳ ׳׳×׳›׳•׳× ׳•׳—׳•׳׳¨׳™׳.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://applied-metallurgy-production-course28-10-2025.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/applied-metallurgy-production-course/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/11/98586438_s.jpg" alt="׳§׳•׳¨׳¡ ׳׳‘׳•׳ ׳׳§׳•׳¨׳•׳–׳™׳”" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳§׳•׳¨׳¡ ׳׳§׳¦׳•׳¢׳™ | ׳—׳™׳₪׳”</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳§׳•׳¨׳¡ ׳׳‘׳•׳ ׳׳§׳•׳¨׳•׳–׳™׳” - ׳¦׳‘׳¢, ׳¦׳‘׳™׳¢׳” ׳•׳‘׳§׳¨׳× ׳׳™׳›׳•׳×</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 12.04.2026 - 31.05.2026</span>
+                    <span class="meta-chip">&#127941; ׳׳•׳›׳¨ ׳׳’׳׳•׳ ׳”׳©׳×׳׳׳•׳×</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳§׳•׳¨׳¡ ׳™׳¡׳•׳“ ׳׳§׳™׳£ ׳׳”׳›׳¨׳× ׳¢׳•׳׳ ׳”׳§׳•׳¨׳•׳–׳™׳”, ׳”׳”׳’׳ ׳” ׳¢׳ ׳—׳•׳׳¨׳™׳ ׳•׳×׳”׳׳™׳›׳™ ׳¦׳‘׳¢ ׳•׳¦׳‘׳™׳¢׳”, ׳›׳•׳׳ ׳”׳›׳ ׳× ׳©׳˜׳—, ׳™׳™׳©׳•׳, ׳‘׳§׳¨׳× ׳׳™׳›׳•׳× ׳•׳₪׳™׳§׳•׳—.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://corrosion-course-2603.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/corrosion-course/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/11/cathodicprotection-course650X330.jpg" alt="׳§׳•׳¨׳¡ ׳”׳’׳ ׳” ׳§׳×׳•׳“׳™׳× ׳•׳”׳ ׳“׳¡׳× ׳—׳•׳׳¨׳™׳" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳§׳•׳¨׳¡ ׳׳§׳¦׳•׳¢׳™</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳§׳•׳¨׳¡ ׳”׳’׳ ׳” ׳§׳×׳•׳“׳™׳× ׳•׳”׳ ׳“׳¡׳× ׳—׳•׳׳¨׳™׳</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 28.04.2026 - 14.07.2026</span>
+                    <span class="meta-chip">&#129514; ׳—׳•׳׳¨׳™׳, ׳¦׳‘׳¢׳™׳ ׳•׳¦׳™׳₪׳•׳™׳™׳</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳׳¡׳׳•׳ ׳”׳׳¢׳ ׳™׳§ ׳׳‘׳˜ ׳™׳™׳©׳•׳׳™ ׳¨׳—׳‘ ׳¢׳ ׳׳ ׳™׳¢׳× ׳§׳•׳¨׳•׳–׳™׳”, ׳©׳™׳˜׳•׳× ׳׳ ׳˜׳™׳§׳•׳¨׳•׳–׳™׳‘׳™׳•׳×, ׳”׳’׳ ׳” ׳§׳×׳•׳“׳™׳× ׳•׳‘׳—׳™׳¨׳× ׳₪׳×׳¨׳•׳ ׳•׳× ׳˜׳›׳ ׳•-׳›׳׳›׳׳™׳™׳ ׳׳×׳׳™׳׳™׳.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://cathodicprotection-course24-02-2026.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/cathodicprotection-course/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 8px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/07/tests_center_660X1300-f1.png" alt="׳׳‘׳—׳ ׳”׳¡׳׳›׳” ׳׳₪׳§׳— ׳¨׳™׳×׳•׳" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳׳‘׳—׳ ׳”׳¡׳׳›׳”</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳׳‘׳—׳ ׳”׳¡׳׳›׳” ׳׳₪׳§׳— ׳¨׳™׳×׳•׳</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 03-05.05.2026</span>
+                    <span class="meta-chip">&#9200; ׳׳—׳¨׳•׳ ׳׳”׳¨׳©׳׳”: 12.04.2026</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳׳—׳–׳•׳¨ ׳‘׳—׳™׳ ׳•׳× ׳׳§׳¨׳׳× ׳”׳¡׳׳›׳” ׳›׳׳₪׳§׳— ׳¨׳™׳×׳•׳, ׳”׳–׳“׳׳ ׳•׳× ׳׳§׳¦׳•׳¢׳™׳× ׳׳”׳¡׳“׳™׳¨ ׳×׳¢׳•׳“׳” ׳׳•׳›׳¨׳× ׳•׳׳”׳×׳§׳“׳ ׳‘׳׳¡׳׳•׳ ׳”׳×׳׳—׳•׳× ׳׳׳•׳¡׳“ ׳‘׳×׳—׳•׳.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://welding-inspector-test-03-05-2026.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/welding-inspector/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 18px;">
+              <table role="presentation" width="100%" class="card">
+                <tr>
+                  <td style="padding: 14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/12/electrical-license-workshop-2026-650X330.jpg" alt="׳§׳•׳¨׳¡ ׳”׳›׳ ׳” ׳׳¨׳™׳©׳•׳™ ׳׳”׳ ׳“׳¡׳™ ׳•׳”׳ ׳“׳¡׳׳™ ׳—׳©׳׳" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+
+                    <span class="tag">׳§׳•׳¨׳¡ ׳”׳›׳ ׳” | ׳‘׳׳¨ ׳©׳‘׳¢</span>
+                    <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
+                    <h3 class="card-title">׳§׳•׳¨׳¡ ׳”׳›׳ ׳” ׳׳¨׳™׳©׳•׳™ ׳׳”׳ ׳“׳¡׳™ ׳•׳”׳ ׳“׳¡׳׳™ ׳—׳©׳׳</h3>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <span class="meta-chip">&#128197; 14.05.2026 - 17.09.2026</span>
+                    <span class="meta-chip">&#9889; ׳”׳›׳ ׳” ׳׳‘׳—׳™׳ ׳” ׳”׳׳׳©׳׳×׳™׳×</span>
+                    <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
+                    <p class="card-text">
+                      ׳§׳•׳¨׳¡ ׳™׳™׳¢׳•׳“׳™ ׳׳׳”׳ ׳“׳¡׳™׳ ׳•׳׳”׳ ׳“׳¡׳׳™׳ ׳”׳׳¢׳•׳ ׳™׳™׳ ׳™׳ ׳׳”׳™׳¢׳¨׳ ׳‘׳¦׳•׳¨׳” ׳׳׳•׳§׳“׳× ׳׳¨׳™׳©׳•׳™, ׳¢׳ ׳׳¡׳’׳¨׳× ׳׳§׳¦׳•׳¢׳™׳× ׳׳¡׳•׳“׳¨׳× ׳•׳×׳•׳›׳ ׳”׳׳•׳×׳׳ ׳׳“׳¨׳™׳©׳•׳× ׳”׳‘׳—׳™׳ ׳”.
+                    </p>
+                    <div style="height:14px; line-height:14px; font-size:0;">&nbsp;</div>
+                    <table role="presentation" class="mobile-block">
+                      <tr>
+                        <td class="mobile-center">
+                          <a href="https://electrical-license-workshop-2026.form-wizard.co/users/new" class="button button-primary">׳׳”׳¨׳©׳׳”</a>
+                        </td>
+                        <td width="8" class="mobile-spacer">&nbsp;</td>
+                        <td class="mobile-center">
+                          <a href="https://www.aeai.org.il/activity/electric-licensing-course/" class="button button-secondary">׳׳₪׳¨׳˜׳™׳</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="section-band" style="padding: 14px 24px;">
+              <span class="section-pill">4</span>
+              <h2 class="section-title" style="display:inline-block; margin-right:10px;">׳”׳˜׳‘׳•׳×</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 14px 24px 8px;">
+              <p class="section-text">׳©׳׳•׳©׳× ׳”׳‘׳׳ ׳¨׳™׳ ׳”׳׳¦׳•׳¨׳₪׳™׳ ׳©׳•׳‘׳¦׳• ׳›׳׳. ׳׳›׳ ׳׳—׳“ ׳׳”׳ ׳™׳© ׳׳§׳•׳ ׳‘׳¨׳•׳¨ ׳׳¢׳“׳›׳•׳ ׳§׳™׳©׳•׳¨.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 10px;">
+              <!-- LINK: ׳”׳—׳׳£ ׳›׳׳ ׳׳× ׳§׳™׳©׳•׳¨ ׳”׳”׳˜׳‘׳” ׳”׳¨׳׳©׳•׳ ׳” -->
+              <a href="https://example.com/benefit-banner-1">
+                <table role="presentation" width="100%" class="banner-frame">
+                  <tr>
+                    <td>
+                      <img src="assets/benefit-banner-1.png" alt="׳‘׳׳ ׳¨ ׳”׳˜׳‘׳” 1" width="712">
+                    </td>
+                  </tr>
+                </table>
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 10px;">
+              <!-- LINK: ׳”׳—׳׳£ ׳›׳׳ ׳׳× ׳§׳™׳©׳•׳¨ ׳”׳”׳˜׳‘׳” ׳”׳©׳ ׳™׳™׳” -->
+              <a href="https://example.com/benefit-banner-2">
+                <table role="presentation" width="100%" class="banner-frame">
+                  <tr>
+                    <td>
+                      <img src="assets/benefit-banner-2.png" alt="׳‘׳׳ ׳¨ ׳”׳˜׳‘׳” 2" width="712">
+                    </td>
+                  </tr>
+                </table>
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 18px;">
+              <!-- LINK: ׳”׳—׳׳£ ׳›׳׳ ׳׳× ׳§׳™׳©׳•׳¨ ׳”׳”׳˜׳‘׳” ׳”׳©׳׳™׳©׳™׳× -->
+              <a href="https://example.com/benefit-banner-3">
+                <table role="presentation" width="100%" class="banner-frame">
+                  <tr>
+                    <td>
+                      <img src="assets/benefit-banner-3.png" alt="׳‘׳׳ ׳¨ ׳”׳˜׳‘׳” 3" width="712">
+                    </td>
+                  </tr>
+                </table>
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="section-band" style="padding: 14px 24px;">
+              <span class="section-pill">5</span>
+              <h2 class="section-title" style="display:inline-block; margin-right:10px;">׳”׳¦׳˜׳¨׳₪׳•׳× ׳׳׳©׳›׳× ׳”׳׳”׳ ׳“׳¡׳™׳</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 14px 24px 10px;">
+              <p class="section-text">׳”׳‘׳׳ ׳¨ ׳”׳׳‘׳ ׳©׳”׳¢׳‘׳¨׳× ׳©׳•׳‘׳¥ ׳›׳׳ ׳›׳‘׳׳•׳§ ׳”׳¦׳˜׳¨׳₪׳•׳× ׳ ׳₪׳¨׳“.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 18px;">
+              <!-- LINK: ׳”׳—׳׳£ ׳›׳׳ ׳׳× ׳§׳™׳©׳•׳¨ ׳”׳”׳¦׳˜׳¨׳₪׳•׳× ׳׳׳©׳›׳” -->
+              <a href="https://example.com/join-aeai">
+                <table role="presentation" width="100%" class="banner-frame">
+                  <tr>
+                    <td>
+                      <img src="assets/join-aeai-banner.png" alt="׳—׳‘׳¨׳•׳× ׳‘׳׳©׳›׳× ׳”׳׳”׳ ׳“׳¡׳™׳" width="712">
+                    </td>
+                  </tr>
+                </table>
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 18px;">
+              <table role="presentation" width="100%" class="note-box">
+                <tr>
+                  <td style="padding: 16px 18px;">
+                    <p style="margin:0; color:#0f3555; font-size:17px; line-height:23px; font-weight:700;">׳‘׳׳•׳§ ׳׳•׳›׳ ׳׳©׳›׳₪׳•׳</p>
+                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
+                    <p class="section-text">
+                      ׳׳ ׳×׳¨׳¦׳” ׳׳”׳•׳¡׳™׳£ ׳₪׳¢׳™׳׳•׳× ׳ ׳•׳¡׳₪׳×, ׳׳₪׳©׳¨ ׳׳”׳¢׳×׳™׳§ ׳›׳ ׳‘׳׳•׳§ ׳׳¡׳•׳’ card, ׳׳©׳ ׳•׳× ׳×׳׳•׳ ׳”, ׳›׳•׳×׳¨׳×, ׳×׳™׳׳•׳¨, ׳×׳׳¨׳™׳ ׳•׳§׳™׳©׳•׳¨׳™׳, ׳•׳׳”׳“׳‘׳™׳§ ׳׳×׳—׳× ׳׳§׳˜׳’׳•׳¨׳™׳” ׳”׳׳×׳׳™׳׳”.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding: 0 24px 28px;">
+              <p class="footer-text">
+                ׳׳§׳•׳¨ ׳”׳×׳•׳›׳ ׳•׳”׳§׳™׳©׳•׳¨׳™׳: ׳¢׳׳•׳“ ׳”׳₪׳¢׳™׳׳•׳™׳•׳× ׳”׳”׳ ׳“׳¡׳™-׳˜׳›׳ ׳•׳׳•׳’׳™-׳׳“׳¢׳™, ׳¢׳׳•׳“ ׳”׳¡׳׳™׳ ׳¨׳™׳ ׳‘׳׳¨׳¥, ׳•׳¢׳׳•׳“ ׳”׳¡׳™׳•׳¨׳™׳ ׳”׳׳§׳¦׳•׳¢׳™׳™׳ ׳‘׳—׳•"׳ ׳‘׳׳×׳¨ ׳׳©׳›׳× ׳”׳׳”׳ ׳“׳¡׳™׳.
+              </p>
+              <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
+              <p class="footer-text">
+                ׳׳₪׳ ׳™ ׳©׳׳™׳—׳” ׳׳•׳׳׳¥ ׳׳¢׳‘׳•׳¨ ׳¢׳ ׳›׳ ׳›׳₪׳×׳•׳¨, ׳׳׳©׳¨ ׳×׳§׳™׳ ׳•׳× ׳§׳™׳©׳•׳¨׳™׳, ׳•׳׳•׳•׳“׳ ׳©׳×׳׳•׳ ׳•׳× ׳׳§׳•׳׳™׳•׳× ׳”׳•׳—׳׳₪׳• ׳׳›׳×׳•׳‘׳•׳× ׳¦׳™׳‘׳•׳¨׳™׳•׳× ׳׳ ׳”׳׳™׳™׳ ׳ ׳©׳׳— ׳׳׳¢׳¨׳›׳× ׳“׳™׳•׳•׳¨.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
