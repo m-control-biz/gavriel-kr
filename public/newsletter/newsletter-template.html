@@ -6,407 +6,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>הפעילויות המקצועיות הקרובות | אפריל-מאי 2026</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #eaf0f5;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #1f2937;
-    }
-
-    table {
-      border-spacing: 0;
-      border-collapse: collapse;
-    }
-
-    img {
-      border: 0;
-      display: block;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    .wrapper {
-      width: 100%;
-      background-color: #eaf0f5;
-      padding: 16px 0;
-    }
-
-    .container {
-      width: 600px;
-      max-width: 600px;
-      background-color: #ffffff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
-    }
-
-    .hero-band {
-      background: linear-gradient(135deg, #0f3555 0%, #123f67 55%, #176089 100%);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.14);
-      color: #eff6ff;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
-      line-height: 16px;
-      font-weight: 700;
-    }
-
-    .hero-title {
-      margin: 0;
-      color: #ffffff;
-      font-size: 30px;
-      line-height: 38px;
-      font-weight: 700;
-    }
-
-    .hero-text {
-      margin: 0;
-      color: #dbeafe;
-      font-size: 15px;
-      line-height: 24px;
-    }
-
-    .mini-chip {
-      display: inline-block;
-      border-radius: 999px;
-      background-color: #f4f8fb;
-      color: #0f3555;
-      border: 1px solid #d7e2eb;
-      padding: 7px 12px;
-      font-size: 12px;
-      line-height: 16px;
-      font-weight: 700;
-    }
-
-    .mini-chip-link {
-      display: inline-block;
-      color: #0f3555;
-      margin: 4px 3px;
-    }
-
-    .section-title {
-      margin: 0;
-      color: #0f3555;
-      font-size: 24px;
-      line-height: 30px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .section-text {
-      margin: 0;
-      color: #556273;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    .section-band {
-      background: linear-gradient(180deg, #f8fbfd 0%, #f3f8fb 100%);
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      text-align: center;
-    }
-
-    .section-accent {
-      width: 72px;
-      height: 4px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #1f7aa8 0%, #0f3555 100%);
-      margin: 8px auto 0;
-      font-size: 0;
-      line-height: 0;
-    }
-
-    .card {
-      border: 1px solid #dde5ec;
-      border-collapse: separate;
-      border-spacing: 0;
-      border-radius: 16px;
-      overflow: hidden;
-      background-color: #ffffff;
-      box-shadow: inset 0 0 0 1px #eef3f7, 0 1px 3px rgba(15, 53, 85, 0.025);
-      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
-    }
-
-    .card:hover {
-      border-color: #d2dce5;
-      box-shadow: inset 0 0 0 1px #edf2f6, 0 5px 12px rgba(15, 53, 85, 0.06);
-      transform: translateY(-1px);
-    }
-
-    .tag {
-      display: inline-block;
-      background-color: #e5f2fb;
-      color: #12506d;
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 11px;
-      line-height: 15px;
-      font-weight: 700;
-    }
-
-    .card-title {
-      margin: 0;
-      color: #111827;
-      font-size: 20px;
-      line-height: 25px;
-      font-weight: 700;
-    }
-
-    .card-text {
-      margin: 0;
-      color: #4b5563;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    .meta-chip {
-      display: inline-block;
-      background-color: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 999px;
-      color: #0f3555;
-      padding: 4px 9px;
-      font-size: 11px;
-      line-height: 14px;
-      font-weight: 700;
-      margin-left: 5px;
-      margin-bottom: 5px;
-    }
-
-    .button {
-      display: inline-block;
-      border-radius: 999px;
-      padding: 8px 15px;
-      font-size: 13px;
-      line-height: 16px;
-      font-weight: 700;
-    }
-
-    .button-primary {
-      background-color: #0f3555;
-      color: #ffffff;
-    }
-
-    .button-secondary {
-      background-color: #eef5fa;
-      color: #0f3555;
-    }
-
-    .note-box {
-      border: 1px solid #dbe3ea;
-      border-radius: 16px;
-      background-color: #f8fbfd;
-    }
-
-    .alert-note {
-      border-color: rgba(185, 28, 28, 0.16);
-      background-color: rgba(185, 28, 28, 0.06);
-    }
-
-    .banner-frame {
-      border: 1px solid #dbe3ea;
-      border-radius: 14px;
-      overflow: hidden;
-      background-color: #ffffff;
-    }
-
-    .join-box {
-      border: 1px solid #d9e3ec;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 62%, #f7fafc 100%);
-      box-shadow: 0 8px 20px rgba(15, 53, 85, 0.05);
-    }
-
-    .join-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, #f7fafc 0%, #ecf3f8 100%);
-      border: 1px solid #dde6ee;
-      color: #0f3555;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-
-    .join-icon svg {
-      width: 26px;
-      height: 26px;
-      display: block;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .join-label {
-      margin: 0;
-      color: #0f3555;
-      font-size: 13px;
-      line-height: 18px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .join-copy {
-      margin: 0;
-      color: #5b6674;
-      font-size: 14px;
-      line-height: 22px;
-      text-align: center;
-    }
-
-    .join-feature {
-      border: 1px solid #e8eef3;
-      border-radius: 14px;
-      background-color: #ffffff;
-      padding: 12px 8px;
-    }
-
-    .join-cta {
-      display: inline-block;
-      min-width: 190px;
-      border-radius: 999px;
-      padding: 10px 20px;
-      background: linear-gradient(180deg, #143d61 0%, #0f3555 100%);
-      box-shadow: 0 8px 16px rgba(15, 53, 85, 0.12);
-      color: #ffffff;
-      font-size: 14px;
-      line-height: 18px;
-      font-weight: 700;
-    }
-
-    .button-disabled {
-      background-color: #d7e2eb;
-      color: #5b6b78;
-    }
-
-    .footer-text {
-      margin: 0;
-      color: #6b7280;
-      font-size: 13px;
-      line-height: 20px;
-    }
-
-    .social-link {
-      display: inline-block;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
-      text-align: center;
-      border-radius: 999px;
-      background-color: #0f3555;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 700;
-      margin: 0 5px;
-    }
-
-    @media screen and (max-width: 640px) {
-      .wrapper {
-        padding: 0;
-      }
-
-      .container {
-        border-radius: 0;
-      }
-
-      .hero-title {
-        font-size: 26px;
-        line-height: 32px;
-      }
-
-      .card-title {
-        font-size: 19px;
-        line-height: 25px;
-      }
-
-      .mobile-block,
-      .mobile-block tbody,
-      .mobile-block tr,
-      .mobile-block td {
-        display: block !important;
-        width: 100% !important;
-      }
-
-      .mobile-spacer {
-        height: 8px !important;
-      }
-
-      .mobile-center {
-        text-align: center !important;
-      }
+    body { margin:0; padding:0; background-color:#eaf0f5; font-family:Arial,Helvetica,sans-serif; color:#1f2937; }
+    table { border-spacing:0; border-collapse:collapse; }
+    img { border:0; display:block; width:100%; max-width:100%; }
+    a { text-decoration:none; }
+    .card { border-collapse:separate!important; }
+    @media screen and (max-width:640px) {
+      .wrapper { padding:0!important; }
+      .container { border-radius:0!important; }
+      .hero-title { font-size:26px!important; line-height:32px!important; }
+      .card-title { font-size:19px!important; line-height:25px!important; }
+      .mobile-block,.mobile-block tbody,.mobile-block tr,.mobile-block td { display:block!important; width:100%!important; }
+      .mobile-spacer { height:8px!important; }
+      .mobile-center { text-align:center!important; }
     }
   </style>
 </head>
-<body dir="rtl">
-  <!--
-    מדריך עריכה מהיר:
-    1. טקסטים: עורכים ישירות את הכותרות, התיאורים והתאריכים.
-    2. קישורים: מחליפים את הכתובת שבתוך href="...".
-    3. פעילות חדשה: מעתיקים בלוק שלם של card ומשנים תוכן.
-    4. באנרים מצורפים: כרגע הם נטענים מקומית מתוך תיקיית assets.
-    5. לפני שליחה במערכת דיוור: העלו את קבצי assets לכתובת ציבורית והחליפו את src לכתובות אינטרנט.
-  -->
-  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+<body dir="rtl" style="margin:0;padding:0;background-color:#eaf0f5;font-family:Arial,Helvetica,sans-serif;color:#1f2937;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
     סמינרים מקצועיים, כנסים, ימי עיון, קורסים, הסמכות והטבות לחודשים אפריל-מאי 2026.
   </div>
 
-  <table role="presentation" width="100%" class="wrapper" dir="rtl">
+  <table role="presentation" width="100%" class="wrapper" dir="rtl" style="width:100%;background-color:#eaf0f5;padding:8px 0;">
     <tr>
-      <td align="center" style="padding: 8px;">
-        <table role="presentation" width="600" class="container" style="max-width:600px; width:100%;">
+      <td align="center" style="padding:8px;">
+        <table role="presentation" width="600" class="container" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:18px;overflow:hidden;">
           <tr>
-            <td style="background-color:#ffffff; padding:0;">
-              <img src="assets/header-aeai.png" alt="לשכת המהנדסים והאדריכלים בישראל" width="600">
+            <td style="background-color:#ffffff;padding:0;">
+              <img src="assets/header-aeai.png" alt="לשכת המהנדסים והאדריכלים בישראל" width="600" style="display:block;width:100%;max-width:600px;border:0;">
             </td>
           </tr>
 
           <tr>
-            <td class="hero-band" style="padding: 22px 28px 20px;" align="right" dir="rtl">
-              <span class="eyebrow">דיוור חודשי | פעילויות מקצועיות קרובות</span>
-              <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-              <h1 class="hero-title">אפריל-מאי 2026: עדכונים מלחמת &quot;שאגת-הארי&quot;</h1>
-              <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-              <table role="presentation" class="mobile-block" dir="rtl" align="right">
+            <td class="hero-band" style="padding:22px 28px 20px;background:linear-gradient(135deg,#0f3555 0%,#123f67 55%,#176089 100%);" align="right" dir="rtl">
+              <span class="eyebrow" style="display:inline-block;background-color:rgba(255,255,255,0.14);color:#eff6ff;border-radius:999px;padding:6px 12px;font-size:12px;line-height:16px;font-weight:700;">דיוור חודשי | פעילויות מקצועיות קרובות</span>
+              <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+              <h1 class="hero-title" style="margin:0;color:#ffffff;font-size:30px;line-height:38px;font-weight:700;">אפריל-מאי 2026: עדכונים מלחמת &quot;שאגת-הארי&quot;</h1>
+              <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+              <table role="presentation" class="mobile-block" dir="rtl" align="right" style="border-spacing:0;border-collapse:collapse;">
                 <tr>
                   <td class="mobile-center" align="right">
-                    <a href="https://www.aeai.org.il/activity_cat/technological-development/" class="button button-primary">לאינדקס הפעילויות</a>
+                    <a href="https://www.aeai.org.il/activity_cat/technological-development/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">לאינדקס הפעילויות</a>
                   </td>
                   <td width="8" class="mobile-spacer">&nbsp;</td>
                   <td class="mobile-center" align="right">
-                    <a href="https://www.aeai.org.il/" class="button button-secondary">לאתר הלשכה</a>
+                    <a href="https://www.aeai.org.il/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לאתר הלשכה</a>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
 
-
           <tr>
-            <td style="padding: 8px 24px 14px;" align="right" dir="rtl">
-              <table role="presentation" width="100%" class="note-box alert-note" dir="rtl">
+            <td style="padding:8px 24px 14px;" align="right" dir="rtl">
+              <table role="presentation" width="100%" dir="rtl" style="border:1px solid rgba(185,28,28,0.16);border-radius:16px;background-color:rgba(185,28,28,0.06);border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 16px 18px;" align="right">
-                    <p style="margin:0; color:#991b1b; font-size:17px; line-height:23px; font-weight:700;">עדכון חשוב</p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="section-text">
+                  <td style="padding:16px 18px;" align="right">
+                    <p style="margin:0;color:#991b1b;font-size:17px;line-height:23px;font-weight:700;">עדכון חשוב</p>
+                    <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                    <p style="margin:0;color:#556273;font-size:14px;line-height:20px;">
                       לאור המצב הביטחוני והמלחמה, חלק מהפעילויות נדחו ועודכנו למועדים חדשים. ריכזנו כאן את התאריכים המעודכנים כדי לאפשר תכנון נוח, רישום מהיר ומעקב אחר כל הפעילויות הקרובות.
                     </p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="section-text" style="font-weight:700; color:#7f1d1d;">
+                    <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                    <p style="margin:0;color:#7f1d1d;font-size:14px;line-height:20px;font-weight:700;">
                       בכנס הישראלי לקורוזיה ובכנס הישראלי לריתוך ניתן לשריין מקום, להירשם ולשלם גם סמוך למועד האירוע.
                     </p>
                   </td>
@@ -416,41 +78,40 @@
           </tr>
 
           <tr>
-            <td id="seminars" class="section-band" style="padding: 14px 24px;">
-              <h2 class="section-title">סמינרים מקצועיים</h2>
-              <div class="section-accent">&nbsp;</div>
+            <td id="seminars" style="padding:14px 24px;background:linear-gradient(180deg,#f8fbfd 0%,#f3f8fb 100%);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;text-align:center;">
+              <h2 style="margin:0;color:#0f3555;font-size:24px;line-height:30px;font-weight:700;text-align:center;">סמינרים מקצועיים</h2>
+              <div style="display:block;width:72px;height:4px;border-radius:999px;background:linear-gradient(90deg,#1f7aa8 0%,#0f3555 100%);margin:8px auto 0;font-size:0;line-height:0;">&nbsp;</div>
             </td>
           </tr>
 
-
           <tr>
-            <td style="padding: 4px 24px 12px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:4px 24px 12px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="assets/seminars-israel-thumb.png" alt="סמינרים מקצועיים בארץ" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="assets/seminars-israel-thumb.png" alt="סמינרים מקצועיים בארץ" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">סמינרים מקצועיים בארץ</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <span class="meta-chip">&#128197; מבחר תאריכים</span>
-                          <span class="meta-chip">&#128205; מס&#39; המקומות מוגבל</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">סמינרים מקצועיים בארץ</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; מבחר תאריכים</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; מס&#39; המקומות מוגבל</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             מגוון סמינרים מקצועיים בארץ במתכונת מרוכזת, עם תוכן עדכני, מסגרת איכותית והפניה לרשימה המלאה של המועדים, המלונות ונושאי הסמינרים.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/seminars-in-israel-2026/" class="button button-primary">לרשימת הסמינרים</a>
-                        </td>
-                      </tr>
-                    </table>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/seminars-in-israel-2026/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">לרשימת הסמינרים</a>
+                              </td>
+                            </tr>
+                          </table>
                         </td>
                       </tr>
                     </table>
@@ -461,33 +122,33 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 18px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 18px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="assets/seminars-abroad-thumb.png" alt="סיורים מקצועיים בחו&quot;ל" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="assets/seminars-abroad-thumb.png" alt="סיורים מקצועיים בחו&quot;ל" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">סיורים הנדסיים-מקצועיים לחו&quot;ל</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <span class="meta-chip">&#128197; מבחר תאריכים</span>
-                          <span class="meta-chip">&#128205; מס&#39; המקומות מוגבל</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">סיורים הנדסיים-מקצועיים לחו&quot;ל</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; מבחר תאריכים</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; מס&#39; המקומות מוגבל</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             סיורים מקצועיים בחו&quot;ל המשלבים תוכן הנדסי מעשיר וחוויה בינלאומית, עם גישה לרשימה המלאה של היעדים, המועדים וקישורי ההרשמה.<br>&nbsp;
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/activity/abroadaeai2026/" class="button button-primary">לרשימת הסמינרים</a>
-                        </td>
-                      </tr>
-                    </table>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/activity/abroadaeai2026/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">לרשימת הסמינרים</a>
+                              </td>
+                            </tr>
+                          </table>
                         </td>
                       </tr>
                     </table>
@@ -498,41 +159,41 @@
           </tr>
 
           <tr>
-            <td id="conferences" class="section-band" style="padding: 14px 24px;">
-              <h2 class="section-title">כנסים וימי עיון</h2>
-              <div class="section-accent">&nbsp;</div>
+            <td id="conferences" style="padding:14px 24px;background:linear-gradient(180deg,#f8fbfd 0%,#f3f8fb 100%);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;text-align:center;">
+              <h2 style="margin:0;color:#0f3555;font-size:24px;line-height:30px;font-weight:700;text-align:center;">כנסים וימי עיון</h2>
+              <div style="display:block;width:72px;height:4px;border-radius:999px;background:linear-gradient(90deg,#1f7aa8 0%,#0f3555 100%);margin:8px auto 0;font-size:0;line-height:0;">&nbsp;</div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding: 12px 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:12px 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/11/static-banner-2.jpg" alt="יום עיון חשמל סטטי" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/11/static-banner-2.jpg" alt="יום עיון חשמל סטטי" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">חשמל סטטי: מדריך לניהול סיכונים, תובנות מאירועים ובקרות</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%97%D7%A9%D7%9E%D7%9C%20%D7%A1%D7%98%D7%98%D7%99%3A%20%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%9C%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%A1%D7%99%D7%9B%D7%95%D7%A0%D7%99%D7%9D%2C%20%D7%AA%D7%95%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D%20%D7%95%D7%91%D7%A7%D7%A8%D7%95%D7%AA&dates=20260428T083000/20260428T160000&details=%D7%99%D7%95%D7%9D%20%D7%A2%D7%99%D7%95%D7%9F%20AEAI%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20%D7%97%D7%A9%D7%9E%D7%9C%20%D7%A1%D7%98%D7%98%D7%99&location=%D7%93%D7%91%D7%95%D7%A8%D7%94%20%D7%94%D7%A0%D7%91%D7%99%D7%90%D7%94%20121%2C%20%D7%91%D7%A0%D7%99%D7%99%D7%9F%208%2C%20%D7%A4%D7%90%D7%A8%D7%A7%20%D7%A2%D7%AA%D7%99%D7%93%D7%99%D7%9D%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" class="meta-chip" title="הוסף ליומן">&#128197; 28.04.2026</a>
-                          <span class="meta-chip">&#128205; פארק עתידים, תל אביב</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">חשמל סטטי: מדריך לניהול סיכונים, תובנות מאירועים ובקרות</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%97%D7%A9%D7%9E%D7%9C%20%D7%A1%D7%98%D7%98%D7%99%3A%20%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%9C%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%A1%D7%99%D7%9B%D7%95%D7%A0%D7%99%D7%9D%2C%20%D7%AA%D7%95%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D%20%D7%95%D7%91%D7%A7%D7%A8%D7%95%D7%AA&dates=20260428T083000/20260428T160000&details=%D7%99%D7%95%D7%9D%20%D7%A2%D7%99%D7%95%D7%9F%20AEAI%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20%D7%97%D7%A9%D7%9E%D7%9C%20%D7%A1%D7%98%D7%98%D7%99&location=%D7%93%D7%91%D7%95%D7%A8%D7%94%20%D7%94%D7%A0%D7%91%D7%99%D7%90%D7%94%20121%2C%20%D7%91%D7%A0%D7%99%D7%99%D7%9F%208%2C%20%D7%A4%D7%90%D7%A8%D7%A7%20%D7%A2%D7%AA%D7%99%D7%93%D7%99%D7%9D%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 28.04.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; פארק עתידים, תל אביב</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             יום עיון מעשי למנהלי בטיחות, מהנדסי תהליך ואנשי תפעול, עם דגש על ניהול סיכוני חשמל סטטי, רגולציה, תובנות מאירועים ופתרונות הנדסיים מוכחים.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://www.aeai.org.il/activity/static-electricity-guide/" class="button button-secondary">לפרטים</a>
+                                <a href="https://www.aeai.org.il/activity/static-electricity-guide/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <a href="https://static-electricity-guide2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
+                                <a href="https://static-electricity-guide2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -546,35 +207,35 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2022/02/Electric-Ground.jpg" alt="יום עיון בדיקות תקינות הארקה" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2022/02/Electric-Ground.jpg" alt="יום עיון בדיקות תקינות הארקה" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">יום עיון בנושא בדיקות תקינות הארקה</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%99%D7%95%D7%9D%20%D7%A2%D7%99%D7%95%D7%9F%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20%D7%91%D7%93%D7%99%D7%A7%D7%95%D7%AA%20%D7%AA%D7%A7%D7%99%D7%A0%D7%95%D7%AA%20%D7%94%D7%90%D7%A8%D7%A7%D7%94&dates=20260430T083000/20260430T153000&details=%D7%99%D7%95%D7%9D%20%D7%A2%D7%99%D7%95%D7%9F%20AEAI%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20%D7%91%D7%93%D7%99%D7%A7%D7%95%D7%AA%20%D7%AA%D7%A7%D7%99%D7%A0%D7%95%D7%AA%20%D7%94%D7%90%D7%A8%D7%A7%D7%94&location=%D7%91%D7%99%D7%AA%20%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%2C%20%D7%93%D7%99%D7%96%D7%A0%D7%92%D7%95%D7%A3%20200%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" class="meta-chip" title="הוסף ליומן">&#128197; 30.04.2026</a>
-                          <span class="meta-chip">&#128205; בית המהנדס, תל אביב</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">יום עיון בנושא בדיקות תקינות הארקה</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%99%D7%95%D7%9D%20%D7%A2%D7%99%D7%95%D7%9F%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20%D7%91%D7%93%D7%99%D7%A7%D7%95%D7%AA%20%D7%AA%D7%A7%D7%99%D7%A0%D7%95%D7%AA%20%D7%94%D7%90%D7%A8%D7%A7%D7%94&dates=20260430T083000/20260430T153000&details=%D7%99%D7%95%D7%9D%20%D7%A2%D7%99%D7%95%D7%9F%20AEAI%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20%D7%91%D7%93%D7%99%D7%A7%D7%95%D7%AA%20%D7%AA%D7%A7%D7%99%D7%A0%D7%95%D7%AA%20%D7%94%D7%90%D7%A8%D7%A7%D7%94&location=%D7%91%D7%99%D7%AA%20%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%2C%20%D7%93%D7%99%D7%96%D7%A0%D7%92%D7%95%D7%A3%20200%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 30.04.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; בית המהנדס, תל אביב</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             יום עיון יישומי למהנדסי חשמל, בודקים, חשמלאים וצוותי אחזקה, עם דגש על בדיקות הארקה, מדידות, עמידה בתקן, ניהול סיכונים ותחזוקה מקצועית.
                           </p>
-                          <p class="card-text" style="font-size:12px; color:#0f3555; font-weight:700; margin-top:4px;">מוכר כיום כשירות לממוני בטיחות.</p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <p style="margin:0;color:#0f3555;font-size:12px;font-weight:700;margin-top:4px;">מוכר כיום כשירות לממוני בטיחות.</p>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://www.aeai.org.il/activity/seminar-grounding-test-tlv/" class="button button-secondary">לפרטים</a>
+                                <a href="https://www.aeai.org.il/activity/seminar-grounding-test-tlv/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <a href="https://seminar-grounding-test-26-03-26.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
+                                <a href="https://seminar-grounding-test-26-03-26.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -588,34 +249,34 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2018/07/Welding2024.jpg" alt="הכנס הישראלי לריתוך 2026" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2018/07/Welding2024.jpg" alt="הכנס הישראלי לריתוך 2026" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">הכנס הישראלי לריתוך 2026</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%9B%D7%A0%D7%A1%20%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%9C%D7%A8%D7%99%D7%AA%D7%95%D7%9A%202026&dates=20260511/20260512&details=%D7%9B%D7%A0%D7%A1%20AEAI%20%D7%9C%D7%A8%D7%99%D7%AA%D7%95%D7%9A%202026&location=%D7%90%D7%95%D7%9C%D7%9E%D7%99%20%D7%95%D7%95%D7%90%D7%9C%D7%99%2C%20%D7%9B%D7%A4%D7%A8%20%D7%A1%D7%91%D7%90" class="meta-chip" title="הוסף ליומן">&#128197; 11.05.2026</a>
-                          <span class="meta-chip">&#128205; אולמי וואלי, כפר סבא</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">הכנס הישראלי לריתוך 2026</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%9B%D7%A0%D7%A1%20%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%9C%D7%A8%D7%99%D7%AA%D7%95%D7%9A%202026&dates=20260511/20260512&details=%D7%9B%D7%A0%D7%A1%20AEAI%20%D7%9C%D7%A8%D7%99%D7%AA%D7%95%D7%9A%202026&location=%D7%90%D7%95%D7%9C%D7%9E%D7%99%20%D7%95%D7%95%D7%90%D7%9C%D7%99%2C%20%D7%9B%D7%A4%D7%A8%20%D7%A1%D7%91%D7%90" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 11.05.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; אולמי וואלי, כפר סבא</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             כנס הדגל השנתי של תחום הריתוך בישראל, המפגיש תעשייה, אקדמיה, מפקחים ואנשי מקצוע סביב חדשנות, טכנולוגיות מתקדמות ומגמות יישומיות מהשטח. ניתן לשריין מקום, להירשם ולשלם גם סמוך למועד האירוע.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://welding-conference-2026.form-wizard.co/" class="button button-secondary">לפרטים</a>
+                                <a href="https://welding-conference-2026.form-wizard.co/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <a href="https://welding-conference-2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
+                                <a href="https://welding-conference-2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -629,34 +290,34 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2023/12/avivitcorrosion2024.jpg" alt="הכנס הישראלי לקורוזיה 2026" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2023/12/avivitcorrosion2024.jpg" alt="הכנס הישראלי לקורוזיה 2026" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">הכנס הישראלי לקורוזיה 2026</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%9B%D7%A0%D7%A1%20%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%95%D7%96%D7%99%D7%94%202026&dates=20260511/20260512&details=%D7%9B%D7%A0%D7%A1%20AEAI%20%D7%9C%D7%A7%D7%95%D7%A8%D7%95%D7%96%D7%99%D7%94%202026&location=%D7%99%D7%A9%D7%A8%D7%90%D7%9C" class="meta-chip" title="הוסף ליומן">&#128197; 11.05.2026</a>
-                          <span class="meta-chip">&#129514; AMPP Israel</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">הכנס הישראלי לקורוזיה 2026</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%9B%D7%A0%D7%A1%20%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%95%D7%96%D7%99%D7%94%202026&dates=20260511/20260512&details=%D7%9B%D7%A0%D7%A1%20AEAI%20%D7%9C%D7%A7%D7%95%D7%A8%D7%95%D7%96%D7%99%D7%94%202026&location=%D7%99%D7%A9%D7%A8%D7%90%D7%9C" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 11.05.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#129514; AMPP Israel</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             כנס מקצועי מרכזי לקהילת הקורוזיה והגנת החומרים, עם עדכונים, ידע יישומי, מפגש מומחים ותוכן מקצועי ממוקד לאנשי התחום. ניתן לשריין מקום, להירשם ולשלם גם סמוך למועד האירוע.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://corrosion-conference-2026.form-wizard.co/" class="button button-secondary">לפרטים</a>
+                                <a href="https://corrosion-conference-2026.form-wizard.co/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <a href="https://corrosion-conference-2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
+                                <a href="https://corrosion-conference-2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -670,34 +331,34 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2026/02/rail-transportation-conference-650X330.jpg" alt="הכנס ה-2 לתחבורה מסילתית" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2026/02/rail-transportation-conference-650X330.jpg" alt="הכנס ה-2 לתחבורה מסילתית" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">הכנס ה-2 לתחבורה מסילתית</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%9B%D7%A0%D7%A1+%D7%94-2+%D7%9C%D7%AA%D7%97%D7%91%D7%95%D7%A8%D7%94+%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%D7%99%D7%AA&dates=20260518T090000%2F20260518T143000&details=%D7%94%D7%9B%D7%A0%D7%A1+%D7%94-2+%D7%9C%D7%AA%D7%97%D7%91%D7%95%D7%A8%D7%94+%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%D7%99%D7%AA+%D7%A9%D7%9C+AEAI&location=%D7%99%D7%A9%D7%A8%D7%90%D7%9C" class="meta-chip" title="הוסף ליומן">&#128197; 18.05.2026</a>
-                          <span class="meta-chip">SAVE THE DATE</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">הכנס ה-2 לתחבורה מסילתית</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%9B%D7%A0%D7%A1+%D7%94-2+%D7%9C%D7%AA%D7%97%D7%91%D7%95%D7%A8%D7%94+%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%D7%99%D7%AA&dates=20260518T090000%2F20260518T143000&details=%D7%94%D7%9B%D7%A0%D7%A1+%D7%94-2+%D7%9C%D7%AA%D7%97%D7%91%D7%95%D7%A8%D7%94+%D7%9E%D7%A1%D7%99%D7%9C%D7%AA%D7%99%D7%AA+%D7%A9%D7%9C+AEAI&location=%D7%99%D7%A9%D7%A8%D7%90%D7%9C" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 18.05.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">SAVE THE DATE</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             הכנס השנתי של איגוד התחבורה המסילתית בלשכת המהנדסים, עם דגש על חדשנות, קיימות, תשתיות ואתגרים הנדסיים במרחב האורבני ובשיתוף הטכניון ואוניברסיטת אריאל.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://www.aeai.org.il/activity/rail-transportation-conference/" class="button button-secondary">לפרטים</a>
+                                <a href="https://www.aeai.org.il/activity/rail-transportation-conference/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <span class="button button-disabled">הרשמה בקרוב</span>
+                                <span style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#d7e2eb;color:#5b6b78;">הרשמה בקרוב</span>
                               </td>
                             </tr>
                           </table>
@@ -711,34 +372,34 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/11/hydraulics-seminar-650X330.jpg" alt="יום עיון בנושא חדשנות בהידראוליקה ופנאומטיקה" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/11/hydraulics-seminar-650X330.jpg" alt="יום עיון בנושא חדשנות בהידראוליקה ופנאומטיקה" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">יום עיון בנושא חדשנות בהידראוליקה ופנאומטיקה</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%99%D7%95%D7%9D+%D7%A2%D7%99%D7%95%D7%9F+%D7%91%D7%A0%D7%95%D7%A9%D7%90+%D7%97%D7%93%D7%A9%D7%A0%D7%95%D7%AA+%D7%91%D7%94%D7%99%D7%93%D7%A8%D7%90%D7%95%D7%9C%D7%99%D7%A7%D7%94+%D7%95%D7%A4%D7%A0%D7%90%D7%95%D7%9E%D7%98%D7%99%D7%A7%D7%94&dates=20260528T083000%2F20260528T150000&details=%D7%99%D7%95%D7%9D+%D7%A2%D7%99%D7%95%D7%9F+AEAI+%D7%91%D7%A0%D7%95%D7%A9%D7%90+%D7%97%D7%93%D7%A9%D7%A0%D7%95%D7%AA+%D7%91%D7%94%D7%99%D7%93%D7%A8%D7%90%D7%95%D7%9C%D7%99%D7%A7%D7%94+%D7%95%D7%A4%D7%A0%D7%90%D7%95%D7%9E%D7%98%D7%99%D7%A7%D7%94&location=%D7%91%D7%99%D7%AA+%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%2C+%D7%93%D7%99%D7%96%D7%A0%D7%92%D7%95%D7%A3+200%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91" class="meta-chip" title="הוסף ליומן">&#128197; 28.05.2026</a>
-                          <span class="meta-chip">&#128205; בית המהנדס, תל אביב</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">יום עיון בנושא חדשנות בהידראוליקה ופנאומטיקה</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%99%D7%95%D7%9D+%D7%A2%D7%99%D7%95%D7%9F+%D7%91%D7%A0%D7%95%D7%A9%D7%90+%D7%97%D7%93%D7%A9%D7%A0%D7%95%D7%AA+%D7%91%D7%94%D7%99%D7%93%D7%A8%D7%90%D7%95%D7%9C%D7%99%D7%A7%D7%94+%D7%95%D7%A4%D7%A0%D7%90%D7%95%D7%9E%D7%98%D7%99%D7%A7%D7%94&dates=20260528T083000%2F20260528T150000&details=%D7%99%D7%95%D7%9D+%D7%A2%D7%99%D7%95%D7%9F+AEAI+%D7%91%D7%A0%D7%95%D7%A9%D7%90+%D7%97%D7%93%D7%A9%D7%A0%D7%95%D7%AA+%D7%91%D7%94%D7%99%D7%93%D7%A8%D7%90%D7%95%D7%9C%D7%99%D7%A7%D7%94+%D7%95%D7%A4%D7%A0%D7%90%D7%95%D7%9E%D7%98%D7%99%D7%A7%D7%94&location=%D7%91%D7%99%D7%AA+%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%2C+%D7%93%D7%99%D7%96%D7%A0%D7%92%D7%95%D7%A3+200%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 28.05.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; בית המהנדס, תל אביב</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             מפגש מקצועי עדכני לקהילת ההידראוליקה והפנאומטיקה, עם תכנים על חדשנות, בטיחות, תחזוקה, התייעלות, AI ויישומים מתקדמים בתעשייה.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://www.aeai.org.il/activity/hydraulics-seminar/" class="button button-secondary">לפרטים</a>
+                                <a href="https://www.aeai.org.il/activity/hydraulics-seminar/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <a href="https://hydraulics-seminar2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
+                                <a href="https://hydraulics-seminar2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -752,34 +413,34 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 18px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:0 24px 18px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/03/עיצוב-ללא-שם-1.png" alt="כנס מהנדסות ונשים בטכנולוגיה" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/03/עיצוב-ללא-שם-1.png" alt="כנס מהנדסות ונשים בטכנולוגיה" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-                          <h3 class="card-title">כנס מהנדסות ונשים בטכנולוגיה</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%9B%D7%A0%D7%A1+%D7%9E%D7%94%D7%A0%D7%93%D7%A1%D7%95%D7%AA+%D7%95%D7%A0%D7%A9%D7%99%D7%9D+%D7%91%D7%98%D7%9B%D7%A0%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94&dates=20260531T080000%2F20260531T140000&details=%D7%94%D7%9B%D7%A0%D7%A1+%D7%94%D7%A9%D7%A0%D7%AA%D7%99+%D7%A9%D7%9C+%D7%A4%D7%95%D7%A8%D7%95%D7%9D+%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%D7%95%D7%AA+%D7%95%D7%A0%D7%A9%D7%99%D7%9D+%D7%91%D7%98%D7%9B%D7%A0%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94+2026&location=%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F+%D7%90%D7%A8%D7%A5+%D7%99%D7%A9%D7%A8%D7%90%D7%9C+-+%D7%90%D7%95%D7%9C%D7%9D+%D7%A7%D7%9C%D7%A6%27%D7%A7%D7%99%D7%9F%2C+%D7%97%D7%99%D7%99%D7%9D+%D7%9C%D7%91%D7%A0%D7%95%D7%9F+2%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91" class="meta-chip" title="הוסף ליומן">&#128197; 31.05.2026</a>
-                          <span class="meta-chip">&#128205; מוזיאון ארץ ישראל, תל אביב</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">כנס מהנדסות ונשים בטכנולוגיה</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%9B%D7%A0%D7%A1+%D7%9E%D7%94%D7%A0%D7%93%D7%A1%D7%95%D7%AA+%D7%95%D7%A0%D7%A9%D7%99%D7%9D+%D7%91%D7%98%D7%9B%D7%A0%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94&dates=20260531T080000%2F20260531T140000&details=%D7%94%D7%9B%D7%A0%D7%A1+%D7%94%D7%A9%D7%A0%D7%AA%D7%99+%D7%A9%D7%9C+%D7%A4%D7%95%D7%A8%D7%95%D7%9D+%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%D7%95%D7%AA+%D7%95%D7%A0%D7%A9%D7%99%D7%9D+%D7%91%D7%98%D7%9B%D7%A0%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94+2026&location=%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F+%D7%90%D7%A8%D7%A5+%D7%99%D7%A9%D7%A8%D7%90%D7%9C+-+%D7%90%D7%95%D7%9C%D7%9D+%D7%A7%D7%9C%D7%A6%27%D7%A7%D7%99%D7%9F%2C+%D7%97%D7%99%D7%99%D7%9D+%D7%9C%D7%91%D7%A0%D7%95%D7%9F+2%2C+%D7%AA%D7%9C+%D7%90%D7%91%D7%99%D7%91" style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;text-decoration:none;" title="הוסף ליומן">&#128197; 31.05.2026</a>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128205; מוזיאון ארץ ישראל, תל אביב</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
                             הכנס השנתי של פורום המהנדסות ונשים בטכנולוגיה 2026, יום מקצועי מעורר השראה עם תכנים על מנהיגות, חדשנות, קריירה, נטוורקינג וחיבורים לנשים מובילות בתחום.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://women-in-engineering2026.form-wizard.co/" class="button button-secondary">לפרטים</a>
+                                <a href="https://women-in-engineering2026.form-wizard.co/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
                               </td>
                               <td width="8" class="mobile-spacer">&nbsp;</td>
                               <td align="left">
-                                <a href="https://women-in-engineering2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
+                                <a href="https://women-in-engineering2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -793,250 +454,41 @@
           </tr>
 
           <tr>
-            <td id="courses" class="section-band" style="padding: 14px 24px;">
-              <h2 class="section-title">קורסים, הסמכות וסדנאות</h2>
-              <div class="section-accent">&nbsp;</div>
+            <td id="courses" style="padding:14px 24px;background:linear-gradient(180deg,#f8fbfd 0%,#f3f8fb 100%);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;text-align:center;">
+              <h2 style="margin:0;color:#0f3555;font-size:24px;line-height:30px;font-weight:700;text-align:center;">קורסים, הסמכות וסדנאות</h2>
+              <div style="display:block;width:72px;height:4px;border-radius:999px;background:linear-gradient(90deg,#1f7aa8 0%,#0f3555 100%);margin:8px auto 0;font-size:0;line-height:0;">&nbsp;</div>
             </td>
           </tr>
 
           <tr>
-            <td style="padding: 12px 24px 8px;">
-              <table role="presentation" width="100%" class="card">
+            <td style="padding:12px 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                 <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
                       <tr>
                         <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/05/applied-metallurgy-production-course.jpg" alt="קורס מטלורגיה יישומית" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/05/applied-metallurgy-production-course.jpg" alt="קורס מטלורגיה יישומית" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
                         </td>
                         <td width="12" class="mobile-spacer">&nbsp;</td>
                         <td valign="top" style="padding:0;">
-
-                    <h3 class="card-title">קורס מטלורגיה יישומית ותהליכי ייצור מתכות</h3>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <span class="meta-chip">&#128197; 17.03.2026 - 26.05.2026</span>
-                    <span class="meta-chip">&#127891; בשיתוף הטכניון</span>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="card-text">
-                      קורס מעמיק למהנדסים מנוסים, המרחיב את הידע בתחומי תכן החומרים, מבנה והרכב, ומציע מסגרת לימוד יסודית ועדכנית לעבודה עם מתכות וחומרים.
-                    </p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/activity/applied-metallurgy-production-course/" class="button button-secondary">לפרטים</a>
-                        </td>
-                        <td width="8" class="mobile-spacer">&nbsp;</td>
-                        <td align="left">
-                          <a href="https://applied-metallurgy-production-course28-10-2025.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
-                <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
-                      <tr>
-                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/11/98586438_s.jpg" alt="קורס מבוא לקורוזיה" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
-                        </td>
-                        <td width="12" class="mobile-spacer">&nbsp;</td>
-                        <td valign="top" style="padding:0;">
-
-                    <h3 class="card-title">קורס מבוא לקורוזיה - צבע, צביעה ובקרת איכות</h3>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <span class="meta-chip">&#128197; 12.04.2026 - 31.05.2026</span>
-                    <span class="meta-chip">&#127941; מוכר לגמול השתלמות</span>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="card-text">
-                      קורס יסוד מקיף להכרת עולם הקורוזיה, ההגנה על חומרים ותהליכי צבע וצביעה, כולל הכנת שטח, יישום, בקרת איכות ופיקוח.
-                    </p>
-                    <p class="card-text" style="font-size:12px; color:#0f3555; font-weight:700; margin-top:4px;">מקנה נק&#39; צבירה לצורך חידוש הסמכת מפקחי ריתוך.</p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/activity/corrosion-course/" class="button button-secondary">לפרטים</a>
-                        </td>
-                        <td width="8" class="mobile-spacer">&nbsp;</td>
-                        <td align="left">
-                          <a href="https://corrosion-course-2603.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
-                <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
-                      <tr>
-                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/11/cathodicprotection-course650X330.jpg" alt="קורס הגנה קתודית והנדסת חומרים" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
-                        </td>
-                        <td width="12" class="mobile-spacer">&nbsp;</td>
-                        <td valign="top" style="padding:0;">
-
-                    <h3 class="card-title">קורס הגנה קתודית והנדסת חומרים</h3>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <span class="meta-chip">&#128197; 28.04.2026 - 14.07.2026</span>
-                    <span class="meta-chip">&#127941; מוכר לגמול השתלמות</span>
-                    <span class="meta-chip">&#129514; חומרים, צבעים וציפויים</span>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="card-text">
-                      מסלול המעניק מבט יישומי רחב על מניעת קורוזיה, שיטות אנטיקורוזיביות, הגנה קתודית ובחירת פתרונות טכנו-כלכליים מתאימים.
-                    </p>
-                    <p class="card-text" style="font-size:12px; color:#0f3555; font-weight:700; margin-top:4px;">מקנה נק&#39; צבירה לצורך חידוש הסמכת מפקחי ריתוך.</p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/activity/cathodicprotection-course/" class="button button-secondary">לפרטים</a>
-                        </td>
-                        <td width="8" class="mobile-spacer">&nbsp;</td>
-                        <td align="left">
-                          <a href="https://cathodicprotection-course24-02-2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding: 0 24px 8px;">
-              <table role="presentation" width="100%" class="card">
-                <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
-                      <tr>
-                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/07/tests_center_660X1300-f1.png" alt="מבחן הסמכה מפקח ריתוך" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
-                        </td>
-                        <td width="12" class="mobile-spacer">&nbsp;</td>
-                        <td valign="top" style="padding:0;">
-
-                    <h3 class="card-title">מבחן הסמכה מפקח ריתוך</h3>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <span class="meta-chip">&#128197; 03-05.05.2026</span>
-                    <span class="meta-chip">&#9200; אחרון להרשמה: 12.04.2026</span>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="card-text">
-                      מחזור בחינות לקראת הסמכה כמפקח ריתוך, הזדמנות מקצועית להסדיר תעודה מוכרת ולהתקדם במסלול התמחות ממוסד בתחום.
-                    </p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/activity/welding-inspector/" class="button button-secondary">לפרטים</a>
-                        </td>
-                        <td width="8" class="mobile-spacer">&nbsp;</td>
-                        <td align="left">
-                          <a href="https://welding-inspector-test-03-05-2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding: 0 24px 18px;">
-              <table role="presentation" width="100%" class="card">
-                <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
-                      <tr>
-                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/12/electrical-license-workshop-2026-650X330.jpg" alt="קורס הכנה לרישוי מהנדסי והנדסאי חשמל" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
-                        </td>
-                        <td width="12" class="mobile-spacer">&nbsp;</td>
-                        <td valign="top" style="padding:0;">
-
-                    <h3 class="card-title">קורס הכנה לרישוי מהנדסי והנדסאי חשמל</h3>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <span class="meta-chip">&#128197; 14.05.2026 - 17.09.2026</span>
-                    <span class="meta-chip">&#9889; הכנה לבחינה הממשלתית</span>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <p class="card-text">
-                      קורס ייעודי למהנדסים ולהנדסאים המעוניינים להיערך בצורה ממוקדת לרישוי, עם מסגרת מקצועית מסודרת ותוכן המותאם לדרישות הבחינה.
-                    </p>
-                    <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                    <table role="presentation" class="mobile-block" align="left" dir="rtl">
-                      <tr>
-                        <td align="left">
-                          <a href="https://www.aeai.org.il/activity/electric-licensing-course/" class="button button-secondary">לפרטים</a>
-                        </td>
-                        <td width="8" class="mobile-spacer">&nbsp;</td>
-                        <td align="left">
-                          <a href="https://electrical-license-workshop-2026.form-wizard.co/users/new" class="button button-primary">להרשמה</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding: 0 24px 18px;">
-              <table role="presentation" width="100%" class="card">
-                <tr>
-                  <td style="padding: 14px 16px;">
-                    <table role="presentation" width="100%" class="mobile-block" dir="rtl">
-                      <tr>
-                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
-                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/12/electrical-license-workshop-2026-650X330.jpg" alt="סדנת הכנה לוועדת רישיונות חשמל אונליין" width="120" style="width:120px; height:120px; border-radius:12px; object-fit:cover; margin:0 auto;">
-                        </td>
-                        <td width="12" class="mobile-spacer">&nbsp;</td>
-                        <td valign="top" style="padding:0;">
-                          <h3 class="card-title">סדנת הכנה לוועדת רישיונות חשמל – אונליין</h3>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <span class="meta-chip">&#128250; 8 שיעורים מצולמים ללמידה עצמית</span>
-                          <span class="meta-chip">&#128100; אריאל סגל</span>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <p class="card-text">
-                            מחיר מיוחד ובלעדי לרוכשים/ות דרך לשכת המהנדסים – 28.5% הנחה! כולל השתתפות בפורום שאלות ותשובות.
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">קורס מטלורגיה יישומית ותהליכי ייצור מתכות</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; 17.03.2026 - 26.05.2026</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#127891; בשיתוף הטכניון</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
+                            קורס מעמיק למהנדסים מנוסים, המרחיב את הידע בתחומי תכן החומרים, מבנה והרכב, ומציע מסגרת לימוד יסודית ועדכנית לעבודה עם מתכות וחומרים.
                           </p>
-                          <div style="height:6px; line-height:6px; font-size:0;">&nbsp;</div>
-                          <table role="presentation" class="mobile-block" align="left" dir="rtl">
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
                             <tr>
                               <td align="left">
-                                <a href="https://www.aeai.org.il/activity/electrical-licensing-workshop-online/" class="button button-primary">לפרטים והרשמה &gt;&gt;</a>
+                                <a href="https://www.aeai.org.il/activity/applied-metallurgy-production-course/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
+                              </td>
+                              <td width="8" class="mobile-spacer">&nbsp;</td>
+                              <td align="left">
+                                <a href="https://applied-metallurgy-production-course28-10-2025.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
                               </td>
                             </tr>
                           </table>
@@ -1050,21 +502,223 @@
           </tr>
 
           <tr>
-            <td id="benefits" class="section-band" style="padding: 14px 24px;">
-              <h2 class="section-title">הטבות</h2>
-              <div class="section-accent">&nbsp;</div>
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
+                <tr>
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/11/98586438_s.jpg" alt="קורס מבוא לקורוזיה" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">קורס מבוא לקורוזיה - צבע, צביעה ובקרת איכות</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; 12.04.2026 - 31.05.2026</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#127941; מוכר לגמול השתלמות</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
+                            קורס יסוד מקיף להכרת עולם הקורוזיה, ההגנה על חומרים ותהליכי צבע וצביעה, כולל הכנת שטח, יישום, בקרת איכות ופיקוח.
+                          </p>
+                          <p style="margin:0;color:#0f3555;font-size:12px;font-weight:700;margin-top:4px;">מקנה נק&#39; צבירה לצורך חידוש הסמכת מפקחי ריתוך.</p>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/activity/corrosion-course/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
+                              </td>
+                              <td width="8" class="mobile-spacer">&nbsp;</td>
+                              <td align="left">
+                                <a href="https://corrosion-course-2603.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
+          <tr>
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
+                <tr>
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/11/cathodicprotection-course650X330.jpg" alt="קורס הגנה קתודית והנדסת חומרים" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">קורס הגנה קתודית והנדסת חומרים</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; 28.04.2026 - 14.07.2026</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#127941; מוכר לגמול השתלמות</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#129514; חומרים, צבעים וציפויים</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
+                            מסלול המעניק מבט יישומי רחב על מניעת קורוזיה, שיטות אנטיקורוזיביות, הגנה קתודית ובחירת פתרונות טכנו-כלכליים מתאימים.
+                          </p>
+                          <p style="margin:0;color:#0f3555;font-size:12px;font-weight:700;margin-top:4px;">מקנה נק&#39; צבירה לצורך חידוש הסמכת מפקחי ריתוך.</p>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/activity/cathodicprotection-course/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
+                              </td>
+                              <td width="8" class="mobile-spacer">&nbsp;</td>
+                              <td align="left">
+                                <a href="https://cathodicprotection-course24-02-2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
           <tr>
-            <td style="padding: 0 24px 10px;">
-              <!-- LINK: החלף כאן את קישור ההטבה הראשונה -->
+            <td style="padding:0 24px 8px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
+                <tr>
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2017/07/tests_center_660X1300-f1.png" alt="מבחן הסמכה מפקח ריתוך" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">מבחן הסמכה מפקח ריתוך</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; 03-05.05.2026</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#9200; אחרון להרשמה: 12.04.2026</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
+                            מחזור בחינות לקראת הסמכה כמפקח ריתוך, הזדמנות מקצועית להסדיר תעודה מוכרת ולהתקדם במסלול התמחות ממוסד בתחום.
+                          </p>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/activity/welding-inspector/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
+                              </td>
+                              <td width="8" class="mobile-spacer">&nbsp;</td>
+                              <td align="left">
+                                <a href="https://welding-inspector-test-03-05-2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:0 24px 18px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
+                <tr>
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/12/electrical-license-workshop-2026-650X330.jpg" alt="קורס הכנה לרישוי מהנדסי והנדסאי חשמל" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">קורס הכנה לרישוי מהנדסי והנדסאי חשמל</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128197; 14.05.2026 - 17.09.2026</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#9889; הכנה לבחינה הממשלתית</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
+                            קורס ייעודי למהנדסים ולהנדסאים המעוניינים להיערך בצורה ממוקדת לרישוי, עם מסגרת מקצועית מסודרת ותוכן המותאם לדרישות הבחינה.
+                          </p>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/activity/electric-licensing-course/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#eef5fa;color:#0f3555;text-decoration:none;">לפרטים</a>
+                              </td>
+                              <td width="8" class="mobile-spacer">&nbsp;</td>
+                              <td align="left">
+                                <a href="https://electrical-license-workshop-2026.form-wizard.co/users/new" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">להרשמה</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:0 24px 18px;">
+              <table role="presentation" width="100%" style="border:1px solid #dde5ec;border-radius:16px;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
+                <tr>
+                  <td style="padding:14px 16px;">
+                    <table role="presentation" width="100%" class="mobile-block" dir="rtl" style="border-spacing:0;border-collapse:collapse;width:100%;">
+                      <tr>
+                        <td width="120" valign="top" class="mobile-center" style="width:120px;">
+                          <img src="https://www.aeai.org.il/wp-content/uploads/sites/3/2025/12/electrical-license-workshop-2026-650X330.jpg" alt="סדנת הכנה לוועדת רישיונות חשמל אונליין" width="120" style="width:120px;height:120px;border-radius:12px;object-fit:cover;margin:0 auto;display:block;border:0;">
+                        </td>
+                        <td width="12" class="mobile-spacer">&nbsp;</td>
+                        <td valign="top" style="padding:0;">
+                          <h3 style="margin:0;color:#111827;font-size:20px;line-height:25px;font-weight:700;">סדנת הכנה לוועדת רישיונות חשמל – אונליין</h3>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128250; 8 שיעורים מצולמים ללמידה עצמית</span>
+                          <span style="display:inline-block;background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:999px;color:#0f3555;padding:4px 9px;font-size:11px;line-height:14px;font-weight:700;margin-left:5px;margin-bottom:5px;">&#128100; אריאל סגל</span>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <p style="margin:0;color:#4b5563;font-size:14px;line-height:20px;">
+                            מחיר מיוחד ובלעדי לרוכשים/ות דרך לשכת המהנדסים – 28.5% הנחה! כולל השתתפות בפורום שאלות ותשובות.
+                          </p>
+                          <div style="height:6px;line-height:6px;font-size:0;">&nbsp;</div>
+                          <table role="presentation" class="mobile-block" align="left" dir="rtl" style="border-spacing:0;border-collapse:collapse;">
+                            <tr>
+                              <td align="left">
+                                <a href="https://www.aeai.org.il/activity/electrical-licensing-workshop-online/" style="display:inline-block;border-radius:999px;padding:8px 15px;font-size:13px;line-height:16px;font-weight:700;background-color:#0f3555;color:#ffffff;text-decoration:none;">לפרטים והרשמה &gt;&gt;</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="benefits" style="padding:14px 24px;background:linear-gradient(180deg,#f8fbfd 0%,#f3f8fb 100%);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;text-align:center;">
+              <h2 style="margin:0;color:#0f3555;font-size:24px;line-height:30px;font-weight:700;text-align:center;">הטבות</h2>
+              <div style="display:block;width:72px;height:4px;border-radius:999px;background:linear-gradient(90deg,#1f7aa8 0%,#0f3555 100%);margin:8px auto 0;font-size:0;line-height:0;">&nbsp;</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:0 24px 10px;">
               <a href="https://marketing.fibi.co.il/OpenAccount/affiliate?cid=209e857625504dfca841d316fd8fc158">
-                <table role="presentation" width="100%" class="banner-frame">
+                <table role="presentation" width="100%" style="border:1px solid #dbe3ea;border-radius:14px;overflow:hidden;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                   <tr>
                     <td>
-                      <img src="assets/benefit-banner-1.png" alt="באנר הטבה 1" width="552">
+                      <img src="assets/benefit-banner-1.png" alt="באנר הטבה 1" width="552" style="display:block;width:100%;max-width:552px;border:0;">
                     </td>
                   </tr>
                 </table>
@@ -1073,13 +727,12 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 10px;">
-              <!-- LINK: החלף כאן את קישור ההטבה השנייה -->
+            <td style="padding:0 24px 10px;">
               <a href="https://marketing.menoramivt.co.il/hishtalmut_aeai/desktop/">
-                <table role="presentation" width="100%" class="banner-frame">
+                <table role="presentation" width="100%" style="border:1px solid #dbe3ea;border-radius:14px;overflow:hidden;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                   <tr>
                     <td>
-                      <img src="assets/benefit-banner-2.png" alt="באנר הטבה 2" width="552">
+                      <img src="assets/benefit-banner-2.png" alt="באנר הטבה 2" width="552" style="display:block;width:100%;max-width:552px;border:0;">
                     </td>
                   </tr>
                 </table>
@@ -1088,13 +741,12 @@
           </tr>
 
           <tr>
-            <td style="padding: 0 24px 18px;">
-              <!-- LINK: החלף כאן את קישור ההטבה השלישית -->
+            <td style="padding:0 24px 18px;">
               <a href="https://www.m-shachar.org.il/newsletter-form/">
-                <table role="presentation" width="100%" class="banner-frame">
+                <table role="presentation" width="100%" style="border:1px solid #dbe3ea;border-radius:14px;overflow:hidden;background-color:#ffffff;border-collapse:separate;border-spacing:0;width:100%;">
                   <tr>
                     <td>
-                      <img src="assets/benefit-banner-3.png" alt="באנר הטבה 3" width="552">
+                      <img src="assets/benefit-banner-3.png" alt="באנר הטבה 3" width="552" style="display:block;width:100%;max-width:552px;border:0;">
                     </td>
                   </tr>
                 </table>
@@ -1103,92 +755,90 @@
           </tr>
 
           <tr>
-            <td class="section-band" style="padding: 14px 24px;">
-              <h2 class="section-title">הצטרפות ללשכת המהנדסים</h2>
-              <div class="section-accent">&nbsp;</div>
+            <td style="padding:14px 24px;background:linear-gradient(180deg,#f8fbfd 0%,#f3f8fb 100%);border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;text-align:center;">
+              <h2 style="margin:0;color:#0f3555;font-size:24px;line-height:30px;font-weight:700;text-align:center;">הצטרפות ללשכת המהנדסים</h2>
+              <div style="display:block;width:72px;height:4px;border-radius:999px;background:linear-gradient(90deg,#1f7aa8 0%,#0f3555 100%);margin:8px auto 0;font-size:0;line-height:0;">&nbsp;</div>
             </td>
           </tr>
 
-
           <tr>
-            <td style="padding: 0 24px 18px;">
-              <table role="presentation" width="100%" class="join-box" dir="rtl">
-                  <tr>
-                    <td style="padding: 22px 18px 20px; text-align:center;" align="center">
-                      <p class="join-copy">חברות בלשכה פותחת גישה לעולם מקצועי עשיר, קהילה איכותית והזדמנויות אמיתיות להתפתחות, חיבורים והשפעה.</p>
-                      <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
-                      <p class="join-copy">הכשרות מקצועיות, חשיפה לתוכן מקצועי, מגוון הטבות, נציגות בגופים ציבוריים והשתתפות באיגודים מקצועיים, לצד סמינרים בארץ ובחו"ל.</p>
-                      <div style="height:18px; line-height:18px; font-size:0;">&nbsp;</div>
-                      <table role="presentation" width="100%">
-                        <tr>
-                          <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
-                            <a href="https://www.aeai.org.il/activity_cat/technological-development/" style="text-decoration:none; color:inherit; display:block;">
-                              <div class="join-feature">
-                                <span class="join-icon" aria-hidden="true" style="font-size:28px; line-height:52px;">&#128214;</span>
-                                <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
-                                <p class="join-label">הכשרות</p>
-                              </div>
-                            </a>
-                          </td>
-                          <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
-                            <a href="https://www.aeai.org.il/benefit/" style="text-decoration:none; color:inherit; display:block;">
-                              <div class="join-feature">
-                                <span class="join-icon" aria-hidden="true" style="font-size:28px; line-height:52px;">&#128179;</span>
-                                <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
-                                <p class="join-label">הטבות</p>
-                              </div>
-                            </a>
-                          </td>
-                          <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
-                            <a href="https://www.aeai.org.il/professional-society/" style="text-decoration:none; color:inherit; display:block;">
-                              <div class="join-feature">
-                                <span class="join-icon" aria-hidden="true" style="font-size:28px; line-height:52px;">&#128101;</span>
-                                <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
-                                <p class="join-label">איגודים מקצועיים</p>
-                              </div>
-                            </a>
-                          </td>
-                          <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
-                            <a href="https://www.aeai.org.il/seminars-in-israel-2026/" style="text-decoration:none; color:inherit; display:block;">
-                              <div class="join-feature">
-                                <span class="join-icon" aria-hidden="true" style="font-size:28px; line-height:52px;">&#128197;</span>
-                                <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
-                                <p class="join-label">סמינרים בארץ</p>
-                              </div>
-                            </a>
-                          </td>
-                          <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
-                            <a href="https://www.aeai.org.il/activity/abroadaeai2026/" style="text-decoration:none; color:inherit; display:block;">
-                              <div class="join-feature">
-                                <span class="join-icon" aria-hidden="true" style="font-size:28px; line-height:52px;">&#127757;</span>
-                                <div style="height:8px; line-height:8px; font-size:0;">&nbsp;</div>
-                                <p class="join-label">סמינרים בחו"ל</p>
-                              </div>
-                            </a>
-                          </td>
-                        </tr>
-                      </table>
-                      <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
-                      <span class="join-cta" style="display:inline-block; min-width:190px; border-radius:999px; padding:10px 20px; background:#0f3555; color:#ffffff !important; font-size:14px; line-height:18px; font-weight:700; text-align:center;">לפרטים ורישום &gt;&gt;</span>
-                    </td>
-                  </tr>
-                </table>
+            <td style="padding:0 24px 18px;">
+              <table role="presentation" width="100%" dir="rtl" style="border:1px solid #d9e3ec;border-radius:18px;background-color:#f7fafc;border-collapse:separate;border-spacing:0;width:100%;">
+                <tr>
+                  <td style="padding:22px 18px 20px;text-align:center;" align="center">
+                    <p style="margin:0;color:#5b6674;font-size:14px;line-height:22px;text-align:center;">חברות בלשכה פותחת גישה לעולם מקצועי עשיר, קהילה איכותית והזדמנויות אמיתיות להתפתחות, חיבורים והשפעה.</p>
+                    <div style="height:10px;line-height:10px;font-size:0;">&nbsp;</div>
+                    <p style="margin:0;color:#5b6674;font-size:14px;line-height:22px;text-align:center;">הכשרות מקצועיות, חשיפה לתוכן מקצועי, מגוון הטבות, נציגות בגופים ציבוריים והשתתפות באיגודים מקצועיים, לצד סמינרים בארץ ובחו"ל.</p>
+                    <div style="height:18px;line-height:18px;font-size:0;">&nbsp;</div>
+                    <table role="presentation" width="100%" style="border-spacing:0;border-collapse:collapse;">
+                      <tr>
+                        <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
+                          <a href="https://www.aeai.org.il/activity_cat/technological-development/" style="text-decoration:none;color:inherit;display:block;">
+                            <div style="border:1px solid #e8eef3;border-radius:14px;background-color:#ffffff;padding:12px 8px;text-align:center;">
+                              <span style="display:inline-block;width:52px;height:52px;border-radius:14px;background-color:#ecf3f8;border:1px solid #dde6ee;color:#0f3555;text-align:center;font-size:28px;line-height:52px;">&#128214;</span>
+                              <div style="height:8px;line-height:8px;font-size:0;">&nbsp;</div>
+                              <p style="margin:0;color:#0f3555;font-size:13px;line-height:18px;font-weight:700;text-align:center;">הכשרות</p>
+                            </div>
+                          </a>
+                        </td>
+                        <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
+                          <a href="https://www.aeai.org.il/benefit/" style="text-decoration:none;color:inherit;display:block;">
+                            <div style="border:1px solid #e8eef3;border-radius:14px;background-color:#ffffff;padding:12px 8px;text-align:center;">
+                              <span style="display:inline-block;width:52px;height:52px;border-radius:14px;background-color:#ecf3f8;border:1px solid #dde6ee;color:#0f3555;text-align:center;font-size:28px;line-height:52px;">&#128179;</span>
+                              <div style="height:8px;line-height:8px;font-size:0;">&nbsp;</div>
+                              <p style="margin:0;color:#0f3555;font-size:13px;line-height:18px;font-weight:700;text-align:center;">הטבות</p>
+                            </div>
+                          </a>
+                        </td>
+                        <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
+                          <a href="https://www.aeai.org.il/professional-society/" style="text-decoration:none;color:inherit;display:block;">
+                            <div style="border:1px solid #e8eef3;border-radius:14px;background-color:#ffffff;padding:12px 8px;text-align:center;">
+                              <span style="display:inline-block;width:52px;height:52px;border-radius:14px;background-color:#ecf3f8;border:1px solid #dde6ee;color:#0f3555;text-align:center;font-size:28px;line-height:52px;">&#128101;</span>
+                              <div style="height:8px;line-height:8px;font-size:0;">&nbsp;</div>
+                              <p style="margin:0;color:#0f3555;font-size:13px;line-height:18px;font-weight:700;text-align:center;">איגודים מקצועיים</p>
+                            </div>
+                          </a>
+                        </td>
+                        <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
+                          <a href="https://www.aeai.org.il/seminars-in-israel-2026/" style="text-decoration:none;color:inherit;display:block;">
+                            <div style="border:1px solid #e8eef3;border-radius:14px;background-color:#ffffff;padding:12px 8px;text-align:center;">
+                              <span style="display:inline-block;width:52px;height:52px;border-radius:14px;background-color:#ecf3f8;border:1px solid #dde6ee;color:#0f3555;text-align:center;font-size:28px;line-height:52px;">&#128197;</span>
+                              <div style="height:8px;line-height:8px;font-size:0;">&nbsp;</div>
+                              <p style="margin:0;color:#0f3555;font-size:13px;line-height:18px;font-weight:700;text-align:center;">סמינרים בארץ</p>
+                            </div>
+                          </a>
+                        </td>
+                        <td width="20%" align="center" valign="top" style="padding:0 4px 10px;">
+                          <a href="https://www.aeai.org.il/activity/abroadaeai2026/" style="text-decoration:none;color:inherit;display:block;">
+                            <div style="border:1px solid #e8eef3;border-radius:14px;background-color:#ffffff;padding:12px 8px;text-align:center;">
+                              <span style="display:inline-block;width:52px;height:52px;border-radius:14px;background-color:#ecf3f8;border:1px solid #dde6ee;color:#0f3555;text-align:center;font-size:28px;line-height:52px;">&#127757;</span>
+                              <div style="height:8px;line-height:8px;font-size:0;">&nbsp;</div>
+                              <p style="margin:0;color:#0f3555;font-size:13px;line-height:18px;font-weight:700;text-align:center;">סמינרים בחו"ל</p>
+                            </div>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                    <div style="height:10px;line-height:10px;font-size:0;">&nbsp;</div>
+                    <span style="display:inline-block;min-width:190px;border-radius:999px;padding:10px 20px;background-color:#0f3555;color:#ffffff;font-size:14px;line-height:18px;font-weight:700;text-align:center;">לפרטים ורישום &gt;&gt;</span>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-
           <tr>
-            <td style="padding: 0 24px 28px;">
+            <td style="padding:0 24px 28px;">
               <div style="text-align:center;">
-                <a href="https://www.aeai.org.il/" class="social-link" title="אתר הלשכה">🌐</a>
-                <a href="https://www.facebook.com/AssociationOfEngineersInIsrael/" class="social-link" title="פייסבוק">f</a>
-                <a href="https://www.linkedin.com/company/aeai---%D7%9C%D7%A9%D7%9B%D7%AA-%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%D7%99%D7%9D/" class="social-link" title="לינקדאין">in</a>
+                <a href="https://www.aeai.org.il/" style="display:inline-block;width:36px;height:36px;line-height:36px;text-align:center;border-radius:999px;background-color:#0f3555;color:#ffffff;font-size:15px;font-weight:700;margin:0 5px;text-decoration:none;" title="אתר הלשכה">🌐</a>
+                <a href="https://www.facebook.com/AssociationOfEngineersInIsrael/" style="display:inline-block;width:36px;height:36px;line-height:36px;text-align:center;border-radius:999px;background-color:#0f3555;color:#ffffff;font-size:15px;font-weight:700;margin:0 5px;text-decoration:none;" title="פייסבוק">f</a>
+                <a href="https://www.linkedin.com/company/aeai---%D7%9C%D7%A9%D7%9B%D7%AA-%D7%94%D7%9E%D7%94%D7%A0%D7%93%D7%A1%D7%99%D7%9D/" style="display:inline-block;width:36px;height:36px;line-height:36px;text-align:center;border-radius:999px;background-color:#0f3555;color:#ffffff;font-size:15px;font-weight:700;margin:0 5px;text-decoration:none;" title="לינקדאין">in</a>
               </div>
-              <div style="height:10px; line-height:10px; font-size:0;">&nbsp;</div>
-              <p class="footer-text" style="text-align:center;">
+              <div style="height:10px;line-height:10px;font-size:0;">&nbsp;</div>
+              <p style="margin:0;color:#6b7280;font-size:13px;line-height:20px;text-align:center;">
                 לשכת המהנדסים, האדריכלים והאקדמאים במקצועות הטכנולוגיים בישראל
               </p>
-              <p class="footer-text" style="text-align:center;">
+              <p style="margin:0;color:#6b7280;font-size:13px;line-height:20px;text-align:center;">
                 דיזנגוף 200, תל-אביב. טלפון: 03-5205800
               </p>
             </td>
@@ -1199,4 +849,3 @@
   </table>
 </body>
 </html>
-
