@@ -82,10 +82,10 @@ export function ConferenceSite() {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <About />
+        <Committee />
         <Program onPerson={setPerson} />
         <Posters />
         <Speakers speakers={speakers} onPerson={setPerson} />
-        <Committee />
         <Contact />
       </main>
 
@@ -367,7 +367,7 @@ function SectionTitle({
   subtitle?: ReactNode;
 }) {
   return (
-    <div className="mb-10 text-center">
+    <div className="mb-7 text-center">
       <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">{kicker}</p>
       <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">{title}</h2>
       {subtitle && <p className="mx-auto mt-3 max-w-2xl text-slate-400">{subtitle}</p>}
@@ -377,7 +377,7 @@ function SectionTitle({
 
 function About() {
   return (
-    <section id="about" className="relative px-4 py-20">
+    <section id="about" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle kicker="About" title="אודות הכנס" />
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
@@ -460,7 +460,7 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
     ].join(" ");
 
   return (
-    <section id="program" className="relative px-4 py-20">
+    <section id="program" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           kicker="Agenda"
@@ -527,28 +527,27 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="jump-title"
-                className="glass w-full max-w-sm rounded-3xl p-5 text-center shadow-glow"
+                className="glass w-full max-w-[16.5rem] rounded-2xl p-4 text-center"
                 onClick={(e) => e.stopPropagation()}
               >
-                <p id="jump-title" className="text-lg font-extrabold text-white">
+                <p id="jump-title" className="text-base font-extrabold text-white">
                   מעבר ל«{jump.label}»?
                 </p>
-                <p className="mt-2 text-sm text-slate-400">לאשר מעבר לחלק הזה באתר?</p>
-                <div className="mt-5 flex justify-center gap-2">
+                <div className="mt-4 flex justify-center gap-2">
                   <button
                     type="button"
                     autoFocus
                     onClick={goJump}
-                    className="rounded-full bg-cyber-gradient px-5 py-2 text-sm font-extrabold text-slate-950"
+                    className="rounded-full bg-cyber-gradient px-4 py-1.5 text-sm font-extrabold text-slate-950"
                   >
-                    כן, תשיר אותי
+                    כן
                   </button>
                   <button
                     type="button"
                     onClick={() => setJump(null)}
-                    className="rounded-full border border-white/20 px-5 py-2 text-sm font-bold text-slate-200 hover:bg-white/5"
+                    className="rounded-full border border-white/20 px-4 py-1.5 text-sm font-bold text-slate-200 hover:bg-white/5"
                   >
-                    לא
+                    לא עכשיו
                   </button>
                 </div>
               </div>
@@ -637,7 +636,7 @@ function Speakers({
   onPerson: (p: Person) => void;
 }) {
   return (
-    <section id="speakers" className="relative px-4 py-20">
+    <section id="speakers" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           kicker="Speakers"
@@ -671,7 +670,7 @@ function Speakers({
 
 function Posters() {
   return (
-    <section id="posters" className="relative px-4 py-20">
+    <section id="posters" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           kicker="Posters"
@@ -713,7 +712,7 @@ function Posters() {
 
 function Committee() {
   return (
-    <section id="committee" className="relative px-4 py-20">
+    <section id="committee" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle kicker="Steering" title="ועדת היגוי" />
         <div className="flex flex-wrap justify-center gap-4">
@@ -739,7 +738,7 @@ function Contact() {
   )}&z=16&hl=he&output=embed`;
 
   return (
-    <section id="contact" className="relative px-4 py-20">
+    <section id="contact" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle kicker="Venue & Contact" title="יצירת קשר והגעה" />
         <div className="grid gap-6 lg:grid-cols-2">

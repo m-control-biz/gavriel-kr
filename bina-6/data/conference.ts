@@ -446,10 +446,10 @@ export const COMMITTEE: { name: string; role: string; photo?: string }[] = [
 export const NAV = [
   { href: "#home", label: "בית" },
   { href: "#about", label: "אודות" },
+  { href: "#committee", label: "ועדת היגוי" },
   { href: "#program", label: "תוכנית" },
   { href: "#posters", label: "פוסטרים" },
   { href: "#speakers", label: "דוברים" },
-  { href: "#committee", label: "ועדת היגוי" },
   { href: "#contact", label: "יצירת קשר והגעה" },
 ];
 
