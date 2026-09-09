@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+#session-tabs,
+#register {
+  scroll-margin-top: 5.5rem;
+}
+
+body {
+  font-family: var(--font-heebo), Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 242, 254, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
+}
+
+.glass {
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.glow-ring {
+  box-shadow:
+    0 0 0 2px rgba(0, 242, 254, 0.55),
+    0 0 22px rgba(79, 172, 254, 0.35);
+}
+
+html.a11y-readable,
+html.a11y-readable body,
+html.a11y-readable button,
+html.a11y-readable input {
+  font-family: Arial, Tahoma, sans-serif !important;
+  letter-spacing: 0.04em;
+  word-spacing: 0.08em;
+  line-height: 1.7;
+}
+
+html.a11y-contrast,
+html.a11y-contrast body {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+html.a11y-contrast .glass,
+html.a11y-contrast header {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+html.a11y-contrast a,
+html.a11y-contrast .text-cyan-200,
+html.a11y-contrast .text-cyan-300 {
+  color: #ffe600 !important;
+}
+
+html.a11y-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.a11y-gray {
+  filter: grayscale(1);
+}
+
+html.a11y-invert.a11y-gray {
+  filter: invert(1) hue-rotate(180deg) grayscale(1);
+}
+
+html.a11y-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+}
+
+html.a11y-motion *,
+html.a11y-motion *::before,
+html.a11y-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html.a11y-focus *:focus {
+  outline: 3px solid #00f2fe !important;
+  outline-offset: 3px !important;
+}
+
+:focus-visible {
+  outline: 3px solid #00f2fe;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  right: 1rem;
+  top: -3rem;
+  z-index: 100;
+  border-radius: 999px;
+  background: #00f2fe;
+  color: #0f172a;
+  padding: 0.5rem 1rem;
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00f2fe, #4facfe);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1220;
+}
