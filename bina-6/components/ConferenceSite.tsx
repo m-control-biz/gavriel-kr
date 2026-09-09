@@ -290,13 +290,13 @@ function Hero() {
           <p className="mb-4 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1 text-xs font-bold text-cyan-200">
             <Sparkles size={14} /> {C.kicker}
           </p>
-          <h1 className="text-4xl font-black leading-tight text-white sm:text-7xl">
+          <h1 className="text-6xl font-black leading-none text-white sm:text-7xl">
             <span className="bg-cyber-gradient bg-clip-text text-transparent">
               {C.title}
             </span>
           </h1>
-          <p className="mt-3 text-xl font-black text-white sm:text-4xl">{C.day}</p>
-          <p className="text-3xl font-black text-white sm:text-6xl">
+          <p className="mt-3 text-4xl font-black text-white">{C.day}</p>
+          <p className="text-5xl font-black leading-none text-white sm:text-6xl">
             <LtrTime>{C.date}</LtrTime>
           </p>
         </motion.div>
