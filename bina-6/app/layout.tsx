@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
+import { BASE_PATH } from "@/lib/paths";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
   description:
     "הכנס השנתי של איגוד מדעי הנתונים בלשכת המהנדסים — 19.11.2026, בית המהנדס, תל אביב.",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "192x192" }],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+    icon: [{ url: `${BASE_PATH}/icon.png`, type: "image/png", sizes: "192x192" }],
+    apple: [{ url: `${BASE_PATH}/apple-icon.png`, sizes: "180x180" }],
   },
 };
 
