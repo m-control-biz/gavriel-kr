@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  CalendarDays,
   Clock,
   MapPin,
   Mail,
@@ -242,14 +241,16 @@ function Countdown() {
     { n: pad(secs), l: "שניות" },
   ];
   return (
-    <div className="ms-auto flex w-fit gap-2 sm:gap-3" dir="ltr">
+    <div className="grid w-full min-w-0 grid-cols-2 gap-1.5 min-[380px]:grid-cols-4 sm:gap-3" dir="ltr">
       {units.map((u) => (
         <div
           key={u.l}
-          className="min-w-[4.75rem] rounded-2xl border border-cyan-300/20 bg-slate-950/50 px-2 py-2.5 text-center sm:min-w-[5.25rem] sm:px-3"
+          className="flex min-w-0 flex-col items-center justify-center overflow-hidden rounded-2xl border border-cyan-300/20 bg-slate-950/50 px-1 py-2 text-center sm:px-3 sm:py-2.5"
         >
-          <div className="text-3xl font-black tabular-nums text-white">{u.n}</div>
-          <div className="text-xs text-slate-400" dir="rtl">
+          <div className="text-lg font-black tabular-nums leading-none text-white sm:text-3xl">
+            {u.n}
+          </div>
+          <div className="mt-1 truncate text-[10px] text-slate-400 sm:text-xs" dir="rtl">
             {u.l}
           </div>
         </div>
@@ -284,23 +285,41 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-l from-[#070d18] via-[#070d18]/82 to-[#070d18]/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-slatebg via-transparent to-black/45" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-32 sm:pt-36 lg:grid-cols-[1.15fr_0.85fr]">
-        <motion.div initial="hidden" animate="show" variants={fade}>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1 text-xs font-bold text-cyan-200">
+      <div className="relative mx-auto grid w-full min-w-0 max-w-7xl items-center gap-6 px-3 pb-28 pt-32 sm:px-4 sm:pt-36 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+        <motion.div className="min-w-0" initial="hidden" animate="show" variants={fade}>
+          <p className="mb-4 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1 text-xs font-bold text-cyan-200">
             <Sparkles size={14} /> {C.kicker}
           </p>
-          <h1 className="text-5xl font-black leading-tight text-white sm:text-7xl">
+          <h1 className="text-4xl font-black leading-tight text-white sm:text-7xl">
             <span className="bg-cyber-gradient bg-clip-text text-transparent">
               {C.title}
             </span>
           </h1>
-          <p className="mt-4 max-w-xl text-lg text-slate-200">{C.subtitle}</p>
+          <p className="mt-3 text-xl font-black text-white sm:text-4xl">{C.day}</p>
+          <p className="text-3xl font-black text-white sm:text-6xl">
+            <LtrTime>{C.date}</LtrTime>
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="glass relative w-full min-w-0 overflow-hidden rounded-3xl p-2.5 shadow-glow sm:p-8 lg:row-span-2"
+        >
+          <div className="absolute -end-10 -top-10 h-40 w-40 rounded-full bg-[#00F2FE]/20 blur-2xl" />
+          <div className="relative">
+            <Countdown />
+          </div>
+        </motion.div>
+
+        <motion.div className="min-w-0" initial="hidden" animate="show" variants={fade}>
+          <p className="max-w-xl text-lg text-slate-200">{C.subtitle}</p>
           <p className="mt-2 text-slate-300">
             AI, דאטה, חדשנות — והחיבור שבין טכנולוגיה לאנשים.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <InfoChip icon={<CalendarDays size={16} />} label={`${C.day} · ${C.date}`} />
             <InfoChip
               icon={<Clock size={16} />}
               label={<LtrTime>{C.hours}</LtrTime>}
@@ -323,24 +342,6 @@ function Hero() {
             >
               לתוכנית המלאה
             </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="glass relative overflow-hidden rounded-3xl p-7 shadow-glow sm:p-8"
-        >
-          <div className="absolute -end-10 -top-10 h-40 w-40 rounded-full bg-[#00F2FE]/20 blur-2xl" />
-          <p className="text-4xl font-black text-white">{C.day}</p>
-          <p className="text-6xl font-black text-white">{C.date}</p>
-          <p className="mt-3 text-lg text-slate-300">
-            התכנסות <LtrTime>{C.gathering}</LtrTime> · הרצאות <LtrTime>{C.hours}</LtrTime>
-          </p>
-          <p className="mt-1 text-base text-slate-400">{C.location.address}</p>
-          <div className="mt-7">
-            <Countdown />
           </div>
         </motion.div>
       </div>
@@ -710,22 +711,34 @@ function Posters() {
   );
 }
 
+function sessionLeadCaption(name: string, role: string) {
+  const session = SESSIONS.find((s) => s.leader === name);
+  if (!session) return null;
+  const lead = role.includes("חברת") ? "מובילת מושב" : "מוביל מושב";
+  const sessionName = session.title.replace(/^מושב\s+/, "");
+  return `${lead} ${sessionName}`;
+}
+
 function Committee() {
   return (
     <section id="committee" className="relative px-4 py-12">
       <div className="mx-auto max-w-7xl">
         <SectionTitle kicker="Steering" title="ועדת היגוי" />
         <div className="flex flex-wrap justify-center gap-4">
-          {COMMITTEE.map((m) => (
-            <div
-              key={m.name}
-              className="glass w-full max-w-[230px] rounded-3xl p-5 text-center sm:w-[230px]"
-            >
-              <Avatar src={m.photo} name={m.name} size="lg" className="mx-auto" />
-              <h3 className="mt-3 font-extrabold text-white">{m.name}</h3>
-              <p className="text-sm text-cyan-200">{m.role}</p>
-            </div>
-          ))}
+          {COMMITTEE.map((m) => {
+            const lead = sessionLeadCaption(m.name, m.role);
+            return (
+              <div
+                key={m.name}
+                className="glass w-full max-w-[230px] rounded-3xl p-5 text-center sm:w-[230px]"
+              >
+                <Avatar src={m.photo} name={m.name} size="lg" className="mx-auto" />
+                <h3 className="mt-3 font-extrabold text-white">{m.name}</h3>
+                <p className="text-sm text-cyan-200">{m.role}</p>
+                {lead && <p className="mt-1 text-xs leading-5 text-slate-400">{lead}</p>}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
