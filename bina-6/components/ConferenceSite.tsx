@@ -131,6 +131,14 @@ function Logos({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function goToHash(href: string) {
+  const id = href.replace(/^#/, "");
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", `#${id}`);
+}
+
 function Header({
   scrolled,
   openNav,
@@ -192,6 +200,7 @@ function Header({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22 }}
             className="overflow-hidden border-t border-white/10 bg-slate-950/95 lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-3">
@@ -199,7 +208,11 @@ function Header({
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setOpenNav(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenNav(false);
+                    window.setTimeout(() => goToHash(item.href), 250);
+                  }}
                   className="rounded-lg px-3 py-2 text-slate-200 hover:bg-white/5"
                 >
                   {item.label}
