@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const IMINTERVIEW_ORIGIN =
   process.env.IMINTERVIEW_ORIGIN || "https://iminterview.vercel.app";
 const BINA6_ORIGIN = process.env.BINA6_ORIGIN || "https://bina-6.vercel.app";
+// AEAI newsletters are published from the separate AEAINewsletter repo.
+const NEWSLETTER_ORIGIN =
+  process.env.NEWSLETTER_ORIGIN || "https://aeai-newsletter.vercel.app";
 
 const nextConfig: NextConfig = {
   // Security: prevent indexing
@@ -45,24 +48,37 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    return [
-      {
-        source: "/iminterview",
-        destination: `${IMINTERVIEW_ORIGIN}/iminterview`,
-      },
-      {
-        source: "/iminterview/:path*",
-        destination: `${IMINTERVIEW_ORIGIN}/iminterview/:path*`,
-      },
-      {
-        source: "/bina-6",
-        destination: `${BINA6_ORIGIN}/bina-6`,
-      },
-      {
-        source: "/bina-6/:path*",
-        destination: `${BINA6_ORIGIN}/bina-6/:path*`,
-      },
-    ];
+    return {
+      // beforeFiles runs ahead of public/, so newsletter URLs are served by
+      // the AEAINewsletter project even though the old copies in
+      // public/newsletter are still present. Removing this block restores
+      // serving from public/newsletter.
+      beforeFiles: [
+        {
+          source: "/newsletter/:path*",
+          destination: `${NEWSLETTER_ORIGIN}/newsletter/:path*`,
+        },
+      ],
+      afterFiles: [
+        {
+          source: "/iminterview",
+          destination: `${IMINTERVIEW_ORIGIN}/iminterview`,
+        },
+        {
+          source: "/iminterview/:path*",
+          destination: `${IMINTERVIEW_ORIGIN}/iminterview/:path*`,
+        },
+        {
+          source: "/bina-6",
+          destination: `${BINA6_ORIGIN}/bina-6`,
+        },
+        {
+          source: "/bina-6/:path*",
+          destination: `${BINA6_ORIGIN}/bina-6/:path*`,
+        },
+      ],
+      fallback: [],
+    };
   },
 };
 
