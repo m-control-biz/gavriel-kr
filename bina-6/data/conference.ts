@@ -39,7 +39,7 @@ export const CONFERENCE_DATA = {
   date: "19.11.2026",
   isoDate: "2026-11-19T09:00:00+03:00",
   day: "יום חמישי",
-  hours: "09:00 – 15:30",
+  hours: "09:00 – 16:05",
   gathering: "08:30",
   location: {
     venue: "בית המהנדס, לשכת המהנדסים",
@@ -48,13 +48,17 @@ export const CONFERENCE_DATA = {
     infoUrl: "https://www.aeai.org.il/branch/tel-aviv/",
     mapsQuery: "Dizengoff 200 Tel Aviv",
   },
+  format: {
+    label: "פרונטלי ובשידור חי בזום",
+    note: "הכנס יתקיים בשני אופנים: השתתפות פרונטלית בבית המהנדס, או צפייה בשידור חי אונליין בזום. מחיר ההשתתפות זהה בשני האופנים.",
+  },
   registerUrl: "https://intelligence-and-data-conference-2026.form-wizard.co/users/new",
   registration: {
     price: "מחיר השתתפות: 120 ₪",
-    includes: "הרישום כולל כיבוד קל, וארוחת צהרים קלה",
+    includes: "ההשתתפות הפרונטלית כוללת כיבוד קל וארוחת צהרים קלה.",
     scholarship:
       "זכאי מלגת קרן ידע הנדסי-אקדמי יוכלו לנצל מלגה בהתאם לקריטריונים הנהוגים בקרן, בכפוף לאישור הקרן וליתרת המלגה של העמית בקרן במועד סיום הכנס.",
-    limited: "מספר המקומות מוגבל.",
+    limited: "מספר המקומות באולם מוגבל.",
     help: "לשאלות נוספות בנושא רישום, רישום קבוצות וקבלת מידע נוסף, ניתן לפנות לאורנית, רכזת הרישום בדוא״ל:",
     helpEmail: "ornit@aeai.org.il",
   },
@@ -94,32 +98,16 @@ export const CONFERENCE_DATA = {
   ],
   dayPlan: [
     { time: "08:30 – 09:00", label: "התכנסות וכיבוד" },
-    { time: "09:00 – 09:30", label: "ברכות" },
-    {
-      time: "09:30 – 11:10",
-      label: "מושב DATA & EDUCATION",
-      href: "#session-tabs",
-      track: "track-1",
-      glow: true,
-    },
-    { time: "11:10 – 11:25", label: "הפסקה" },
-    {
-      time: "11:25 – 12:45",
-      label: "מושב בינה מלאכותית בחיי היום-יום",
-      href: "#session-tabs",
-      track: "track-2",
-      glow: true,
-    },
-    { time: "12:45 – 12:55", label: "הפסקה" },
-    {
-      time: "12:55 – 14:15",
-      label: "מושב מובילים AI",
-      href: "#session-tabs",
-      track: "track-3",
-      glow: true,
-    },
-    { time: "14:15 – 15:00", label: "תערוכת פוסטרים", href: "#posters", glow: true },
-    { time: "15:00 – 15:30", label: "נטוורקינג וסיום" },
+    { time: "09:00 – 09:10", label: "ברכות" },
+    { time: "09:10 – 09:40", label: "KEYNOTE · ד״ר גלעד זלוטקין" },
+    { time: "09:40 – 11:20", label: "מושב DATA & EDUCATION" },
+    { time: "11:20 – 11:35", label: "הפסקה" },
+    { time: "11:35 – 12:55", label: "מושב בינה מלאכותית בחיי היום-יום" },
+    { time: "12:55 – 13:00", label: "הפסקה" },
+    { time: "13:00 – 13:30", label: "KEYNOTE · פרופ׳ אורית חזן" },
+    { time: "13:30 – 14:50", label: "מושב מובילים AI" },
+    { time: "14:50 – 15:35", label: "תערוכת פוסטרים", href: "#posters" },
+    { time: "15:35 – 16:05", label: "נטוורקינג וסיום" },
   ],
 };
 
@@ -180,10 +168,10 @@ const P = {
   yaelErez: {
     id: "yael-erez",
     name: "ד״ר יעל ארז",
-    role: "חברת סגל",
-    org: "הפקולטה למדעי המחשב והפקולטה לחינוך, הטכניון",
+    role: "חברת סגל עמית בפקולטה למדעי המחשב וחברת סגל במכללת בראודה להנדסה",
+    org: "הטכניון · מכללת בראודה להנדסה",
     photo: "/speakers/yael-erez.jpg",
-    email: "yaelerez@cs.technion.ac.il",
+    email: "yaelerez@technion.ac.il",
   },
   ido: {
     id: "ido-ram",
@@ -191,7 +179,7 @@ const P = {
     role: "דוקטורנט",
     org: "הפקולטה למדעי המחשב, הטכניון",
     photo: "/speakers/ido-ram.jpg",
-    email: "andevstdio23@gmail.com",
+    email: "i.r@campus.technion.ac.il",
   },
   avigail: {
     id: "avigail-yampolsky",
@@ -206,7 +194,20 @@ const P = {
     name: "דקלה תבור",
     role: "Head of Innovation and Strategic Solutions",
     org: "מטריקס דבאופס",
+    photo: "/speakers/dikla-tavor.jpg",
     email: "diklat@matrix.co.il",
+  },
+  orit: {
+    id: "orit-hazzan",
+    name: "פרופ׳ אורית חזן",
+    role: "חברת סגל",
+    org: "הפקולטה לחינוך למדע וטכנולוגיה, הטכניון",
+  },
+  gilad: {
+    id: "gilad-zlotkin",
+    name: "ד״ר גלעד זלוטקין",
+    role: "Chief Software Officer",
+    org: "Anyon Systems",
   },
   anat: {
     id: "anat-hines",
@@ -266,31 +267,31 @@ export const SESSIONS: Session[] = [
     id: "track-1",
     title: "מושב DNE DATA & EDUCATION",
     leader: "רונית נחמיה",
-    time: "09:30 – 11:10",
+    time: "09:40 – 11:20",
     accent: "from-cyan-400 to-sky-500",
     lectures: [
       {
-        time: "09:30 – 09:45",
+        time: "09:40 – 09:55",
         topic: "לנוע עם הנתונים אל גובה העיניים: הוראה של נתונים בעידן של AI",
         speakers: [P.eilat],
       },
       {
-        time: "09:50 – 10:15",
+        time: "10:00 – 10:25",
         topic: "חינוך מבוסס דאטה: הכשרת מורים למגמת מידע ונתונים",
         speakers: [P.becky],
       },
       {
-        time: "10:20 – 10:35",
+        time: "10:30 – 10:45",
         topic: "דאטה, אנשים וחדשנות — החיבור שמייצר השפעה",
         speakers: [P.rami],
       },
       {
-        time: "10:40 – 10:55",
+        time: "10:50 – 11:05",
         topic: "הקשר בין החינוך לתעשייה",
         speakers: [P.yaelAlon],
       },
       {
-        time: "11:00 – 11:10",
+        time: "11:10 – 11:20",
         topic: "אולימפיאדאטה — אפשרות להפעלת המשתתפים בפתרון חידות",
         speakers: [P.ronit],
       },
@@ -300,26 +301,26 @@ export const SESSIONS: Session[] = [
     id: "track-2",
     title: "מושב בינה מלאכותית בחיי היום-יום",
     leader: "איתי דברן",
-    time: "11:25 – 12:45",
+    time: "11:35 – 12:55",
     accent: "from-sky-400 to-indigo-400",
     lectures: [
       {
-        time: "11:25 – 11:45",
+        time: "11:35 – 11:55",
         topic: "מסיפורים לדאטה: כיצד בינה מלאכותית מסייעת בניהול פרויקטים מרובי-משתתפים",
         speakers: [P.noam],
       },
       {
-        time: "11:45 – 12:05",
+        time: "11:55 – 12:15",
         topic: "סטודנטים לתחומי STEM ובינה יוצרת: דפוסים ותובנות",
         speakers: [P.yaelErez],
       },
       {
-        time: "12:05 – 12:25",
+        time: "12:15 – 12:35",
         topic: "צר יותר הוא יותר טוב: המרה מבוססת מטרה של ממשקים לסוכני AI של תוכנה",
         speakers: [P.ido],
       },
       {
-        time: "12:25 – 12:45",
+        time: "12:35 – 12:55",
         topic: "Causal Sensitivity Through Diffusion-Based Synthetic Data Augmentation",
         speakers: [P.avigail],
       },
@@ -329,31 +330,31 @@ export const SESSIONS: Session[] = [
     id: "track-3",
     title: "מושב מובילים AI: מעבדה לחדשנות ויעילות",
     leader: "מיכל שלומי",
-    time: "12:55 – 14:15",
+    time: "13:30 – 14:50",
     accent: "from-fuchsia-400 to-cyan-400",
     lectures: [
       {
-        time: "12:55 – 13:15",
+        time: "13:30 – 13:50",
         topic: "בינה בתהליכי ניהול, חדשנות אג׳ילית בניהול פרויקט מורכב קפדני",
         speakers: [P.dikla],
       },
       {
-        time: "13:15 – 13:35",
+        time: "13:50 – 14:10",
         topic: "הבינה בסיעור מוחות בחדשנות, פיצוח אתגרי מנהלי הפיתוח",
         speakers: [P.anat, P.tomer],
       },
       {
-        time: "13:35 – 13:50",
+        time: "14:10 – 14:25",
         topic: "חדשנות בעידן ה-AI וקידום הכשרות הייטק בשפת הכנרת",
         speakers: [P.amir, P.giora],
       },
       {
-        time: "13:50 – 14:10",
+        time: "14:25 – 14:45",
         topic: "שימוש מאובטח בבינה מלאכותית בארגוני ענק",
         speakers: [P.tzachi],
       },
       {
-        time: "14:10 – 14:15",
+        time: "14:45 – 14:50",
         topic: "לקראת 2040, מהו תפקיד ההורים בהצלחה טכנולוגית של הילדים הבוגרים?",
         speakers: [P.michal],
       },
@@ -361,18 +362,38 @@ export const SESSIONS: Session[] = [
   },
 ];
 
+export const KEYNOTES: Session = {
+  id: "keynotes",
+  title: "הרצאות KEYNOTE",
+  leader: "פרופ׳ יעל דובינסקי",
+  time: "09:10 – 09:40 · 13:00 – 13:30",
+  accent: "from-amber-300 to-cyan-400",
+  lectures: [
+    {
+      time: "09:10 – 09:40",
+      topic: "הרצאת KEYNOTE",
+      speakers: [P.gilad],
+    },
+    {
+      time: "13:00 – 13:30",
+      topic: "הרצאת KEYNOTE",
+      speakers: [P.orit],
+    },
+  ],
+};
+
 export const POSTERS: Poster[] = [
   {
     id: 1,
-    presenter: "שירן קרסיק",
+    presenter: "שירן קרסיק, בתאל דיבינסקי, מקסים שרמן",
     institution: "מדעי המחשב, הטכניון",
     title: "DataSetGo — All-in-one trip planner",
     desc: "Collect all important information, schedule top picks, and travel with no worry in mind.",
-    email: "Karasiksh@gmail.com",
+    email: "karasiksh@gmail.com",
   },
   {
     id: 2,
-    presenter: "דריה בבין",
+    presenter: "דריה בבין ואורי כשר חיטין",
     institution: "מדעי המחשב, הטכניון",
     title: "Stickers of Meaning",
     desc: "A mobile application dedicated to honoring the legacy of the victims of the Swords of Iron war.",
@@ -380,7 +401,7 @@ export const POSTERS: Poster[] = [
   },
   {
     id: 3,
-    presenter: "סמיחה עאלם",
+    presenter: "סמיחה עאלם, ראמז דהלה, עלי דאהר",
     institution: "מדעי המחשב, הטכניון",
     title: "GitNote",
     desc: "A smart note-taking app providing a unified digital workspace where students can write, organize, and manage their study materials.",
@@ -388,7 +409,7 @@ export const POSTERS: Poster[] = [
   },
   {
     id: 4,
-    presenter: "אחמד עבדולחלים",
+    presenter: "אחמד עבד אלחלים, מוחמד עאסי, נאיף חביבאללה",
     institution: "מדעי המחשב, הטכניון",
     title: "AisleBook",
     desc: "An AI-powered wedding planning platform.",
@@ -396,43 +417,27 @@ export const POSTERS: Poster[] = [
   },
   {
     id: 5,
-    presenter: "מרום שמואלי",
-    institution: "מדעי המחשב, הטכניון",
-    title: "Stickeep",
-    desc: "An accessible seat reservation system for students with disabilities.",
-    email: "Maromshmueli@campus.technion.ac.il",
-  },
-  {
-    id: 6,
-    presenter: "סילין אבו שקרה",
-    institution: "מדעי המחשב, הטכניון",
-    title: "MindGuard",
-    desc: "An all-in-one focus and productivity app for habit building, reducing distractions, and task management.",
-    email: "selen.abu@campus.technion.ac.il",
-  },
-  {
-    id: 7,
-    presenter: "מלק סלימאן",
+    presenter: "מלק סלימאן, עמיד חסין, בנאן אבו חלו",
     institution: "מדעי המחשב, הטכניון",
     title: "Himam",
     desc: "Connecting volunteers with their community, one task at a time.",
     email: "Smalak@campus.technion.ac.il",
   },
   {
-    id: 8,
-    presenter: "רגד ח׳ליל",
+    id: 6,
+    presenter: "רגד חליל, סמיחה עאלם, רבאב גמל",
     institution: "מדעי המחשב, הטכניון",
     title: "IoT Clinic Medication Service",
     desc: "An advanced IoT system bridging healthcare gaps for uninsured populations through smart records, kiosk ID issuance, and automated pharmacy tracking.",
     email: "raghadkhalil@campus.technion.ac.il",
   },
   {
-    id: 9,
+    id: 7,
     presenter: "אודי מרקל ורועי שריד",
     institution: "הנדסת תעשייה וניהול, רופין",
     title: "Teamgle",
     desc: "Innovative team management platform.",
-    email: "udimarkel4@gmail.com",
+    email: "udimarkel4@gmail.com · roies1738@gmail.com",
   },
 ];
 
@@ -449,18 +454,5 @@ export const NAV = [
   { href: "#committee", label: "ועדת היגוי" },
   { href: "#program", label: "תוכנית" },
   { href: "#posters", label: "פוסטרים" },
-  { href: "#speakers", label: "דוברים" },
   { href: "#contact", label: "יצירת קשר והגעה" },
 ];
-
-export function uniqueSpeakers(): Person[] {
-  const map = new Map<string, Person>();
-  for (const session of SESSIONS) {
-    for (const lecture of session.lectures) {
-      for (const speaker of lecture.speakers) {
-        map.set(speaker.id, speaker);
-      }
-    }
-  }
-  return [...map.values()];
-}

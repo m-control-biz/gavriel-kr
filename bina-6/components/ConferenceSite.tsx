@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Clock,
@@ -17,14 +17,18 @@ import {
   ChevronLeft,
   ChevronUp,
   Presentation,
+  Video,
+  Info,
+  Users,
+  CalendarDays,
 } from "lucide-react";
 import {
   COMMITTEE,
   CONFERENCE_DATA as C,
+  KEYNOTES,
   NAV,
   POSTERS,
   SESSIONS,
-  uniqueSpeakers,
   type Person,
 } from "@/data/conference";
 import { Avatar } from "./Avatar";
@@ -43,7 +47,6 @@ export function ConferenceSite() {
   const [showTop, setShowTop] = useState(false);
   const [active, setActive] = useState("home");
   const [person, setPerson] = useState<Person | null>(null);
-  const speakers = useMemo(() => uniqueSpeakers(), []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -84,7 +87,6 @@ export function ConferenceSite() {
         <Committee />
         <Program onPerson={setPerson} />
         <Posters />
-        <Speakers speakers={speakers} onPerson={setPerson} />
         <Contact />
       </main>
 
@@ -338,6 +340,7 @@ function Hero() {
               label={<LtrTime>{C.hours}</LtrTime>}
             />
             <InfoChip icon={<MapPin size={16} />} label={C.location.venue} />
+            <InfoChip icon={<Video size={16} />} label={C.format.label} />
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -371,29 +374,39 @@ function InfoChip({ icon, label }: { icon: ReactNode; label: ReactNode }) {
   );
 }
 
+function sectionClass(band: boolean) {
+  return `section-shell relative px-4 py-16 sm:py-20${band ? " section-band" : ""}`;
+}
+
 function SectionTitle({
   kicker,
   title,
   subtitle,
+  icon,
 }: {
   kicker: string;
   title: string;
   subtitle?: ReactNode;
+  icon?: ReactNode;
 }) {
   return (
-    <div className="mb-7 text-center">
-      <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">{kicker}</p>
-      <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">{title}</h2>
-      {subtitle && <p className="mx-auto mt-3 max-w-2xl text-slate-400">{subtitle}</p>}
+    <div className="mb-10 text-center">
+      <p className="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-slate-900/60 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-cyan-200">
+        {icon}
+        {kicker}
+      </p>
+      <h2 className="mt-3 text-3xl font-black text-white sm:text-5xl">{title}</h2>
+      <span aria-hidden className="mx-auto mt-4 block h-1 w-16 rounded-full bg-cyber-gradient" />
+      {subtitle && <p className="mx-auto mt-4 max-w-2xl text-white">{subtitle}</p>}
     </div>
   );
 }
 
 function About() {
   return (
-    <section id="about" className="relative px-4 py-12">
+    <section id="about" className={sectionClass(false)}>
       <div className="mx-auto max-w-7xl">
-        <SectionTitle kicker="About" title="אודות הכנס" />
+        <SectionTitle kicker="About" title="אודות הכנס" icon={<Info size={14} />} />
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="glass rounded-3xl p-6 sm:p-8">
             <p className="text-lg leading-8 text-slate-200">{C.about}</p>
@@ -421,7 +434,7 @@ function About() {
             </div>
           </div>
           <div>
-            <p className="mb-3 text-sm font-bold text-slate-300">רשימת נושאים</p>
+            <p className="mb-3 text-sm font-bold text-slate-200">רשימת נושאים</p>
             <div className="flex flex-wrap gap-2">
               {C.topics.map((t) => (
                 <span
@@ -439,24 +452,25 @@ function About() {
   );
 }
 
+const PROGRAM_TABS = [...SESSIONS, KEYNOTES];
+
+function scrollToId(id: string) {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: document.documentElement.classList.contains("a11y-motion")
+      ? "auto"
+      : "smooth",
+    block: "start",
+  });
+}
+
 function Program({ onPerson }: { onPerson: (p: Person) => void }) {
   const [tab, setTab] = useState(SESSIONS[0].id);
-  const current = SESSIONS.find((s) => s.id === tab) ?? SESSIONS[0];
-  const [jump, setJump] = useState<{
-    label: string;
-    href: string;
-    track?: string;
-  } | null>(null);
+  const current = PROGRAM_TABS.find((s) => s.id === tab) ?? SESSIONS[0];
+  const [jump, setJump] = useState<{ label: string; href: string } | null>(null);
 
   const goJump = () => {
     if (!jump) return;
-    if (jump.track) setTab(jump.track);
-    document.getElementById(jump.href.slice(1))?.scrollIntoView({
-      behavior: document.documentElement.classList.contains("a11y-motion")
-        ? "auto"
-        : "smooth",
-      block: "start",
-    });
+    scrollToId(jump.href.slice(1));
     setJump(null);
   };
 
@@ -467,24 +481,25 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [jump]);
 
-  const slotClass = (glow?: boolean) =>
+  const slotClass = (clickable?: boolean) =>
     [
-      "flex h-full w-full flex-col justify-center rounded-2xl border bg-slate-900/50 px-2.5 py-2 text-center transition hover:border-cyan-300/40 hover:bg-white/5 md:w-40",
-      glow ? "border-cyan-300/70 shadow-glow-sm" : "border-white/10",
+      "flex h-full w-full flex-col justify-center rounded-2xl border border-cyan-300/70 bg-slate-900/50 px-2.5 py-2 text-center shadow-glow-sm md:w-40",
+      clickable ? "transition hover:border-cyan-200 hover:bg-white/5" : "",
     ].join(" ");
 
   return (
-    <section id="program" className="relative px-4 py-12">
+    <section id="program" className={sectionClass(false)}>
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           kicker="Agenda"
+          icon={<CalendarDays size={14} />}
           title="תוכנית הכנס"
-          subtitle="יום מקצועי אחד, שלושה מושבים ותערוכת פוסטרים."
+          subtitle="יום מקצועי אחד, שתי הרצאות KEYNOTE, שלושה מושבים ותערוכת פוסטרים."
         />
 
         <div className="mb-4 text-center">
           <p className="text-sm font-bold text-slate-200">סדר היום</p>
-          <p className="mt-1 text-xs text-slate-500">מהבוקר עד הסיום, מימין לשמאל</p>
+          <p className="mt-1 text-xs text-slate-200">מהבוקר עד הסיום, מימין לשמאל</p>
         </div>
         <ol className="mb-12 flex flex-col items-center gap-y-3 md:flex-row md:flex-wrap md:items-stretch md:justify-center md:gap-x-0 md:gap-y-5">
           {C.dayPlan.map((slot, i) => (
@@ -495,14 +510,8 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
               {slot.href ? (
                 <button
                   type="button"
-                  onClick={() =>
-                    setJump({
-                      label: slot.label,
-                      href: slot.href!,
-                      track: slot.track,
-                    })
-                  }
-                  className={slotClass(slot.glow)}
+                  onClick={() => setJump({ label: slot.label, href: slot.href! })}
+                  className={slotClass(true)}
                 >
                   <LtrTime className="text-xs font-bold text-cyan-300">{slot.time}</LtrTime>
                   <div className="mt-0.5 flex min-h-[2.25rem] items-center justify-center text-sm leading-snug text-slate-200">
@@ -510,7 +519,7 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
                   </div>
                 </button>
               ) : (
-                <div className={slotClass(slot.glow)}>
+                <div className={slotClass()}>
                   <LtrTime className="text-xs font-bold text-cyan-300">{slot.time}</LtrTime>
                   <div className="mt-0.5 flex min-h-[2.25rem] items-center justify-center text-sm leading-snug text-slate-200">
                     {slot.label}
@@ -570,25 +579,27 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
         </AnimatePresence>
 
         <div id="session-tabs">
-        <p className="mb-3 text-center text-sm text-slate-400">
-          בחרו מושב כדי לראות את ההרצאות והשעות שלו.
+        <p className="mb-3 text-center text-sm text-slate-200">
+          בחרו כאן מושב / KEYNOTE.
         </p>
-        <div className="mb-6 flex flex-col gap-2 sm:flex-row">
-          {SESSIONS.map((s, i) => (
+        <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          {PROGRAM_TABS.map((s, i) => (
             <button
               key={s.id}
               onClick={() => setTab(s.id)}
               className={`flex-1 rounded-2xl border px-4 py-3 text-start transition ${
                 tab === s.id
-                  ? "border-cyan-300/40 bg-cyan-400/10 text-white"
-                  : "border-white/10 bg-slate-900/40 text-slate-300 hover:bg-white/5"
+                  ? "border-cyan-300/40 bg-cyan-950/70 text-white"
+                  : "border-white/10 bg-slate-900/60 text-slate-300 hover:bg-slate-900/75"
               }`}
             >
               <div className="text-xs text-cyan-300">
-                מושב {i + 1} · <LtrTime>{s.time}</LtrTime>
+                {s.id === KEYNOTES.id ? "KEYNOTE" : `מושב ${i + 1}`}
+                {" · "}
+                <LtrTime>{s.time}</LtrTime>
               </div>
               <div className="font-bold">{s.title}</div>
-              <div className="text-xs text-slate-400">בהנחיית {s.leader}</div>
+              <div className="text-xs text-slate-300">בהנחיית {s.leader}</div>
             </button>
           ))}
         </div>
@@ -605,7 +616,7 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
               <div className="flex -space-x-3 space-x-reverse">
                 {lec.speakers.map((sp) => (
                   <button key={sp.id} onClick={() => onPerson(sp)} aria-label={sp.name}>
-                    <Avatar src={sp.photo} name={sp.name} size="md" />
+                    <Avatar src={sp.photo} name={sp.name} size="lg" />
                   </button>
                 ))}
               </div>
@@ -642,56 +653,19 @@ function Program({ onPerson }: { onPerson: (p: Person) => void }) {
   );
 }
 
-function Speakers({
-  speakers,
-  onPerson,
-}: {
-  speakers: Person[];
-  onPerson: (p: Person) => void;
-}) {
-  return (
-    <section id="speakers" className="relative px-4 py-12">
-      <div className="mx-auto max-w-7xl">
-        <SectionTitle
-          kicker="Speakers"
-          title="הדוברים"
-          subtitle="מרצות ומרצים מהאקדמיה, ממערכת החינוך ומהתעשייה — לחצו על כרטיס לביוגרפיה."
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {speakers.map((sp, i) => (
-            <motion.button
-              key={sp.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.03 }}
-              onClick={() => onPerson(sp)}
-              className="glass group rounded-3xl p-5 text-center transition hover:-translate-y-1 hover:border-cyan-300/40"
-            >
-              <div className="mx-auto">
-                <Avatar src={sp.photo} name={sp.name} size="xl" className="mx-auto" />
-              </div>
-              <h3 className="mt-4 font-extrabold text-white">{sp.name}</h3>
-              <p className="mt-1 text-sm text-cyan-200">{sp.role}</p>
-              <p className="text-xs text-slate-400">{sp.org}</p>
-            </motion.button>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Posters() {
   return (
-    <section id="posters" className="relative px-4 py-12">
+    <section id="posters" className={sectionClass(true)}>
       <div className="mx-auto max-w-7xl">
         <SectionTitle
           kicker="Posters"
+          icon={<Presentation size={14} />}
           title="תערוכת פוסטרים"
           subtitle={
             <>
-              <LtrTime>14:15 – 15:00</LtrTime>
+              <LtrTime>
+                {C.dayPlan.find((s) => s.href === "#posters")?.time ?? "14:50 – 15:35"}
+              </LtrTime>
               {" · "}
               פרויקטים של סטודנטים מהטכניון ומרופין.
             </>
@@ -725,6 +699,7 @@ function Posters() {
 }
 
 function sessionLeadCaption(name: string, role: string) {
+  if (name === KEYNOTES.leader) return "מובילת הרצאות KEYNOTE";
   const session = SESSIONS.find((s) => s.leader === name);
   if (!session) return null;
   const lead = role.includes("חברת") ? "מובילת מושב" : "מוביל מושב";
@@ -734,9 +709,9 @@ function sessionLeadCaption(name: string, role: string) {
 
 function Committee() {
   return (
-    <section id="committee" className="relative px-4 py-12">
+    <section id="committee" className={sectionClass(true)}>
       <div className="mx-auto max-w-7xl">
-        <SectionTitle kicker="Steering" title="ועדת היגוי" />
+        <SectionTitle kicker="Steering" title="ועדת היגוי" icon={<Users size={14} />} />
         <div className="flex flex-wrap justify-center gap-4">
           {COMMITTEE.map((m) => {
             const lead = sessionLeadCaption(m.name, m.role);
@@ -764,9 +739,9 @@ function Contact() {
   )}&z=16&hl=he&output=embed`;
 
   return (
-    <section id="contact" className="relative px-4 py-12">
+    <section id="contact" className={sectionClass(false)}>
       <div className="mx-auto max-w-7xl">
-        <SectionTitle kicker="Venue & Contact" title="יצירת קשר והגעה" />
+        <SectionTitle kicker="Venue & Contact" title="יצירת קשר והגעה" icon={<MapPin size={14} />} />
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="glass overflow-hidden rounded-3xl">
             <iframe
@@ -790,6 +765,12 @@ function Contact() {
               >
                 להסבר הגעה <ExternalLink size={12} />
               </a>
+            </div>
+            <div className="glass rounded-3xl p-5">
+              <h3 className="flex items-center gap-2 font-extrabold text-white">
+                <Video size={18} className="text-cyan-300" /> {C.format.label}
+              </h3>
+              <p className="mt-1 text-slate-300">{C.format.note}</p>
             </div>
             <div className="glass rounded-3xl p-5 text-slate-300">
               <p className="flex items-start gap-2">
@@ -838,10 +819,14 @@ function Contact() {
 
         <div
           id="register"
-          className="mt-10 overflow-hidden rounded-3xl border border-cyan-300/30 bg-gradient-to-l from-[#4FACFE]/20 to-[#00F2FE]/10 p-8 text-center"
+          className="mt-10 overflow-hidden rounded-3xl border border-cyan-300/30 bg-slate-900/60 bg-gradient-to-l from-[#4FACFE]/20 to-[#00F2FE]/10 p-8 text-center"
         >
           <h3 className="text-2xl font-black text-white">הרשמה לכנס</h3>
           <p className="mt-3 text-lg font-bold text-white">{C.registration.price}</p>
+          <p className="mx-auto mt-3 inline-flex max-w-2xl items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-4 py-1.5 text-sm font-bold text-cyan-100">
+            <Video size={16} className="shrink-0 text-cyan-300" /> {C.format.label}
+          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-200">{C.format.note}</p>
           <p className="mx-auto mt-3 max-w-2xl text-slate-200">{C.registration.includes}</p>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300">
             {C.registration.scholarship}
@@ -875,7 +860,7 @@ function Footer() {
     <footer className="border-t border-white/10 px-4 py-10">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 sm:flex-row">
         <Logos />
-        <p className="text-center text-sm text-slate-500">
+        <p className="text-center text-sm text-slate-200">
           © {C.title} · {C.date} · איגוד דאטה סיינס בלשכת המהנדסים
         </p>
         <button

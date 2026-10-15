@@ -12,7 +12,7 @@ const heebo = Heebo({
 export const metadata: Metadata = {
   title: "כנס בינה 6 | איגוד מדעי הנתונים · לשכת המהנדסים",
   description:
-    "הכנס השנתי של איגוד מדעי הנתונים בלשכת המהנדסים — 19.11.2026, בית המהנדס, תל אביב.",
+    "הכנס השנתי של איגוד מדעי הנתונים בלשכת המהנדסים — 19.11.2026, בית המהנדס, תל אביב ובשידור חי בזום.",
   icons: {
     icon: [{ url: `${BASE_PATH}/icon.png`, type: "image/png", sizes: "192x192" }],
     apple: [{ url: `${BASE_PATH}/apple-icon.png`, sizes: "180x180" }],

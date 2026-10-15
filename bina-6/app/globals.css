@@ -18,7 +18,7 @@ section[id],
 
 body {
   font-family: var(--font-heebo), Arial, sans-serif;
-  background: #0f172a;
+  background: #415f9a;
   color: #e2e8f0;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 .glass {
-  background: rgba(15, 23, 42, 0.62);
+  background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(148, 163, 184, 0.16);
@@ -41,6 +41,28 @@ body {
   box-shadow:
     0 0 0 2px rgba(0, 242, 254, 0.55),
     0 0 22px rgba(79, 172, 254, 0.35);
+}
+
+/* Section separation: a thin cyan divider on every section, plus a lighter band on alternating ones. */
+.section-shell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 242, 254, 0.5),
+    rgba(79, 172, 254, 0.5),
+    transparent
+  );
+}
+
+.section-band {
+  background:
+    radial-gradient(ellipse 60% 220px at 50% 0%, rgba(0, 242, 254, 0.09), transparent),
+    linear-gradient(180deg, #4a74b1 0%, #456dae 100%);
 }
 
 html.a11y-readable,
@@ -57,6 +79,15 @@ html.a11y-contrast,
 html.a11y-contrast body {
   background: #000 !important;
   color: #fff !important;
+}
+
+html.a11y-contrast .section-band,
+html.a11y-contrast .bg-slatebg {
+  background: #000 !important;
+}
+
+html.a11y-contrast .from-slatebg {
+  --tw-gradient-from: #000 var(--tw-gradient-from-position) !important;
 }
 
 html.a11y-contrast .glass,
@@ -143,5 +174,5 @@ html.a11y-focus *:focus {
   border-radius: 999px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b1220;
+  background: #2f4a7b;
 }

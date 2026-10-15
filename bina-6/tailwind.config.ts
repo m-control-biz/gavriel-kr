@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        slatebg: "#0F172A",
+        slatebg: "#415F9A",
         cyan1: "#00F2FE",
         cyan2: "#4FACFE",
       },
