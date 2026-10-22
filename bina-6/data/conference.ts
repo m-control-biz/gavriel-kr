@@ -208,6 +208,8 @@ const P = {
     name: "ד״ר גלעד זלוטקין",
     role: "Chief Software Officer",
     org: "Anyon Systems",
+    // The LRM keeps ")." with the English sentence in the RTL paragraph.
+    bio: "Chief Software Officer, Anyon Systems (quantum computing).‎ מייסד ו-CTO של ״בינה בלב״ בניר עוז.",
   },
   anat: {
     id: "anat-hines",
@@ -243,13 +245,12 @@ const P = {
     email: "giora@goren-ip.com",
     bio: "עורך פטנטים מוסמך ומהנדס. קניין רוחני ל-AI, טכנולוגיות קוונטיות, מכשור רפואי ומערכות אנרגיה.",
   },
-  tzachi: {
-    id: "tzachi-lotati",
-    name: "צחי לוטטי",
-    role: "CTO",
-    org: "בנק דיסקונט",
-    photo: "/speakers/tzachi-lotati.jpg",
-    email: "nir.abel@dbank.co.il",
+  raja: {
+    id: "raja-shama",
+    name: "רג׳א שאמא",
+    role: "מהנדס תוכנה וראש צוות (Team Lead)",
+    org: "מרכז חדשנות כנרת (KIC)",
+    bio: "מהנדס תוכנה וראש צוות (Team Lead) במרכז חדשנות כנרת, המתמחה בטכנולוגיות ענן (Cloud) ובבינה מלאכותית (AI). בעל ניסיון בארכיטקטורת תוכנה, פיתוח מערכות, הובלת צוותים והטמעת פתרונות AI בארגונים. מרצה ומנחה פרויקטי גמר במכללה האקדמית כנרת. בעל תואר שני במנהל עסקים במסלול תואר כפול (Dual Degree) מאוניברסיטת יורק באנגליה ומאוניברסיטת שטרסבורג בצרפת, וחבר במכון הבריטי לניהול (CMI - Chartered Management Institute). משלב בעבודתו מומחיות טכנולוגית, חשיבה ניהולית וראייה עסקית, תוך יישום AI בתהליכי תכנון, פיתוח וקבלת החלטות.",
   },
   michal: {
     id: "michal-shlomy",
@@ -350,8 +351,8 @@ export const SESSIONS: Session[] = [
       },
       {
         time: "14:25 – 14:45",
-        topic: "שימוש מאובטח בבינה מלאכותית בארגוני ענק",
-        speakers: [P.tzachi],
+        topic: "מנהל אחד, צוות של בינה מלאכותית: כך נראה יום העבודה שלי בעידן ה-AI",
+        speakers: [P.raja],
       },
       {
         time: "14:45 – 14:50",
@@ -371,7 +372,7 @@ export const KEYNOTES: Session = {
   lectures: [
     {
       time: "09:10 – 09:40",
-      topic: "הרצאת KEYNOTE",
+      topic: "AI-First Organization",
       speakers: [P.gilad],
     },
     {
