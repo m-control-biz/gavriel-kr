@@ -202,12 +202,14 @@ const P = {
     name: "פרופ׳ אורית חזן",
     role: "חברת סגל",
     org: "הפקולטה לחינוך למדע וטכנולוגיה, הטכניון",
+    photo: "/speakers/orit-hazzan.jpg",
   },
   gilad: {
     id: "gilad-zlotkin",
     name: "ד״ר גלעד זלוטקין",
     role: "Chief Software Officer",
     org: "Anyon Systems",
+    photo: "/speakers/gilad-zlotkin.jpg",
     // The LRM keeps ")." with the English sentence in the RTL paragraph.
     bio: "Chief Software Officer, Anyon Systems (quantum computing).‎ מייסד ו-CTO של ״בינה בלב״ בניר עוז.",
   },
